@@ -50,7 +50,7 @@
     .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-muted); }
     .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
 
-    .map-tooltip { display: none; position: fixed; background: var(--text); color: white; font-size: 12px; padding: 6px 10px; border-radius: 6px; pointer-events: none; z-index: 200; white-space: nowrap; }
+    .map-tooltip { display: none; position: fixed; background: rgba(20,20,20,0.95); color: white; font-size: 12px; padding: 10px 14px; border-radius: 8px; pointer-events: none; z-index: 200; max-width: 260px; line-height: 1.6; }
 
     .region-tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
     .region-tab { font-size: 13px; padding: 5px 14px; border-radius: 20px; border: 0.5px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
@@ -132,90 +132,7 @@
   <div class="panel panel-left">
     <div class="panel-label" data-nl="Interactieve kaart per provincie" data-fr="Carte interactive par province">Interactieve kaart per provincie</div>
     <div class="map-container">
-      <!-- Accurate Belgium SVG map with real province shapes -->
-      <svg id="belgiumMap" viewBox="0 0 800 560" xmlns="http://www.w3.org/2000/svg">
-
-        <!-- WEST-VLAANDEREN -->
-        <path class="province" data-name="West-Vlaanderen" data-party="Vlaams Belang" data-pct="28" data-color="#FFD700"
-          fill="#FFD700"
-          d="M 30,140 L 50,100 L 80,80 L 120,70 L 150,75 L 175,90 L 185,110 L 195,130 L 200,155 L 190,180 L 175,210 L 155,235 L 130,255 L 100,265 L 70,260 L 45,245 L 30,220 L 20,190 Z"/>
-
-        <!-- OOST-VLAANDEREN -->
-        <path class="province" data-name="Oost-Vlaanderen" data-party="N-VA" data-pct="26" data-color="#F5A623"
-          fill="#F5A623"
-          d="M 175,90 L 210,75 L 245,70 L 275,72 L 295,85 L 305,105 L 310,130 L 305,155 L 295,175 L 275,188 L 250,195 L 225,192 L 200,185 L 190,180 L 195,155 L 195,130 L 185,110 Z"/>
-
-        <!-- ANTWERPEN -->
-        <path class="province" data-name="Antwerpen" data-party="Vlaams Belang" data-pct="30" data-color="#FFD700"
-          fill="#FFD700"
-          d="M 275,72 L 320,65 L 365,60 L 400,65 L 425,80 L 435,100 L 435,125 L 425,150 L 410,170 L 390,182 L 365,188 L 340,190 L 315,185 L 295,175 L 305,155 L 310,130 L 305,105 L 295,85 Z"/>
-
-        <!-- VLAAMS-BRABANT -->
-        <path class="province" data-name="Vlaams-Brabant" data-party="N-VA" data-pct="22" data-color="#F5A623"
-          fill="#F5A623"
-          d="M 225,192 L 250,195 L 275,188 L 295,175 L 315,185 L 340,190 L 365,188 L 380,200 L 385,220 L 375,240 L 355,255 L 330,262 L 305,265 L 280,262 L 258,255 L 240,242 L 228,228 L 220,212 Z"/>
-
-        <!-- BRUSSEL -->
-        <path class="province" data-name="Brussel" data-party="PS" data-pct="20" data-color="#C8001E"
-          fill="#C8001E"
-          d="M 305,215 L 318,210 L 332,212 L 340,222 L 338,235 L 328,242 L 315,244 L 304,238 L 300,226 Z"/>
-
-        <!-- LIMBURG -->
-        <path class="province" data-name="Limburg" data-party="N-VA" data-pct="21" data-color="#F5A623"
-          fill="#F5A623"
-          d="M 400,65 L 445,62 L 485,65 L 515,75 L 530,95 L 528,120 L 520,145 L 505,165 L 485,178 L 460,185 L 435,182 L 410,170 L 425,150 L 435,125 L 435,100 L 425,80 Z"/>
-
-        <!-- HENEGOUWEN -->
-        <path class="province" data-name="Henegouwen" data-party="PS" data-pct="32" data-color="#C8001E"
-          fill="#C8001E"
-          d="M 100,265 L 130,255 L 155,235 L 175,210 L 190,180 L 200,185 L 220,212 L 228,228 L 240,242 L 235,265 L 225,290 L 210,315 L 185,332 L 155,340 L 125,338 L 95,328 L 70,310 L 55,288 L 50,268 L 70,260 Z"/>
-
-        <!-- BRABANT WALLON -->
-        <path class="province" data-name="Brabant Wallon" data-party="MR" data-pct="28" data-color="#005E9E"
-          fill="#005E9E"
-          d="M 240,242 L 258,255 L 280,262 L 305,265 L 330,262 L 340,275 L 335,295 L 318,312 L 295,322 L 270,325 L 248,318 L 232,305 L 225,290 L 235,265 Z"/>
-
-        <!-- NAMEN -->
-        <path class="province" data-name="Namen" data-party="MR" data-pct="25" data-color="#005E9E"
-          fill="#005E9E"
-          d="M 270,325 L 295,322 L 318,312 L 335,295 L 355,300 L 372,318 L 380,340 L 375,365 L 358,385 L 335,398 L 308,402 L 282,396 L 260,380 L 248,358 L 248,335 Z"/>
-
-        <!-- LUIK -->
-        <path class="province" data-name="Luik" data-party="PS" data-pct="28" data-color="#C8001E"
-          fill="#C8001E"
-          d="M 340,190 L 365,188 L 390,182 L 410,170 L 435,182 L 460,185 L 485,178 L 505,165 L 520,145 L 528,120 L 540,140 L 548,165 L 545,192 L 535,215 L 518,232 L 498,245 L 472,252 L 448,255 L 422,250 L 400,240 L 380,228 L 372,215 L 375,240 L 355,255 L 355,300 L 335,295 L 340,275 L 330,262 L 355,255 L 375,240 L 385,220 L 380,200 L 365,188 Z"/>
-
-        <!-- LUXEMBURG -->
-        <path class="province" data-name="Luxemburg" data-party="MR" data-pct="23" data-color="#005E9E"
-          fill="#005E9E"
-          d="M 358,385 L 375,365 L 380,340 L 372,318 L 400,310 L 422,295 L 448,255 L 472,252 L 498,245 L 518,232 L 535,215 L 548,250 L 552,285 L 545,320 L 530,350 L 508,372 L 480,388 L 450,398 L 418,402 L 390,400 L 365,392 L 345,410 L 325,422 L 308,402 L 335,398 Z"/>
-
-        <!-- Province name labels -->
-        <text x="100" y="185" font-size="12" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="600" style="pointer-events:none">West-</text>
-        <text x="100" y="200" font-size="12" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="600" style="pointer-events:none">Vlaanderen</text>
-
-        <text x="245" y="138" font-size="12" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="600" style="pointer-events:none">Oost-</text>
-        <text x="245" y="153" font-size="12" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="600" style="pointer-events:none">Vlaanderen</text>
-
-        <text x="360" y="128" font-size="12" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="600" style="pointer-events:none">Antwerpen</text>
-
-        <text x="460" y="125" font-size="12" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="600" style="pointer-events:none">Limburg</text>
-
-        <text x="302" y="235" font-size="10" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="600" style="pointer-events:none">Vl-Brab</text>
-
-        <text x="319" y="228" font-size="9" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="700" style="pointer-events:none">BXL</text>
-
-        <text x="155" y="305" font-size="12" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="600" style="pointer-events:none">Henegouwen</text>
-
-        <text x="290" y="295" font-size="11" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="600" style="pointer-events:none">Brab.</text>
-        <text x="290" y="308" font-size="11" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="600" style="pointer-events:none">Wallon</text>
-
-        <text x="312" y="365" font-size="12" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="600" style="pointer-events:none">Namen</text>
-
-        <text x="450" y="215" font-size="12" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="600" style="pointer-events:none">Luik</text>
-
-        <text x="460" y="335" font-size="12" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="600" style="pointer-events:none">Luxemburg</text>
-      </svg>
+      <div id="belgium-map"></div>
     </div>
 
     <div class="map-legend">
@@ -389,11 +306,142 @@
       tooltip.style.display = 'block';
       tooltip.style.left = (e.clientX + 14) + 'px';
       tooltip.style.top = (e.clientY - 32) + 'px';
-      tooltip.textContent = prov.dataset.name + ' — ' + prov.dataset.party + ': ' + prov.dataset.pct + '%';
+      var lines = '<strong>' + prov.dataset.name + '</strong><br>' + prov.dataset.results;
+      tooltip.innerHTML = lines;
     });
     prov.addEventListener('mouseleave', function() {
       tooltip.style.display = 'none';
     });
+  });
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<script>
+var partyData = {
+  "Bruxelles":      { party: "PS",             color: "#C8001E", pct: 22, results: "PS: 22% | MR: 18% | PTB/PVDA: 16% | Ecolo: 12% | Vooruit: 8% | Anderen: 24%" },
+  "Antwerpen":      { party: "Vlaams Belang",  color: "#FFD700", pct: 30, results: "VB: 30% | N-VA: 24% | Vooruit: 13% | cd&v: 11% | Anders: 9% | Groen: 7% | PTB: 6%" },
+  "Limburg":        { party: "N-VA",           color: "#F5A623", pct: 22, results: "N-VA: 22% | VB: 20% | cd&v: 16% | Vooruit: 14% | Anders: 10% | Groen: 8% | PTB: 5% | Anderen: 5%" },
+  "Oost-Vlaanderen":{ party: "N-VA",           color: "#F5A623", pct: 26, results: "N-VA: 26% | VB: 22% | Vooruit: 16% | cd&v: 14% | Groen: 9% | Anders: 8% | PTB: 5%" },
+  "Vlaams Brabant": { party: "N-VA",           color: "#F5A623", pct: 21, results: "N-VA: 21% | VB: 18% | Vooruit: 15% | cd&v: 14% | Anders: 12% | Groen: 10% | PTB: 6% | Anderen: 4%" },
+  "West-Vlaanderen":{ party: "Vlaams Belang",  color: "#FFD700", pct: 28, results: "VB: 28% | N-VA: 18% | Vooruit: 14% | cd&v: 12% | Anders: 9% | Groen: 8% | PTB: 6% | Anderen: 5%" },
+  "Brabant Wallon": { party: "MR",             color: "#005E9E", pct: 28, results: "MR: 28% | PS: 20% | Les Engagés: 18% | Ecolo: 14% | PTB: 10% | Anderen: 10%" },
+  "Hainaut":        { party: "PS",             color: "#C8001E", pct: 32, results: "PS: 32% | MR: 22% | PTB: 16% | Les Engagés: 12% | Ecolo: 10% | Anderen: 8%" },
+  "Liège":          { party: "PS",             color: "#C8001E", pct: 28, results: "PS: 28% | MR: 20% | PTB: 18% | Les Engagés: 14% | Ecolo: 12% | Anderen: 8%" },
+  "Luxembourg":     { party: "MR",             color: "#005E9E", pct: 23, results: "MR: 23% | PS: 20% | Les Engagés: 18% | Ecolo: 14% | PTB: 12% | Anderen: 13%" },
+  "Namur":          { party: "MR",             color: "#005E9E", pct: 25, results: "MR: 25% | PS: 22% | Les Engagés: 16% | PTB: 14% | Ecolo: 12% | Anderen: 11%" },
+};
+
+var displayNames = {
+  "Bruxelles": "Brussel",
+  "Antwerpen": "Antwerpen",
+  "Limburg": "Limburg",
+  "Oost-Vlaanderen": "Oost-Vlaanderen",
+  "Vlaams Brabant": "Vlaams-Brabant",
+  "West-Vlaanderen": "West-Vlaanderen",
+  "Brabant Wallon": "Brabant Wallon",
+  "Hainaut": "Henegouwen",
+  "Liège": "Luik",
+  "Luxembourg": "Luxemburg",
+  "Namur": "Namen",
+};
+
+var container = document.getElementById('belgium-map');
+var width = container.offsetWidth || 480;
+var height = Math.round(width * 0.72);
+
+var svg = d3.select('#belgium-map')
+  .append('svg')
+  .attr('width', '100%')
+  .attr('viewBox', '0 0 ' + width + ' ' + height)
+  .attr('preserveAspectRatio', 'xMidYMid meet');
+
+var tooltip = document.getElementById('tooltip');
+
+fetch('Provincies.json')
+  .then(function(r) { return r.json(); })
+  .then(function(topo) {
+    var geojson = topojson.feature(topo, topo.objects.layer);
+
+    var projection = d3.geoMercator()
+      .fitSize([width, height], geojson);
+
+    var path = d3.geoPath().projection(projection);
+
+    svg.selectAll('path')
+      .data(geojson.features)
+      .enter()
+      .append('path')
+      .attr('d', path)
+      .attr('fill', function(d) {
+        var name = d.properties.NAME_2;
+        return partyData[name] ? partyData[name].color : '#ccc';
+      })
+      .attr('stroke', 'white')
+      .attr('stroke-width', 1)
+      .style('cursor', 'pointer')
+      .style('transition', 'opacity 0.15s')
+      .on('mousemove', function(event, d) {
+        var name = d.properties.NAME_2;
+        var display = displayNames[name] || name;
+        var info = partyData[name];
+        tooltip.style.display = 'block';
+        tooltip.style.left = (event.clientX + 14) + 'px';
+        tooltip.style.top = (event.clientY - 40) + 'px';
+        if (info) {
+          tooltip.innerHTML = '<strong>' + display + '</strong><br>' + info.results;
+        } else {
+          tooltip.innerHTML = '<strong>' + display + '</strong>';
+        }
+        d3.select(this).style('opacity', 0.75);
+      })
+      .on('mouseleave', function() {
+        tooltip.style.display = 'none';
+        d3.select(this).style('opacity', 1);
+      });
+
+    // Add province name labels
+    svg.selectAll('text')
+      .data(geojson.features)
+      .enter()
+      .append('text')
+      .attr('transform', function(d) {
+        var c = path.centroid(d);
+        return 'translate(' + c + ')';
+      })
+      .attr('text-anchor', 'middle')
+      .attr('dy', '0.35em')
+      .style('pointer-events', 'none')
+      .style('font-family', 'sans-serif')
+      .style('font-weight', '600')
+      .style('font-size', function(d) {
+        var name = d.properties.NAME_2;
+        return name === 'Bruxelles' ? '7px' : '9px';
+      })
+      .style('fill', function(d) {
+        var name = d.properties.NAME_2;
+        return (name === 'West-Vlaanderen' || name === 'Antwerpen') ? '#333' : 'white';
+      })
+      .text(function(d) {
+        var name = d.properties.NAME_2;
+        var short = {
+          'West-Vlaanderen': 'W-Vlaanderen',
+          'Oost-Vlaanderen': 'O-Vlaanderen',
+          'Vlaams Brabant': 'Vl-Brabant',
+          'Brabant Wallon': 'Brab. Wallon',
+          'Bruxelles': 'BXL',
+          'Hainaut': 'Henegouwen',
+          'Liège': 'Luik',
+          'Luxembourg': 'Luxemburg',
+          'Namur': 'Namen',
+        };
+        return short[name] || name;
+      });
+  })
+  .catch(function(err) {
+    console.error('Error loading map:', err);
+    document.getElementById('belgium-map').innerHTML = '<p style="color:red;padding:20px;">Kaart kon niet geladen worden.</p>';
   });
 </script>
 

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1830 — Methodologie</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --text: #1a1a1a;
+      --text-muted: #5F5E5A;
+      --border: rgba(0,0,0,0.12);
+      --bg: #ffffff;
+      --bg-secondary: #f8f7f4;
+      --blue: #185FA5;
+      --blue-light: #E6F1FB;
+    }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); background: var(--bg-secondary); font-size: 15px; line-height: 1.6; }
+
+    nav { background: var(--bg); border-bottom: 0.5px solid var(--border); padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
+    .logo { font-size: 22px; font-weight: 600; color: var(--blue); letter-spacing: -0.5px; text-decoration: none; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); font-weight: 500; }
+    .lang-toggle { display: flex; gap: 4px; }
+    .lang-btn { font-size: 13px; padding: 4px 10px; border-radius: 6px; border: 0.5px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
+    .lang-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
+
+    .page-hero { background: var(--bg); border-bottom: 0.5px solid var(--border); padding: 48px 32px 40px; }
+    .page-hero-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px; }
+    .page-hero h1 { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 12px; }
+    .page-hero p { font-size: 16px; color: var(--text-muted); max-width: 640px; }
+
+    .content { max-width: 780px; margin: 0 auto; padding: 48px 32px; }
+
+    .method-block { background: var(--bg); border-radius: 12px; border: 0.5px solid var(--border); padding: 32px; margin-bottom: 24px; }
+    .method-block h2 { font-size: 20px; font-weight: 600; margin-bottom: 16px; color: var(--text); display: flex; align-items: center; gap: 12px; }
+    .method-number { width: 32px; height: 32px; background: var(--blue); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; flex-shrink: 0; }
+    .method-block p { font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 12px; }
+    .method-block p:last-child { margin-bottom: 0; }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+    .stat-card { background: var(--bg); border-radius: 12px; border: 0.5px solid var(--border); padding: 24px; text-align: center; }
+    .stat-card .val { font-size: 28px; font-weight: 600; color: var(--blue); margin-bottom: 6px; }
+    .stat-card .lbl { font-size: 13px; color: var(--text-muted); }
+
+    .transparency-box { background: var(--blue-light); border-radius: 12px; border: 0.5px solid rgba(24,95,165,0.2); padding: 24px 32px; margin-bottom: 24px; }
+    .transparency-box h3 { font-size: 16px; font-weight: 600; color: var(--blue); margin-bottom: 10px; }
+    .transparency-box p { font-size: 14px; color: #0C447C; line-height: 1.7; }
+
+    footer { background: #1a1a1a; color: rgba(255,255,255,0.6); padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-top: 48px; }
+    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
+    footer a:hover { color: white; }
+    .footer-links { display: flex; gap: 20px; }
+
+    @media (max-width: 768px) {
+      .stat-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .content { padding: 32px 16px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">1830</a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-nl="Peilingen" data-fr="Sondages">Peilingen</a></li>
+    <li><a href="index.html#kaart" data-nl="Kaart" data-fr="Carte">Kaart</a></li>
+    <li><a href="methodologie.html" class="active" data-nl="Methodologie" data-fr="Méthodologie">Methodologie</a></li>
+    <li><a href="over-ons.html" data-nl="Over ons" data-fr="À propos">Over ons</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('nl')">NL</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-eyebrow" data-nl="Hoe wij werken" data-fr="Comment nous travaillons">Hoe wij werken</div>
+  <h1 data-nl="Methodologie" data-fr="Méthodologie">Methodologie</h1>
+  <p data-nl="Transparantie is de kern van 1830. Hier lees je precies hoe onze peilingen tot stand komen, hoe we steekproeven samenstellen en hoe we resultaten wegen en rapporteren." data-fr="La transparence est au cœur de 1830. Découvrez exactement comment nos sondages sont réalisés, comment nous constituons les échantillons et comment nous pondérons et rapportons les résultats.">Transparantie is de kern van 1830. Hier lees je precies hoe onze peilingen tot stand komen, hoe we steekproeven samenstellen en hoe we resultaten wegen en rapporteren.</p>
+</div>
+
+<div class="content">
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="val">3.200</div>
+      <div class="lbl" data-nl="Respondenten per peiling" data-fr="Répondants par sondage">Respondenten per peiling</div>
+    </div>
+    <div class="stat-card">
+      <div class="val">11</div>
+      <div class="lbl" data-nl="Provincies gemeten" data-fr="Provinces mesurées">Provincies gemeten</div>
+    </div>
+    <div class="stat-card">
+      <div class="val">±1,7%</div>
+      <div class="lbl" data-nl="Gemiddelde foutmarge" data-fr="Marge d'erreur moyenne">Gemiddelde foutmarge</div>
+    </div>
+  </div>
+
+  <div class="transparency-box">
+    <h3 data-nl="Onze belofte van transparantie" data-fr="Notre engagement de transparence">Onze belofte van transparantie</h3>
+    <p data-nl="Bij elke peiling publiceren wij de volledige methodologie, de exacte steekproefgrootte per provincie, de wegingsfactoren en de foutmarge. Niets wordt verborgen. Wij geloven dat goede peilingen alleen geloofwaardig zijn als het publiek precies weet hoe ze tot stand komen." data-fr="Pour chaque sondage, nous publions la méthodologie complète, la taille exacte de l'échantillon par province, les facteurs de pondération et la marge d'erreur. Rien n'est caché. Nous croyons que de bons sondages ne sont crédibles que si le public sait exactement comment ils sont réalisés.">Bij elke peiling publiceren wij de volledige methodologie, de exacte steekproefgrootte per provincie, de wegingsfactoren en de foutmarge. Niets wordt verborgen. Wij geloven dat goede peilingen alleen geloofwaardig zijn als het publiek precies weet hoe ze tot stand komen.</p>
+  </div>
+
+  <div class="method-block">
+    <h2><div class="method-number">1</div> <span data-nl="Steekproef" data-fr="Échantillon">Steekproef</span></h2>
+    <p data-nl="Elke peiling van 1830 wordt uitgevoerd bij minimaal 3.200 Belgische burgers van 18 jaar en ouder. Dit is aanzienlijk meer dan de standaard 1.000 respondenten die de meeste Belgische peilingbureaus gebruiken." data-fr="Chaque sondage de 1830 est réalisé auprès d'au moins 3.200 citoyens belges âgés de 18 ans et plus. C'est nettement plus que les 1.000 répondants standard utilisés par la plupart des instituts de sondage belges.">Elke peiling van 1830 wordt uitgevoerd bij minimaal 3.200 Belgische burgers van 18 jaar en ouder. Dit is aanzienlijk meer dan de standaard 1.000 respondenten die de meeste Belgische peilingbureaus gebruiken.</p>
+    <p data-nl="De steekproef wordt verdeeld over alle 11 provincies en het Brussels Hoofdstedelijk Gewest, met minimum 300 respondenten per provincie. Zo kunnen wij betrouwbare resultaten rapporteren op provinciaal niveau." data-fr="L'échantillon est réparti sur les 11 provinces et la Région de Bruxelles-Capitale, avec un minimum de 300 répondants par province. Cela nous permet de rapporter des résultats fiables au niveau provincial.">De steekproef wordt verdeeld over alle 11 provincies en het Brussels Hoofdstedelijk Gewest, met minimum 300 respondenten per provincie. Zo kunnen wij betrouwbare resultaten rapporteren op provinciaal niveau.</p>
+  </div>
+
+  <div class="method-block">
+    <h2><div class="method-number">2</div> <span data-nl="Dataverzameling" data-fr="Collecte de données">Dataverzameling</span></h2>
+    <p data-nl="Peilingen worden online afgenomen via een representatief panel van Belgische burgers. Deelnemers worden uitgenodigd via e-mail en ontvangen een korte vragenlijst van gemiddeld 10 minuten." data-fr="Les sondages sont réalisés en ligne via un panel représentatif de citoyens belges. Les participants sont invités par e-mail et reçoivent un court questionnaire d'environ 10 minutes.">Peilingen worden online afgenomen via een representatief panel van Belgische burgers. Deelnemers worden uitgenodigd via e-mail en ontvangen een korte vragenlijst van gemiddeld 10 minuten.</p>
+    <p data-nl="Het panel wordt continu aangevuld en gecontroleerd op representativiteit. Deelnemers die systematisch extreme of inconsistente antwoorden geven worden uitgesloten." data-fr="Le panel est continuellement complété et contrôlé pour sa représentativité. Les participants qui donnent systématiquement des réponses extrêmes ou incohérentes sont exclus.">Het panel wordt continu aangevuld en gecontroleerd op representativiteit. Deelnemers die systematisch extreme of inconsistente antwoorden geven worden uitgesloten.</p>
+  </div>
+
+  <div class="method-block">
+    <h2><div class="method-number">3</div> <span data-nl="Weging" data-fr="Pondération">Weging</span></h2>
+    <p data-nl="Ruwe peilingsdata worden gewogen op basis van vier factoren om een accuraat beeld van de Belgische bevolking te garanderen:" data-fr="Les données brutes des sondages sont pondérées sur la base de quatre facteurs pour garantir une image précise de la population belge:">Ruwe peilingsdata worden gewogen op basis van vier factoren om een accuraat beeld van de Belgische bevolking te garanderen:</p>
+    <p data-nl="— Geslacht (man/vrouw/non-binair)<br>— Leeftijd (18-34, 35-54, 55+)<br>— Regio (Vlaanderen, Wallonië, Brussel)<br>— Opleidingsniveau (lager, middelbaar, hoger onderwijs)" data-fr="— Genre (homme/femme/non-binaire)<br>— Âge (18-34, 35-54, 55+)<br>— Région (Flandre, Wallonie, Bruxelles)<br>— Niveau d'éducation (primaire, secondaire, supérieur)">— Geslacht (man/vrouw/non-binair)<br>— Leeftijd (18-34, 35-54, 55+)<br>— Regio (Vlaanderen, Wallonië, Brussel)<br>— Opleidingsniveau (lager, middelbaar, hoger onderwijs)</p>
+    <p data-nl="Wegingscoëfficiënten worden berekend op basis van de meest recente Statbel-bevolkingsdata." data-fr="Les coefficients de pondération sont calculés sur la base des données démographiques les plus récentes de Statbel.">Wegingscoëfficiënten worden berekend op basis van de meest recente Statbel-bevolkingsdata.</p>
+  </div>
+
+  <div class="method-block">
+    <h2><div class="method-number">4</div> <span data-nl="Foutmarge" data-fr="Marge d'erreur">Foutmarge</span></h2>
+    <p data-nl="Bij een steekproef van 3.200 respondenten bedraagt de foutmarge op nationaal niveau ±1,7% bij een betrouwbaarheidsniveau van 95%. Op provinciaal niveau (minimum 300 respondenten) bedraagt de foutmarge ±5,6%." data-fr="Avec un échantillon de 3.200 répondants, la marge d'erreur au niveau national est de ±1,7% avec un niveau de confiance de 95%. Au niveau provincial (minimum 300 répondants), la marge d'erreur est de ±5,6%.">Bij een steekproef van 3.200 respondenten bedraagt de foutmarge op nationaal niveau ±1,7% bij een betrouwbaarheidsniveau van 95%. Op provinciaal niveau (minimum 300 respondenten) bedraagt de foutmarge ±5,6%.</p>
+    <p data-nl="De foutmarge wordt bij elke peiling expliciet vermeld en meegenomen in de rapportering." data-fr="La marge d'erreur est explicitement mentionnée dans chaque sondage et prise en compte dans les rapports.">De foutmarge wordt bij elke peiling expliciet vermeld en meegenomen in de rapportering.</p>
+  </div>
+
+  <div class="method-block">
+    <h2><div class="method-number">5</div> <span data-nl="Rapportering" data-fr="Rapportage">Rapportering</span></h2>
+    <p data-nl="Peilingsresultaten worden gepubliceerd op deze website in zowel het Nederlands als het Frans. Bij elke publicatie vermelden wij: de exacte vraagstelling, de steekproefgrootte, de veldwerkperiode, de wegingsmethode en de foutmarge." data-fr="Les résultats des sondages sont publiés sur ce site web en néerlandais et en français. Chaque publication mentionne: la formulation exacte des questions, la taille de l'échantillon, la période de terrain, la méthode de pondération et la marge d'erreur.">Peilingsresultaten worden gepubliceerd op deze website in zowel het Nederlands als het Frans. Bij elke publicatie vermelden wij: de exacte vraagstelling, de steekproefgrootte, de veldwerkperiode, de wegingsmethode en de foutmarge.</p>
+    <p data-nl="Alle ruwe data worden na publicatie beschikbaar gesteld voor academisch onderzoek." data-fr="Toutes les données brutes sont mises à disposition pour la recherche académique après publication.">Alle ruwe data worden na publicatie beschikbaar gesteld voor academisch onderzoek.</p>
+  </div>
+
+</div>
+
+<footer>
+  <div>1830 — <span data-nl="Onafhankelijk opinieonderzoek" data-fr="Recherche d'opinion indépendante">Onafhankelijk opinieonderzoek</span></div>
+  <div class="footer-links">
+    <a href="methodologie.html" data-nl="Methodologie" data-fr="Méthodologie">Methodologie</a>
+    <a href="over-ons.html" data-nl="Contact" data-fr="Contact">Contact</a>
+    <a href="#" data-nl="Privacy" data-fr="Confidentialité">Privacy</a>
+  </div>
+</footer>
+
+<script>
+  function setLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(function(btn) { btn.classList.remove('active'); });
+    event.target.classList.add('active');
+    document.querySelectorAll('[data-' + lang + ']').forEach(function(el) {
+      el.innerHTML = el.getAttribute('data-' + lang);
+    });
+  }
+</script>
+</body>
+</html>

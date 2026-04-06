@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>1830 — Federale regering</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--text:#1a1a1a;--text-muted:#5F5E5A;--border:rgba(0,0,0,0.12);--bg:#ffffff;--bg-secondary:#f8f7f4;--blue:#185FA5;--blue-light:#E6F1FB}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--text);background:var(--bg-secondary);font-size:15px;line-height:1.6}
+nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
+.logo{font-size:22px;font-weight:600;color:var(--blue);letter-spacing:-0.5px;text-decoration:none}
+.nav-links{display:flex;gap:24px;list-style:none;align-items:center}
+.nav-links>li>a{font-size:14px;color:var(--text-muted);text-decoration:none;transition:color 0.15s}
+.nav-links>li>a:hover,.nav-links>li>a.active{color:var(--text);font-weight:500}
+.lang-toggle{display:flex;gap:4px}
+.lang-btn{font-size:13px;padding:4px 10px;border-radius:6px;border:0.5px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.15s}
+.lang-btn.active{background:var(--blue);color:white;border-color:var(--blue)}
+.dropdown{position:relative}
+.dropdown-toggle{display:flex;align-items:center;gap:4px;cursor:pointer}
+.dropdown-menu{display:none;position:absolute;top:100%;left:0;background:var(--bg);border:0.5px solid var(--border);border-radius:8px;min-width:210px;padding:6px 0;z-index:200;box-shadow:0 4px 16px rgba(0,0,0,0.08)}
+.dropdown-menu li{list-style:none}
+.dropdown-menu a{display:block;padding:9px 16px;font-size:13px;color:var(--text-muted);text-decoration:none;transition:all 0.12s}
+.dropdown-menu a:hover{background:var(--bg-secondary);color:var(--text)}
+.dropdown:hover .dropdown-menu{display:block}
+.page-hero{background:var(--bg);border-bottom:0.5px solid var(--border);padding:48px 32px 40px}
+.page-hero-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:12px}
+.page-hero h1{font-size:32px;font-weight:600;line-height:1.2;margin-bottom:12px}
+.page-hero p{font-size:16px;color:var(--text-muted);max-width:700px}
+.content{padding:32px}
+.section-title{font-size:18px;font-weight:600;margin-bottom:20px;padding-bottom:12px;border-bottom:0.5px solid var(--border)}
+.member-table{width:100%;border-collapse:collapse;background:var(--bg);border-radius:12px;overflow:hidden;border:0.5px solid var(--border)}
+.member-table th{font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);padding:12px 16px;background:var(--bg-secondary);text-align:left;border-bottom:0.5px solid var(--border);font-weight:500}
+.member-table td{padding:12px 16px;font-size:14px;border-bottom:0.5px solid var(--border);vertical-align:middle}
+.member-table tr:last-child td{border-bottom:none}
+.member-table tr:hover td{background:var(--bg-secondary)}
+.party-badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.votes{font-size:13px;font-weight:500;color:var(--blue)}
+.minister-card{background:var(--bg);border:0.5px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:12px;display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center}
+.minister-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:white;flex-shrink:0}
+.minister-name{font-size:15px;font-weight:600;margin-bottom:3px}
+.minister-role{font-size:13px;color:var(--text-muted);margin-bottom:4px}
+.minister-meta{font-size:12px;color:var(--text-muted)}
+.filter-bar{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
+.filter-label{font-size:13px;color:var(--text-muted)}
+.filter-btn{font-size:12px;padding:5px 14px;border-radius:20px;border:0.5px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.15s}
+.filter-btn.active,.filter-btn:hover{background:var(--blue);color:white;border-color:var(--blue)}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+.stat-card{background:var(--bg);border-radius:12px;border:0.5px solid var(--border);padding:20px;text-align:center}
+.stat-card .val{font-size:24px;font-weight:600;color:var(--blue);margin-bottom:4px}
+.stat-card .lbl{font-size:12px;color:var(--text-muted)}
+footer{background:#1a1a1a;color:rgba(255,255,255,0.6);padding:24px 32px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+footer a{color:rgba(255,255,255,0.6);text-decoration:none}
+footer a:hover{color:white}
+.footer-links{display:flex;gap:20px}
+@media(max-width:768px){.nav-links{display:none}.content{padding:16px}.minister-card{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr}footer{flex-direction:column;gap:12px;text-align:center}}
+</style>
+</head><nav>
+  <a class="logo" href="index.html">1830</a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-nl="Peilingen" data-fr="Sondages">Peilingen</a></li>
+    <li><a href="index.html#kaart" data-nl="Kaart" data-fr="Carte">Kaart</a></li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle " data-nl="Regering" data-fr="Gouvernement">Regering ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="regering-federaal.html" class="active">Federale regering</a></li>
+        <li><a href="regering-vlaams.html" >Vlaamse regering</a></li>
+        <li><a href="regering-waals.html" >Waalse regering</a></li>
+        <li><a href="regering-brussel.html" >Brusselse regering</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle " data-nl="Vertegenwoordigers" data-fr="Représentants">Vertegenwoordigers ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="vertegenwoordigers-federaal.html" >Federaal parlement</a></li>
+        <li><a href="vertegenwoordigers-vlaams.html" >Vlaams parlement</a></li>
+        <li><a href="vertegenwoordigers-waals.html" >Waals parlement</a></li>
+        <li><a href="vertegenwoordigers-brussel.html" >Brussels parlement</a></li>
+      </ul>
+    </li>
+    <li><a href="methodologie.html">Methodologie</a></li>
+    <li><a href="over-ons.html">Over ons</a></li>
+  </ul>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('nl')">NL</button>
+    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+  </div>
+</nav>
+<div class="page-hero">
+  <div class="page-hero-eyebrow">Federaal</div>
+  <h1>Federale regering</h1>
+  <p>De federale regering bestuurt het land op nationaal niveau.</p>
+</div>
+<div class="content">
+  <div class="stat-row">
+    <div class="stat-card"><div class="val">15</div><div class="lbl">Ministers</div></div>
+    <div class="stat-card"><div class="val">87/150</div><div class="lbl">Zetels coalitie</div></div>
+    <div class="stat-card"><div class="val">6</div><div class="lbl">Coalitiepartijen</div></div>
+  </div>
+  <div style="margin-bottom:24px">
+    <div class="section-title">Coalitie</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="party-badge" style="background:#00AEEF;color:white">Anders</span> <span class="party-badge" style="background:#005E9E;color:white">MR</span> <span class="party-badge" style="background:#E8172B;color:white">Vooruit</span> <span class="party-badge" style="background:#F07D00;color:white">cd&v</span> <span class="party-badge" style="background:#5FAD41;color:white">Groen</span> <span class="party-badge" style="background:#C8001E;color:white">PS</span></div>
+  </div>
+  <div class="section-title">Samenstelling</div>
+  <div class="minister-card">
+  <div class="minister-avatar" style="background:#00AEEF">AD</div>
+  <div>
+    <div class="minister-name">Alexander De Croo</div>
+    <div class="minister-role">Premier</div>
+    <div class="minister-meta">Oost-Vlaanderen</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#00AEEF;color:white">Anders</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">132.547 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#005E9E">GB</div>
+  <div>
+    <div class="minister-name">Georges-Louis Bouchez</div>
+    <div class="minister-role">Vice-Premier / Begroting</div>
+    <div class="minister-meta">Henegouwen</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#005E9E;color:white">MR</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">89.234 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#E8172B">MD</div>
+  <div>
+    <div class="minister-name">Melissa Depraetere</div>
+    <div class="minister-role">Vice-Premier / Werk</div>
+    <div class="minister-meta">West-Vlaanderen</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#E8172B;color:white">Vooruit</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">78.456 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#F07D00">SM</div>
+  <div>
+    <div class="minister-name">Sammy Mahdi</div>
+    <div class="minister-role">Vice-Premier / Binnenlandse Zaken</div>
+    <div class="minister-meta">Vlaams-Brabant</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#F07D00;color:white">cd&v</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">65.123 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#00AEEF">AB</div>
+  <div>
+    <div class="minister-name">Alexia Bertrand</div>
+    <div class="minister-role">Vice-Premier / Financiën</div>
+    <div class="minister-meta">Brussel</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#00AEEF;color:white">Anders</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">54.892 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#E8172B">FV</div>
+  <div>
+    <div class="minister-name">Frank Vandenbroucke</div>
+    <div class="minister-role">Volksgezondheid</div>
+    <div class="minister-meta">Oost-Vlaanderen</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#E8172B;color:white">Vooruit</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">98.341 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#005E9E">WB</div>
+  <div>
+    <div class="minister-name">Willy Borsus</div>
+    <div class="minister-role">Buitenlandse Handel</div>
+    <div class="minister-meta">Namen</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#005E9E;color:white">MR</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">43.210 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#F07D00">SC</div>
+  <div>
+    <div class="minister-name">Sophie Claes</div>
+    <div class="minister-role">Justitie</div>
+    <div class="minister-meta">Limburg</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#F07D00;color:white">cd&v</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">38.765 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#5FAD41">TV</div>
+  <div>
+    <div class="minister-name">Tinne Van der Straeten</div>
+    <div class="minister-role">Energie</div>
+    <div class="minister-meta">Oost-Vlaanderen</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#5FAD41;color:white">Groen</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">72.108 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#C8001E">TD</div>
+  <div>
+    <div class="minister-name">Thomas Dermine</div>
+    <div class="minister-role">Digitale Agenda</div>
+    <div class="minister-meta">Henegouwen</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#C8001E;color:white">PS</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">41.567 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#005E9E">VG</div>
+  <div>
+    <div class="minister-name">Valérie Glatigny</div>
+    <div class="minister-role">Onderwijs</div>
+    <div class="minister-meta">Luik</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#005E9E;color:white">MR</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">55.234 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#F07D00">JB</div>
+  <div>
+    <div class="minister-name">Jo Brouns</div>
+    <div class="minister-role">Landbouw</div>
+    <div class="minister-meta">Antwerpen</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#F07D00;color:white">cd&v</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">36.789 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#C8001E">PD</div>
+  <div>
+    <div class="minister-name">Pierre-Yves Dermagne</div>
+    <div class="minister-role">Economie</div>
+    <div class="minister-meta">Namen</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#C8001E;color:white">PS</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">48.901 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#005E9E">AD</div>
+  <div>
+    <div class="minister-name">Adrien Dolimont</div>
+    <div class="minister-role">Mobiliteit</div>
+    <div class="minister-meta">Henegouwen</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#005E9E;color:white">MR</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">39.456 stemmen</div>
+  </div>
+</div><div class="minister-card">
+  <div class="minister-avatar" style="background:#F07D00">ND</div>
+  <div>
+    <div class="minister-name">Nicole de Moor</div>
+    <div class="minister-role">Asiel en Migratie</div>
+    <div class="minister-meta">Antwerpen</div>
+  </div>
+  <div style="text-align:right">
+    <span class="party-badge" style="background:#F07D00;color:white">cd&v</span>
+    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">44.123 stemmen</div>
+  </div>
+</div>
+</div>
+<footer>
+  <div>1830 — Onafhankelijk opinieonderzoek</div>
+  <div class="footer-links">
+    <a href="methodologie.html">Methodologie</a>
+    <a href="over-ons.html">Contact</a>
+    <a href="#">Privacy</a>
+  </div>
+</footer>
+<script>
+function setLang(lang) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('[data-'+lang+']').forEach(el => el.innerHTML = el.getAttribute('data-'+lang));
+}
+function filterTable(val, col) {
+  document.querySelectorAll('.filter-btn[data-col="'+col+'"]').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.filterable tr').forEach(row => {
+    if (!row.dataset.filter) return;
+    row.style.display = (val === 'all' || row.dataset.filter.includes(val)) ? '' : 'none';
+  });
+}
+</script>

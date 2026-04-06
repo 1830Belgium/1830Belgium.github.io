@@ -112,11 +112,29 @@
 <div class="map-tooltip" id="tooltip"></div>
 
 <nav>
-  <a class="logo" href="#">1830</a>
+  <a class="logo" href="index.html">1830</a>
   <ul class="nav-links">
-    <li><a href="#peilingen" data-nl="Peilingen" data-fr="Sondages">Peilingen</a></li>
-    <li><a href="#kaart" data-nl="Kaart" data-fr="Carte">Kaart</a></li>
-    <li><a href="methodologie.html" data-nl="Methodologie" data-fr="Méthodologie">Methodologie</a></li>
+    <li><a href="index.html" data-nl="Peilingen" data-fr="Sondages">Peilingen</a></li>
+    <li><a href="index.html#kaart" data-nl="Kaart" data-fr="Carte">Kaart</a></li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-nl="Regering" data-fr="Gouvernement">Regering ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="regering-federaal.html" data-nl="Federale regering" data-fr="Gouvernement fédéral">Federale regering</a></li>
+        <li><a href="regering-vlaams.html" data-nl="Vlaamse regering" data-fr="Gouvernement flamand">Vlaamse regering</a></li>
+        <li><a href="regering-waals.html" data-nl="Waalse regering" data-fr="Gouvernement wallon">Waalse regering</a></li>
+        <li><a href="regering-brussel.html" data-nl="Brusselse regering" data-fr="Gouvernement bruxellois">Brusselse regering</a></li>
+      </ul>
+    </li>
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle" data-nl="Vertegenwoordigers" data-fr="Représentants">Vertegenwoordigers ▾</a>
+      <ul class="dropdown-menu">
+        <li><a href="vertegenwoordigers-federaal.html" data-nl="Federaal parlement" data-fr="Parlement fédéral">Federaal parlement</a></li>
+        <li><a href="vertegenwoordigers-vlaams.html" data-nl="Vlaams parlement" data-fr="Parlement flamand">Vlaams parlement</a></li>
+        <li><a href="vertegenwoordigers-waals.html" data-nl="Waals parlement" data-fr="Parlement wallon">Waals parlement</a></li>
+        <li><a href="vertegenwoordigers-brussel.html" data-nl="Brussels parlement" data-fr="Parlement bruxellois">Brussels parlement</a></li>
+      </ul>
+    </li>
+    <li><a href="methodologie.html" class="active" data-nl="Methodologie" data-fr="Méthodologie">Methodologie</a></li>
     <li><a href="over-ons.html" data-nl="Over ons" data-fr="À propos">Over ons</a></li>
   </ul>
   <div class="lang-toggle">
@@ -124,7 +142,7 @@
     <button class="lang-btn" onclick="setLang('fr')">FR</button>
   </div>
 </nav>
-
+  
 <div class="hero" id="peilingen">
   <div class="hero-eyebrow" data-nl="Laatste peiling — maart 2026" data-fr="Dernier sondage — mars 2026">Laatste peiling — maart 2026</div>
   <h1 data-nl="Stemintentie federaal" data-fr="Intention de vote fédérale">Stemintentie federaal</h1>

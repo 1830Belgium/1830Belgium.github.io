@@ -297,6 +297,40 @@ function filterTable(val, col) {
   });
 }
 // ===== PARLEMENT DIAGRAM 150 ZETELS =====
+const data = [
+  { name: "N-VA", seats: 23, color: "#F0A800", coalition: true },
+  { name: "MR", seats: 19, color: "#000CF0", coalition: true },
+  { name: "Les Engagés", seats: 14, color: "#00F0BC", coalition: true },
+  { name: "Vooruit", seats: 13, color: "#E8172B", coalition: true },
+  { name: "CD&V", seats: 11, color: "#F07D00", coalition: true },
+  { name: "Onafhankelijke", seats: 1, color: "#888888", coalition: false },
+  { name: "Vlaams Belang", seats: 20, color: "#003366", coalition: false },
+  { name: "PS", seats: 16, color: "#E8172B", coalition: false },
+  { name: "PVDA/PTB", seats: 15, color: "#FF0000", coalition: false },
+  { name: "Ecolo/Groen", seats: 9, color: "#78C000", coalition: false },
+  { name: "Anders", seats: 8, color: "#AAAAAA", coalition: false },
+  { name: "Défi", seats: 1, color: "#FFAA00", coalition: false }
+];
+
+const width = 600;
+const height = 340;
+const innerRadius = 60;
+const outerRadius = 150;
+
+const svg = d3.select("#parliament-chart")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height);
+
+const tooltip = d3.select("body")
+  .append("div")
+  .style("position", "absolute")
+  .style("background", "#fff")
+  .style("padding", "6px 10px")
+  .style("border", "1px solid #ccc")
+  .style("border-radius", "6px")
+  .style("font-size", "13px")
+  .style("display", "none");
 const seatRows = [20, 26, 32, 36, 36];
 const totalSeats = seatRows.reduce((a,b)=>a+b,0);
 

@@ -97,6 +97,11 @@ footer a:hover{color:white}
     <div class="stat-card"><div class="val">81/150</div><div class="lbl">Zetels coalitie</div></div>
     <div class="stat-card"><div class="val">5</div><div class="lbl">Coalitiepartijen</div></div>
   </div>
+
+  <div style="margin-bottom:32px">
+  <div class="section-title">Zetelverdeling</div>
+  <div id="parliament-chart"></div>
+</div>
   <div style="margin-bottom:24px">
     <div class="section-title">Coalitie</div>
     <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="party-badge" style="background:#F0A800;color:white">N-VA</span> <span class="party-badge" style="background:#000CF0;color:white">MR</span> <span class="party-badge" style="background:#E8172B;color:white">Vooruit</span> <span class="party-badge" style="background:#F07D00;color:white">CD&V</span> <span class="party-badge" style="background:#00F0BC;color:white">Les-Engagés</span></div>
@@ -277,6 +282,7 @@ footer a:hover{color:white}
     <a href="#">Privacy</a>
   </div>
 </footer>
+<script src="https://d3js.org/d3.v7.min.js"></script>
 <script>
 function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
@@ -291,4 +297,75 @@ function filterTable(val, col) {
     row.style.display = (val === 'all' || row.dataset.filter.includes(val)) ? '' : 'none';
   });
 }
+// ===== PARLEMENT DIAGRAM 150 ZETELS =====
+const data = [
+  { name: "N-VA", seats: 23, color: "#F0A800", coalition: true },
+  { name: "MR", seats: 19, color: "#000CF0", coalition: true },
+  { name: "Les Engagés", seats: 14, color: "#00F0BC", coalition: true },
+  { name: "Vooruit", seats: 13, color: "#E8172B", coalition: true },
+  { name: "CD&V", seats: 11, color: "#F07D00", coalition: true },
+  { name: "Onafhankelijke", seats: 1, color: "#888888", coalition: false },
+  { name: "Vlaams Belang", seats: 20, color: "#003366", coalition: false },
+  { name: "PS", seats: 16, color: "#E8172B", coalition: false },
+  { name: "PVDA/PTB", seats: 15, color: "#FF0000", coalition: false },
+  { name: "Ecolo/Groen", seats: 9, color: "#78C000", coalition: false },
+  { name: "Anders", seats: 8, color: "#AAAAAA", coalition: false },
+  { name: "Défi", seats: 1, color: "#FFAA00", coalition: false }
+];
+
+const width = 600;
+const height = 340;
+const innerRadius = 60;
+const outerRadius = 150;
+
+const svg = d3.select("#parliament-chart")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height);
+
+const tooltip = d3.select("body")
+  .append("div")
+  .style("position", "absolute")
+  .style("background", "#fff")
+  .style("padding", "6px 10px")
+  .style("border", "1px solid #ccc")
+  .style("border-radius", "6px")
+  .style("font-size", "13px")
+  .style("display", "none");
+
+const totalSeats = 150;
+const seatsPerRow = 30; 
+const rows = Math.ceil(totalSeats / seatsPerRow);
+let seatIndex = 0;
+
+data.forEach(group => {
+  for (let i = 0; i < group.seats; i++) {
+    const row = Math.floor(seatIndex / seatsPerRow);
+    const rowSeats = Math.min(seatsPerRow, totalSeats - row * seatsPerRow);
+    const radius = innerRadius + (row / (rows - 1)) * (outerRadius - innerRadius);
+    const angle = Math.PI * ((seatIndex % seatsPerRow) / (rowSeats - 1));
+    const x = width / 2 + radius * Math.cos(angle);
+    const y = height - radius * Math.sin(angle);
+
+    svg.append("circle")
+      .attr("cx", x)
+      .attr("cy", y)
+      .attr("r", 7)
+      .attr("fill", group.color)
+      .attr("opacity", group.coalition ? 1 : 0.5)
+      .on("mouseover", (event) => {
+        tooltip.style("display", "block")
+          .html(`<strong>${group.name}</strong><br>${group.seats} zetels`);
+      })
+      .on("mousemove", (event) => {
+        tooltip.style("left", (event.pageX + 10) + "px")
+          .style("top", (event.pageY + 10) + "px");
+      })
+      .on("mouseout", () => {
+        tooltip.style("display", "none");
+      });
+
+    seatIndex++;
+  }
+});
 </script>

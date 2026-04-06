@@ -312,15 +312,18 @@ const data = [
   { name: "Défi", seats: 1, color: "#FFAA00", coalition: false }
 ];
 
-const width = 600;
-const height = 340;
-const innerRadius = 60;
-const outerRadius = 150;
+const width = 900;
+const height = 450;
+const innerRadius = 100;
+const outerRadius = 260;
 
 const svg = d3.select("#parliament-chart")
   .append("svg")
-  .attr("width", width)
-  .attr("height", height);
+  .attr("viewBox", `0 0 ${width} ${height}`)
+  .style("width", "100%")
+  .style("max-width", width + "px")
+  .style("display", "block")
+  .style("margin", "0 auto");
 
 const tooltip = d3.select("body")
   .append("div")
@@ -381,7 +384,7 @@ data.forEach(group => {
     svg.append("circle")
       .attr("cx", seat.x)
       .attr("cy", seat.y)
-      .attr("r", 7)
+      .attr("r", 6)
       .attr("fill", group.color)
       .attr("opacity", group.coalition ? 1 : 0.55)
       .on("mouseover", () => {

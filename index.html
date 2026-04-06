@@ -26,6 +26,14 @@
     .lang-btn { font-size: 13px; padding: 4px 10px; border-radius: 6px; border: 0.5px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
     .lang-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
 
+    .dropdown { position: relative; }
+    .dropdown-toggle { display: flex; align-items: center; gap: 4px; }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--bg); border: 0.5px solid var(--border); border-radius: 8px; min-width: 200px; padding: 6px 0; z-index: 200; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .dropdown-menu li { list-style: none; }
+    .dropdown-menu a { display: block; padding: 9px 16px; font-size: 13px; color: var(--text-muted); text-decoration: none; transition: all 0.12s; }
+    .dropdown-menu a:hover { background: var(--bg-secondary); color: var(--text); }
+    .dropdown:hover .dropdown-menu { display: block; }
+
     .hero { background: var(--bg); border-bottom: 0.5px solid var(--border); padding: 48px 32px 40px; }
     .hero-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px; }
     .hero h1 { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 12px; color: var(--text); }

@@ -54,6 +54,32 @@ footer a{color:rgba(255,255,255,0.6);text-decoration:none}
 footer a:hover{color:white}
 .footer-links{display:flex;gap:20px}
 @media(max-width:768px){.nav-links{display:none}.content{padding:16px}.minister-card{grid-template-columns:1fr}.stat-row{grid-template-columns:1fr}footer{flex-direction:column;gap:12px;text-align:center}}
+#parliament-legend{
+  margin-top:14px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px 16px;
+}
+
+.legend-item{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+  color:var(--text-muted);
+}
+
+.legend-color{
+  width:12px;
+  height:12px;
+  border-radius:4px;
+}
+
+.legend-seats{
+  font-weight:600;
+  color:var(--text);
+}
 </style>
 </head><nav>
   <a class="logo" href="index.html">1830</a>
@@ -100,6 +126,7 @@ footer a:hover{color:white}
   <div style="margin-bottom:32px">
   <div class="section-title">Zetelverdeling</div>
   <div id="parliament-chart"></div>
+  <div id="parliament-legend"></div>
 </div>
   <div style="margin-bottom:24px">
     <div class="section-title">Coalitie</div>
@@ -396,7 +423,9 @@ data.forEach(group => {
       .attr("cy", seat.y)
       .attr("r", seatRadius)
       .attr("fill", group.color)
-      .attr("opacity", group.coalition ? 1 : 0.55)
+      .attr("opacity", group.coalition ? 1 : 0.25)
+      .attr("stroke", group.coalition ? "#000" : "none")
+      .attr("stroke-width", group.coalition ? 0.6 : 0)
       .on("mouseover", (event) => {
         tooltip.style("display", "block")
           .html(`<strong>${group.name}</strong><br>${group.seats} zetels`);
@@ -411,5 +440,18 @@ data.forEach(group => {
 
     seatPointer++;
   }
+});
+
+const legend = d3.select("#parliament-legend");
+legend.html("");
+
+data.forEach(party => {
+  legend.append("div")
+    .attr("class", "legend-item")
+    .html(`
+      <span class="legend-color" style="background:${party.color}; opacity:${party.coalition ? 1 : 0.55}"></span>
+      <span>${party.name}</span>
+      <span class="legend-seats">${party.seats}</span>
+    `);
 });
 </script>

@@ -86,6 +86,61 @@ footer a:hover{color:white}
   font-weight:600;
   color:var(--text);
 }
+.minister-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+  }
+
+  .minister-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      background: var(--bg);
+      padding: 12px 16px;
+      width: 100%;
+      max-width: 500px;
+  }
+
+  .minister-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+  }
+
+  .minister-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .minister-info {
+      flex: 1;
+      margin-left: 12px;
+  }
+
+  .minister-name {
+      font-weight: 600;
+  }
+
+  .minister-role, .minister-meta {
+      font-size: 13px;
+      color: var(--text-muted);
+  }
+
+  .minister-votes {
+      text-align: right;
+  }
+
+  .votes-count {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 4px;
+  }
 </style>
 </head><nav>
   <a class="logo" href="index.html">1830</a>
@@ -134,18 +189,24 @@ footer a:hover{color:white}
     <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="party-badge" style="background:#F0A800;color:white">N-VA</span> <span class="party-badge" style="background:#000CF0;color:white">MR</span> <span class="party-badge" style="background:#E8172B;color:white">Vooruit</span> <span class="party-badge" style="background:#F07D00;color:white">CD&V</span> <span class="party-badge" style="background:#00F0BC;color:white">Les-Engagés</span></div>
   </div>
   <div class="section-title">Samenstelling</div>
+
+<div class="minister-container">
   <div class="minister-card">
   <div class="minister-avatar">
-  <img src="images/bart-de-wever.jpg" alt="Bart De Wever" />
-</div>
+    <img src="https://1830Belgium.github.io/Images/BDW.jpg" alt="Bart De Wever" />
+  </div>
+  <div>
     <div class="minister-name">Bart De Wever</div>
     <div class="minister-role">Premier</div>
     <div class="minister-meta">Antwerpen</div>
   </div>
   <div style="text-align:right">
     <span class="party-badge" style="background:#F0A800;color:white">N-VA</span>
-    <div style="font-size:12px;color:var(--text-muted);margin-top:6px">255.446 stemmen</div>
+    <div class="votes">255.446 stemmen</div>
   </div>
+</div>
+  </div>
+</div>
 </div><div class="minister-card">
   <div class="minister-avatar" style="background:#000CF0">DC</div>
   <div>

@@ -550,14 +550,18 @@ data.forEach(group => {
   for (let i = 0; i < group.seats; i++) {
     const seat = seats[seatPointer];
 
-    svg.append("circle")
-      .attr("cx", seat.x)
-      .attr("cy", seat.y)
-      .attr("r", seatRadius)
-      .attr("fill", group.color)
-      .attr("opacity", group.coalition ? 1 : 0.35)
-      .attr("stroke", group.coalition ? "#000" : "none")
-      .attr("stroke-width", group.coalition ? 0.6 : 0)
+   svg.append("circle")
+  .attr("cx", seat.x)
+  .attr("cy", seat.y)
+  .attr("r", 0)
+  .attr("fill", group.color)
+  .attr("opacity", group.coalition ? 1 : 0.35)
+  .attr("stroke", group.coalition ? "#000" : "none")
+  .attr("stroke-width", group.coalition ? 0.6 : 0)
+  .transition()
+  .delay(seatPointer * 8)
+  .duration(200)
+  .attr("r", seatRadius)
       .on("mouseover", (event) => {
         tooltip.style("display", "block")
           .html(`<strong>${group.name}</strong><br>${group.seats} zetels`);

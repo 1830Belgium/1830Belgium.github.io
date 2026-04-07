@@ -550,7 +550,7 @@ data.forEach(group => {
   for (let i = 0; i < group.seats; i++) {
     const seat = seats[seatPointer];
 
-   svg.append("circle")
+ svg.append("circle")
   .attr("cx", seat.x)
   .attr("cy", seat.y)
   .attr("r", 0)
@@ -558,21 +558,21 @@ data.forEach(group => {
   .attr("opacity", group.coalition ? 1 : 0.35)
   .attr("stroke", group.coalition ? "#000" : "none")
   .attr("stroke-width", group.coalition ? 0.6 : 0)
+  .on("mouseover", (event) => {
+    tooltip.style("display", "block")
+      .html(`<strong>${group.name}</strong><br>${group.seats} zetels`);
+  })
+  .on("mousemove", (event) => {
+    tooltip.style("left", (event.pageX + 12) + "px")
+      .style("top", (event.pageY + 12) + "px");
+  })
+  .on("mouseout", () => {
+    tooltip.style("display", "none");
+  })
   .transition()
   .delay(seatPointer * 8)
   .duration(200)
-  .attr("r", seatRadius)
-      .on("mouseover", (event) => {
-        tooltip.style("display", "block")
-          .html(`<strong>${group.name}</strong><br>${group.seats} zetels`);
-      })
-      .on("mousemove", (event) => {
-        tooltip.style("left", (event.pageX + 12) + "px")
-          .style("top", (event.pageY + 12) + "px");
-      })
-      .on("mouseout", () => {
-        tooltip.style("display", "none");
-      });
+  .attr("r", seatRadius);
 
     seatPointer++;
   }

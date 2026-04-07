@@ -418,7 +418,7 @@ data.forEach(group => {
       .attr("cy", seat.y)
       .attr("r", seatRadius)
       .attr("fill", group.color)
-      .attr("opacity", group.coalition ? 1 : 0.25)
+      .attr("opacity", group.coalition ? 1 : 0.35)
       .attr("stroke", group.coalition ? "#000" : "none")
       .attr("stroke-width", group.coalition ? 0.6 : 0)
       .on("mouseover", (event) => {

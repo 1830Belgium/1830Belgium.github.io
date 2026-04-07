@@ -484,7 +484,7 @@ const padding = 50;
 const svg = d3.select("#parliament-chart")
   .html("") // reset als je refresh doet
   .append("svg")
-  .attr("viewBox", `${-padding} ${-padding} ${width + padding*2} ${height}`)
+  .attr("viewBox", `${-padding} ${-padding} ${width + padding*2} ${height + padding*2}`)
   .style("width", "100%")
   .style("max-width", width + "px")
   .style("display", "block")

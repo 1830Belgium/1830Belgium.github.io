@@ -296,7 +296,8 @@ function filterTable(val, col) {
     row.style.display = (val === 'all' || row.dataset.filter.includes(val)) ? '' : 'none';
   });
 }
-// ===== PARLEMENT DIAGRAM 150 ZETELS =====
+/* ===== PARLEMENT DIAGRAM 150 ZETELS ===== */
+
 const data = [
   { name: "N-VA", seats: 23, color: "#F0A800", coalition: true },
   { name: "MR", seats: 19, color: "#000CF0", coalition: true },
@@ -305,41 +306,49 @@ const data = [
   { name: "CD&V", seats: 11, color: "#F07D00", coalition: true },
   { name: "Onafhankelijke", seats: 1, color: "#888888", coalition: false },
   { name: "Vlaams Belang", seats: 20, color: "#003366", coalition: false },
-  { name: "PS", seats: 16, color: "#E8172B", coalition: false },
+  { name: "PS", seats: 16, color: "#FF5A5A", coalition: false },
   { name: "PVDA/PTB", seats: 15, color: "#FF0000", coalition: false },
   { name: "Ecolo/Groen", seats: 9, color: "#78C000", coalition: false },
   { name: "Anders", seats: 8, color: "#AAAAAA", coalition: false },
   { name: "Défi", seats: 1, color: "#FFAA00", coalition: false }
 ];
 
+// Chart instellingen
 const width = 900;
-const height = 450;
-const innerRadius = 100;
-const outerRadius = 260;
+const height = 340;
+const innerRadius = 110;
+const outerRadius = 290;
+const seatRadius = 6;
+const padding = 50;
 
+// SVG aanmaken (gecentreerd + geen afsnijden)
 const svg = d3.select("#parliament-chart")
+  .html("") // reset als je refresh doet
   .append("svg")
-  .attr("viewBox", `0 0 ${width} ${height}`)
+  .attr("viewBox", `${-padding} ${-padding} ${width + padding*2} ${height + padding*2}`)
   .style("width", "100%")
   .style("max-width", width + "px")
   .style("display", "block")
   .style("margin", "0 auto");
 
+// Tooltip
 const tooltip = d3.select("body")
   .append("div")
   .style("position", "absolute")
   .style("background", "#fff")
   .style("padding", "6px 10px")
-  .style("border", "1px solid #ccc")
-  .style("border-radius", "6px")
+  .style("border", "1px solid rgba(0,0,0,0.2)")
+  .style("border-radius", "8px")
   .style("font-size", "13px")
+  .style("pointer-events", "none")
   .style("display", "none");
-const seatRows = [20, 26, 32, 36, 36];
-const totalSeats = seatRows.reduce((a,b)=>a+b,0);
 
+// Zetelrijen (totaal 150)
+const seatRows = [20, 26, 32, 36, 36];
+
+// Zetelposities genereren
 let seats = [];
 
-// 1) alle zetelposities genereren
 seatRows.forEach((rowSeats, row) => {
   const radius = innerRadius + (row / (seatRows.length - 1)) * (outerRadius - innerRadius);
 
@@ -353,28 +362,29 @@ seatRows.forEach((rowSeats, row) => {
   }
 });
 
-// 2) sorteer zetels van links naar rechts (hoek)
-seats.sort((a, b) => a.angle - b.angle);
+// Zetels sorteren zodat we correct kunnen vullen (rechts -> links)
+seats.sort((a, b) => b.angle - a.angle);
 
-// 3) sorteer partijen in politieke volgorde (links -> rechts)
+// Politieke volgorde (rechts -> links) + Anders tussen MR en Les Engagés
 const spectrumOrder = [
-  "PVDA/PTB",
-  "PS",
-  "Vooruit",
-  "Ecolo/Groen",
-  "CD&V",
-  "Les Engagés",
-  "MR",
-  "N-VA",
   "Vlaams Belang",
+  "N-VA",
+  "MR",
+  "Anders",
+  "Les Engagés",
+  "CD&V",
   "Défi",
-  "Onafhankelijke",
-  "Anders"
+  "Ecolo/Groen",
+  "Vooruit",
+  "PS",
+  "PVDA/PTB",
+  "Onafhankelijke"
 ];
 
+// Partijen sorteren volgens spectrum
 data.sort((a, b) => spectrumOrder.indexOf(a.name) - spectrumOrder.indexOf(b.name));
 
-// 4) vul zetels partij per partij
+// Zetels tekenen
 let seatPointer = 0;
 
 data.forEach(group => {
@@ -384,18 +394,20 @@ data.forEach(group => {
     svg.append("circle")
       .attr("cx", seat.x)
       .attr("cy", seat.y)
-      .attr("r", 6)
+      .attr("r", seatRadius)
       .attr("fill", group.color)
       .attr("opacity", group.coalition ? 1 : 0.55)
-      .on("mouseover", () => {
+      .on("mouseover", (event) => {
         tooltip.style("display", "block")
           .html(`<strong>${group.name}</strong><br>${group.seats} zetels`);
       })
       .on("mousemove", (event) => {
-        tooltip.style("left", (event.pageX + 10) + "px")
-          .style("top", (event.pageY + 10) + "px");
+        tooltip.style("left", (event.pageX + 12) + "px")
+          .style("top", (event.pageY + 12) + "px");
       })
-      .on("mouseout", () => tooltip.style("display", "none"));
+      .on("mouseout", () => {
+        tooltip.style("display", "none");
+      });
 
     seatPointer++;
   }

@@ -24,27 +24,21 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .dropdown-menu a{display:block;padding:9px 16px;font-size:13px;color:var(--text-muted);text-decoration:none;transition:all 0.12s}
 .dropdown-menu a:hover{background:var(--bg-secondary);color:var(--text)}
 .dropdown:hover .dropdown-menu{display:block}
-.page-hero{
-  background: url('Flag_of_Flanders.svg') center center / cover no-repeat;
-  border-bottom:0.5px solid var(--border);
-  padding:48px 32px 40px;
-  position:relative;
-  overflow:hidden;
-}
-.page-hero::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background: rgba(249,195,0,0.55);
-}
-.page-hero>*{position:relative;z-index:1;}
-.page-hero-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:rgba(0,0,0,0.55);margin-bottom:12px}
-.page-hero h1{font-size:32px;font-weight:600;line-height:1.2;margin-bottom:12px;color:#1a1a1a}
-.page-hero p{font-size:16px;color:rgba(0,0,0,0.65);max-width:700px}
+.page-hero{background:var(--bg);border-bottom:0.5px solid var(--border);padding:48px 32px 40px}
+.page-hero-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:12px}
+.page-hero h1{font-size:32px;font-weight:600;line-height:1.2;margin-bottom:12px}
+.page-hero p{font-size:16px;color:var(--text-muted);max-width:700px}
 .content{padding:32px}
 .section-title{font-size:18px;font-weight:600;margin-bottom:20px;padding-bottom:12px;border-bottom:0.5px solid var(--border)}
 .party-badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap}
 .minister-card{background:var(--bg);border:0.5px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:12px;display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center}
+.minister-card img{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  object-fit:cover;
+  flex-shrink:0;
+}
 .minister-avatar{width:50px;height:50px;border-radius:50%;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:white}
 .minister-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .minister-info{flex:1}
@@ -111,7 +105,7 @@ footer a:hover{color:white}
 <div class="page-hero">
   <div class="page-hero-eyebrow">Vlaams Gewest</div>
   <h1>Samenstelling Vlaamse Regering</h1>
-  <p>Een overzicht van wie precies welke functie bekleedt, wie zij vertegenwoordigen & hoeveel zetels elke partij bekleedt in het parlement.</p>
+  <p>Een overzicht van wie precies welke functie bekleedt, wie zij vertegenwoordigen & hoeveel zetels elke partij bekleedt in het Vlaams parlement.</p>
 </div>
 
 <div class="content">
@@ -135,123 +129,128 @@ footer a:hover{color:white}
   </div>
 
   <!-- Samenstelling -->
-  <div class="section-title">Samenstelling</div>
-  <div class="minister-container">
+<div class="section-title">Samenstelling</div>
+<div class="minister-container">
 
-    <div class="minister-card">
-      <div class="minister-avatar" style="background:#F5A623">MD</div>
-      <div class="minister-info">
-        <div class="minister-name">Matthias Diependaele</div>
-        <div class="minister-role">Minister-President</div>
-        <div class="minister-meta">Oost-Vlaanderen</div>
-      </div>
-      <div class="minister-votes">
-        <span class="party-badge" style="background:#F5A623;color:#333">N-VA</span>
-        <div class="votes-count">145.678 stemmen</div>
-      </div>
+  <div class="minister-card">
+    <img src="https://1830Belgium.github.io/images/MD.jpg" alt="Mathias Diependaele" />
+
+    <div class="minister-info">
+      <div class="minister-name">Matthias Diependaele</div>
+      <div class="minister-role">Minister-President</div>
+      <div class="minister-meta">Oost-Vlaanderen</div>
     </div>
 
+    <div class="minister-votes">
+      <span class="party-badge" style="background:#F5A623;color:#333">N-VA</span>
+      <div class="votes-count">47.001 stemmen</div>
+    </div>
+  </div>
+
+</div>
+
     <div class="minister-card">
-      <div class="minister-avatar" style="background:#F07D00">HC</div>
+     <img src="https://1830Belgium.github.io/images/HILD.jpg" alt="Hilde Crevits" />
       <div class="minister-info">
         <div class="minister-name">Hilde Crevits</div>
-        <div class="minister-role">Vice-Minister-President / Welzijn</div>
+        <div class="minister-role">Vice-Minister-President / Binnenland, Steden- en Plattelandsbeleid, Samenleven Integratie en Inburgering, Bestuurszaken, Sociale Economie en Zeevisserij</div>
         <div class="minister-meta">West-Vlaanderen</div>
       </div>
       <div class="minister-votes">
-        <span class="party-badge" style="background:#F07D00;color:white">cd&v</span>
-        <div class="votes-count">112.345 stemmen</div>
+        <span class="party-badge" style="background:#F07D00;color:white">CD&V</span>
+        <div class="votes-count">77.533 stemmen</div>
       </div>
     </div>
 
     <div class="minister-card">
-      <div class="minister-avatar" style="background:#F5A623">BW</div>
+     <img src="https://1830Belgium.github.io/images/MELD.jpg" alt="Melissa Depraetere" />
+      <div class="minister-info">
+        <div class="minister-name">Melissa Depraetere</div>
+        <div class="minister-role">Vice-Minister-President / Wonen, Energie en Klimaat, Toerisme en Jeugd</div>
+        <div class="minister-meta">West-Vlaanderen</div>
+      </div>
+      <div class="minister-votes">
+        <span class="party-badge" style="background:#E8172B;color:#333">Vooruit</span>
+         <span class="party-badge" style="background:#E8172B;color:white">Vooruit</span>
+        <div class="votes-count">63.917 stemmen(verkozen op federale lijst)</div>
+      </div>
+    </div>
+
+    <div class="minister-card">
+       <img src="https://1830Belgium.github.io/images/BEN.jpg" alt="Ben Weyts" />
       <div class="minister-info">
         <div class="minister-name">Ben Weyts</div>
-        <div class="minister-role">Vice-Minister-President / Onderwijs</div>
+        <div class="minister-role">Vice-Minister-President / Begroting en Financiën, Vlaamse Rand, Onroerend Erfgoed, Dierenwelzijn</div>
         <div class="minister-meta">Vlaams-Brabant</div>
       </div>
       <div class="minister-votes">
         <span class="party-badge" style="background:#F5A623;color:#333">N-VA</span>
-        <div class="votes-count">98.234 stemmen</div>
+        <div class="votes-count">33.498 stemmen</div>
       </div>
     </div>
 
     <div class="minister-card">
-      <div class="minister-avatar" style="background:#F5A623">ZD</div>
+      <img src="https://1830Belgium.github.io/images/ZUHAL.jpg" alt="Zuhal Demir" />
       <div class="minister-info">
         <div class="minister-name">Zuhal Demir</div>
-        <div class="minister-role">Justitie & Handhaving</div>
+        <div class="minister-role">Onderwijs, Werk, Justitie en Handhaving</div>
         <div class="minister-meta">Limburg</div>
       </div>
       <div class="minister-votes">
         <span class="party-badge" style="background:#F5A623;color:#333">N-VA</span>
-        <div class="votes-count">87.456 stemmen</div>
+        <div class="votes-count">65.793 stemmen</div>
       </div>
     </div>
 
     <div class="minister-card">
-      <div class="minister-avatar" style="background:#F5A623">CV</div>
+      <img src="https://1830Belgium.github.io/images/CAR.JPG" alt="Caroline Genez" />
+      <div class="minister-info">
+        <div class="minister-name">Caroline Genez</div>
+        <div class="minister-role">Welzijn, Armoedebestrijding, Cultuur en Gelijke Kansen</div>
+        <div class="minister-meta">Antwerpen</div>
+      </div>
+      <div class="minister-votes">
+        <span class="party-badge" style="background:#E8172B;color:white">Vooruit</span>
+        <div class="votes-count">41.107 stemmen</div>
+      </div>
+    </div>
+
+    <div class="minister-card">
+      <img src="https://1830Belgium.github.io/images/JO.JPG" alt="Jo Brouns" />
+      <div class="minister-info">
+        <div class="minister-name">Jo Brouns</div>
+        <div class="minister-role">Omgeving en Landbouw</div>
+        <div class="minister-meta">Limburg</div>
+      </div>
+      <div class="minister-votes">
+        <span class="party-badge" style="background:#F07D00;color:white">CD&V</span>
+        <div class="votes-count">46.714 stemmen</div>
+      </div>
+    </div>
+
+    <div class="minister-card">
+      <img src="https://1830Belgium.github.io/images/ADR.JPG" alt="Annick De Ridder" />
+      <div class="minister-info">
+        <div class="minister-name">Annick De Ridder</div>
+        <div class="minister-role">Mobiliteit, Openbare Werken, Havens en Sport</div>
+        <div class="minister-meta">Antwerpen</div>
+      </div>
+      <div class="minister-votes">
+        <span class="party-badge" style="background:#F5A623;color:#333">N-VA</span>
+        <div class="votes-count">40.936 stemmen</div>
+      </div>
+    </div>
+
+    <div class="minister-card">
+      <img src="https://1830Belgium.github.io/images/CIEL.JPG" alt="Cieltje Van Achter" />
       <div class="minister-info">
         <div class="minister-name">Cieltje Van Achter</div>
-        <div class="minister-role">Brussel</div>
+        <div class="minister-role">Brussel en Media</div>
         <div class="minister-meta">Brussel</div>
       </div>
       <div class="minister-votes">
         <span class="party-badge" style="background:#F5A623;color:#333">N-VA</span>
-        <div class="votes-count">54.123 stemmen</div>
-      </div>
-    </div>
-
-    <div class="minister-card">
-      <div class="minister-avatar" style="background:#E8172B">MD</div>
-      <div class="minister-info">
-        <div class="minister-name">Melissa Depraetere</div>
-        <div class="minister-role">Werk & Economie</div>
-        <div class="minister-meta">West-Vlaanderen</div>
-      </div>
-      <div class="minister-votes">
-        <span class="party-badge" style="background:#E8172B;color:white">Vooruit</span>
-        <div class="votes-count">78.456 stemmen</div>
-      </div>
-    </div>
-
-    <div class="minister-card">
-      <div class="minister-avatar" style="background:#00AEEF">LP</div>
-      <div class="minister-info">
-        <div class="minister-name">Lydia Peeters</div>
-        <div class="minister-role">Mobiliteit</div>
-        <div class="minister-meta">Limburg</div>
-      </div>
-      <div class="minister-votes">
-        <span class="party-badge" style="background:#00AEEF;color:white">Anders</span>
-        <div class="votes-count">65.890 stemmen</div>
-      </div>
-    </div>
-
-    <div class="minister-card">
-      <div class="minister-avatar" style="background:#F07D00">JB</div>
-      <div class="minister-info">
-        <div class="minister-name">Jo Brouns</div>
-        <div class="minister-role">Landbouw</div>
-        <div class="minister-meta">Antwerpen</div>
-      </div>
-      <div class="minister-votes">
-        <span class="party-badge" style="background:#F07D00;color:white">cd&v</span>
-        <div class="votes-count">36.789 stemmen</div>
-      </div>
-    </div>
-
-    <div class="minister-card">
-      <div class="minister-avatar" style="background:#F5A623">AD</div>
-      <div class="minister-info">
-        <div class="minister-name">Annick De Ridder</div>
-        <div class="minister-role">Omgeving</div>
-        <div class="minister-meta">Antwerpen</div>
-      </div>
-      <div class="minister-votes">
-        <span class="party-badge" style="background:#F5A623;color:#333">N-VA</span>
-        <div class="votes-count">76.543 stemmen</div>
+        <div class="votes-count">2.579 stemmen(verkozen op Brusselse lijst)</div>
       </div>
     </div>
 

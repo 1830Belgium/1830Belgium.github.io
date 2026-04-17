@@ -247,7 +247,8 @@ function setLang(lang) {
   document.querySelectorAll('[data-'+lang+']').forEach(el => el.innerHTML = el.getAttribute('data-'+lang));
 }
 
-/* ===== WAALS PARLEMENT — WESTMINSTER STIJL 75 ZETELS ===== */
+/* ===== WAALS PARLEMENT — WESTMINSTER FACING BENCHES 75 ZETELS ===== */
+// Coalitie bovenaan, oppositie onderaan, gang in het midden — zoals House of Commons
 const parties = [
   { name: "PTB",          seats: 7,  color: "#CC0000", coalition: false },
   { name: "Ecolo",        seats: 5,  color: "#78C000", coalition: false },
@@ -257,17 +258,18 @@ const parties = [
   { name: "MR",           seats: 26, color: "#000CF0", coalition: true  },
 ];
 
-const coalition = parties.filter(p => p.coalition);
+const coalition  = parties.filter(p =>  p.coalition);
 const opposition = parties.filter(p => !p.coalition);
 
-const svgW = 800;
-const svgH = 320;
-const r = 7;
-const gap = 3;
-const step = r * 2 + gap;
-const aisleW = 60;
-const centerX = svgW / 2;
-const topY = 30;
+const svgW   = 800;
+const svgH   = 400;
+const r      = 7;
+const gap    = 3;
+const step   = r * 2 + gap;
+const aisleH = 50;   // hoogte van de middengang
+const numCols = 26;  // kolommen per bank (breed genoeg voor 26 zetels MR)
+const marginL = 40;
+const marginT = 40;
 
 const tooltip = d3.select("body")
   .append("div")
@@ -289,73 +291,65 @@ const svg = d3.select("#parliament-chart")
   .style("display","block")
   .style("margin","0 auto");
 
-svg.append("rect")
-  .attr("x", centerX - aisleW/2)
-  .attr("y", topY - 10)
-  .attr("width", aisleW)
-  .attr("height", 5 * step + 20)
-  .attr("rx", 6)
-  .attr("fill", "#f0ede8")
-  .attr("stroke", "#ccc")
-  .attr("stroke-width", 0.5);
-
-svg.append("text")
-  .attr("x", centerX)
-  .attr("y", topY + (5 * step) / 2 + 5)
-  .attr("text-anchor","middle")
-  .attr("font-size","10px")
-  .attr("fill","#999")
-  .text("Voorzitter");
-
-svg.append("text")
-  .attr("x", centerX - aisleW/2 - 10)
-  .attr("y", topY - 16)
-  .attr("text-anchor","end")
-  .attr("font-size","11px")
-  .attr("fill","#888")
-  .text("← Coalitie");
-
-svg.append("text")
-  .attr("x", centerX + aisleW/2 + 10)
-  .attr("y", topY - 16)
-  .attr("text-anchor","start")
-  .attr("font-size","11px")
-  .attr("fill","#888")
-  .text("Oppositie →");
-
-function generateSeats(partyList, side) {
-  let allSeats = [];
+// Bereken rijen per blok
+function buildGrid(partyList, numCols) {
+  let all = [];
   partyList.forEach(p => {
-    for (let i = 0; i < p.seats; i++) {
-      allSeats.push({ color: p.color, coalition: p.coalition, name: p.name, seats: p.seats });
-    }
+    for (let i = 0; i < p.seats; i++) all.push(p);
   });
-  const availW = centerX - aisleW / 2 - 20;
-  const seatsPerRow = Math.floor(availW / step);
-  return allSeats.map((seat, idx) => {
-    const row = Math.floor(idx / seatsPerRow);
-    const col = idx % seatsPerRow;
-    const y = topY + row * step + r;
-    const x = side === 'left'
-      ? centerX - aisleW / 2 - r - col * step
-      : centerX + aisleW / 2 + r + col * step;
-    return { ...seat, x, y, idx };
-  });
+  // Vul van links naar rechts, rij voor rij
+  return all.map((p, i) => ({
+    col: i % numCols,
+    row: Math.floor(i / numCols),
+    color: p.color, coalition: p.coalition, name: p.name, seats: p.seats
+  }));
 }
 
-const coalitionSeats = generateSeats(coalition, 'left');
-const oppositionSeats = generateSeats(opposition, 'right');
+const coalGrid = buildGrid(coalition, numCols);
+const oppoGrid = buildGrid(opposition, numCols);
 
-function drawSeats(seats) {
-  seats.forEach((s, i) => {
+const coalRows = Math.max(...coalGrid.map(s => s.row)) + 1;
+const oppoRows = Math.max(...oppoGrid.map(s => s.row)) + 1;
+
+// Totale hoogte: coalitie bovenaan, dan gang, dan oppositie
+const coalTopY  = marginT;
+const aisleTopY = marginT + coalRows * step + 10;
+const oppoTopY  = aisleTopY + aisleH;
+
+// Labels
+svg.append("text").attr("x", marginL).attr("y", marginT - 16)
+  .attr("font-size","12px").attr("fill","#555").attr("font-weight","500")
+  .text("Coalitie (MR + Les Engagés) — 43 zetels");
+
+svg.append("text").attr("x", marginL).attr("y", oppoTopY + oppoRows * step + 22)
+  .attr("font-size","12px").attr("fill","#555").attr("font-weight","500")
+  .text("Oppositie (PS + PTB + Ecolo + Onafh.) — 32 zetels");
+
+// Middengang label
+svg.append("text")
+  .attr("x", svgW / 2).attr("y", aisleTopY + aisleH / 2 + 5)
+  .attr("text-anchor","middle").attr("font-size","11px").attr("fill","#aaa")
+  .text("— gang —");
+
+// Voorzittersstoel (links van de gang)
+svg.append("circle")
+  .attr("cx", marginL - 16).attr("cy", aisleTopY + aisleH / 2)
+  .attr("r", 8).attr("fill","#333");
+svg.append("text")
+  .attr("x", marginL - 16).attr("y", aisleTopY + aisleH / 2 + 20)
+  .attr("text-anchor","middle").attr("font-size","9px").attr("fill","#555")
+  .text("Vztr.");
+
+function drawGrid(grid, baseY) {
+  grid.forEach((s, i) => {
     svg.append("circle")
-      .attr("cx", s.x)
-      .attr("cy", s.y)
+      .attr("cx", marginL + s.col * step + r)
+      .attr("cy", baseY + s.row * step + r)
       .attr("r", 0)
       .attr("fill", s.color)
-      .attr("opacity", s.coalition ? 1 : 0.38)
-      .attr("stroke", s.coalition ? "rgba(0,0,0,0.35)" : "none")
-      .attr("stroke-width", s.coalition ? 0.6 : 0)
+      .attr("opacity", s.coalition ? 1 : 0.4)
+      .attr("stroke", s.coalition ? "rgba(0,0,0,0.3)" : "none")
+      .attr("stroke-width", 0.6)
       .on("mouseover", (event) => {
         tooltip.style("display","block")
           .html(`<strong>${s.name}</strong><br>${s.seats} zetels`);
@@ -364,16 +358,14 @@ function drawSeats(seats) {
         tooltip.style("left",(event.pageX+12)+"px").style("top",(event.pageY+12)+"px");
       })
       .on("mouseout", () => tooltip.style("display","none"))
-      .transition()
-      .delay(i * 6)
-      .duration(180)
-      .attr("r", r);
+      .transition().delay(i * 5).duration(160).attr("r", r);
   });
 }
 
-drawSeats(coalitionSeats);
-drawSeats(oppositionSeats);
+drawGrid(coalGrid, coalTopY);
+drawGrid(oppoGrid, oppoTopY);
 
+// Legende
 const legend = d3.select("#parliament-legend");
 legend.html("");
 [...coalition, ...opposition].forEach(party => {

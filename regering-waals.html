@@ -351,8 +351,8 @@ function drawGrid(grid, baseY) {
       })
       .on("mouseout", () => tooltip.style("display","none"))
 .transition()
-  .delay(i * 15)
-  .duration(300)
+  .delay(i * 40)
+  .duration(450)
   .ease(d3.easeCubicOut)
   .attr("r", r);
   });

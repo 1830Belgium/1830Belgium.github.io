@@ -350,7 +350,11 @@ function drawGrid(grid, baseY) {
         tooltip.style("left",(event.pageX+12)+"px").style("top",(event.pageY+12)+"px");
       })
       .on("mouseout", () => tooltip.style("display","none"))
-      .transition().delay(i * 5).duration(160).attr("r", r);
+.transition()
+  .delay(i * 15)
+  .duration(300)
+  .ease(d3.easeCubicOut)
+  .attr("r", r);
   });
 }
 

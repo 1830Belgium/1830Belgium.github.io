@@ -10,7 +10,6 @@
 :root{--text:#1a1a1a;--text-muted:#5F5E5A;--border:rgba(0,0,0,0.12);--bg:#ffffff;--bg-secondary:#f8f7f4;--blue:#185FA5;--blue-light:#E6F1FB}
 body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;color:var(--text);background:var(--bg-secondary);font-size:15px;line-height:1.6}
 nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:56px;position:sticky;top:0;z-index:100}
-.logo{font-size:22px;font-weight:600;color:var(--blue);letter-spacing:-0.5px;text-decoration:none}
 .nav-links{display:flex;gap:24px;list-style:none;align-items:center}
 .nav-links>li>a{font-size:14px;color:var(--text-muted);text-decoration:none;transition:color 0.15s}
 .nav-links>li>a:hover,.nav-links>li>a.active{color:var(--text);font-weight:500}
@@ -32,15 +31,8 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .section-title{font-size:18px;font-weight:600;margin-bottom:20px;padding-bottom:12px;border-bottom:0.5px solid var(--border)}
 .party-badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap}
 .minister-card{background:var(--bg);border:0.5px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:12px;display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center}
-.minister-card img{
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  object-fit:cover;
-  flex-shrink:0;
-}
+.minister-card img{width:44px;height:44px;border-radius:50%;object-fit:cover;flex-shrink:0}
 .minister-avatar{width:50px;height:50px;border-radius:50%;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:white}
-.minister-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .minister-info{flex:1}
 .minister-name{font-size:15px;font-weight:600;margin-bottom:3px}
 .minister-role{font-size:13px;color:var(--text-muted);margin-bottom:4px}
@@ -161,7 +153,7 @@ footer a:hover{color:white}
       <img src="https://1830Belgium.github.io/images/PIER.jpg" alt="Pierre-Yves Jeholet" />
       <div class="minister-info">
         <div class="minister-name">Pierre-Yves Jeholet</div>
-        <div class="minister-role">Vice-Minister-President/ Economie, Industrie, Tewerkstelling, Vorming en Digitale Technologieën</div>
+        <div class="minister-role">Vice-Minister-President / Economie, Industrie, Tewerkstelling, Vorming en Digitale Technologieën</div>
         <div class="minister-meta">Luik</div>
       </div>
       <div class="minister-votes">
@@ -255,8 +247,8 @@ function setLang(lang) {
   document.querySelectorAll('[data-'+lang+']').forEach(el => el.innerHTML = el.getAttribute('data-'+lang));
 }
 
-/* ===== WAALS PARLEMENT DIAGRAM 75 ZETELS ===== */
-const data = [
+/* ===== WAALS PARLEMENT — WESTMINSTER STIJL 75 ZETELS ===== */
+const parties = [
   { name: "PTB",          seats: 7,  color: "#CC0000", coalition: false },
   { name: "Ecolo",        seats: 5,  color: "#78C000", coalition: false },
   { name: "PS",           seats: 19, color: "#FF5A5A", coalition: false },
@@ -265,88 +257,128 @@ const data = [
   { name: "MR",           seats: 26, color: "#000CF0", coalition: true  },
 ];
 
-const width = 900;
-const height = 340;
-const innerRadius = 110;
-const outerRadius = 290;
-const seatRadius = 7;
-const padding = 50;
+const coalition = parties.filter(p => p.coalition);
+const opposition = parties.filter(p => !p.coalition);
+
+const svgW = 800;
+const svgH = 320;
+const r = 7;
+const gap = 3;
+const step = r * 2 + gap;
+const aisleW = 60;
+const centerX = svgW / 2;
+const topY = 30;
+
+const tooltip = d3.select("body")
+  .append("div")
+  .style("position","absolute")
+  .style("background","#fff")
+  .style("padding","6px 10px")
+  .style("border","1px solid rgba(0,0,0,0.2)")
+  .style("border-radius","8px")
+  .style("font-size","13px")
+  .style("pointer-events","none")
+  .style("display","none");
 
 const svg = d3.select("#parliament-chart")
   .html("")
   .append("svg")
-  .attr("viewBox", `${-padding} ${-padding} ${width + padding*2} ${height + padding*2}`)
-  .style("width", "100%")
-  .style("max-width", width + "px")
-  .style("display", "block")
-  .style("margin", "0 auto");
+  .attr("viewBox", `0 0 ${svgW} ${svgH}`)
+  .style("width","100%")
+  .style("max-width", svgW + "px")
+  .style("display","block")
+  .style("margin","0 auto");
 
-const tooltip = d3.select("body")
-  .append("div")
-  .style("position", "absolute")
-  .style("background", "#fff")
-  .style("padding", "6px 10px")
-  .style("border", "1px solid rgba(0,0,0,0.2)")
-  .style("border-radius", "8px")
-  .style("font-size", "13px")
-  .style("pointer-events", "none")
-  .style("display", "none");
+svg.append("rect")
+  .attr("x", centerX - aisleW/2)
+  .attr("y", topY - 10)
+  .attr("width", aisleW)
+  .attr("height", 5 * step + 20)
+  .attr("rx", 6)
+  .attr("fill", "#f0ede8")
+  .attr("stroke", "#ccc")
+  .attr("stroke-width", 0.5);
 
-// 75 zetels verdeeld over 5 rijen
-const seatRows = [12, 15, 16, 17, 15];
+svg.append("text")
+  .attr("x", centerX)
+  .attr("y", topY + (5 * step) / 2 + 5)
+  .attr("text-anchor","middle")
+  .attr("font-size","10px")
+  .attr("fill","#999")
+  .text("Voorzitter");
 
-let seats = [];
-seatRows.forEach((rowSeats, row) => {
-  const radius = innerRadius + (row / (seatRows.length - 1)) * (outerRadius - innerRadius);
-  for (let i = 0; i < rowSeats; i++) {
-    const angle = Math.PI * (i / (rowSeats - 1));
-    seats.push({
-      x: width/2 + radius * Math.cos(angle),
-      y: height - radius * Math.sin(angle),
-      angle
-    });
-  }
-});
+svg.append("text")
+  .attr("x", centerX - aisleW/2 - 10)
+  .attr("y", topY - 16)
+  .attr("text-anchor","end")
+  .attr("font-size","11px")
+  .attr("fill","#888")
+  .text("← Coalitie");
 
-seats.sort((a, b) => b.angle - a.angle);
+svg.append("text")
+  .attr("x", centerX + aisleW/2 + 10)
+  .attr("y", topY - 16)
+  .attr("text-anchor","start")
+  .attr("font-size","11px")
+  .attr("fill","#888")
+  .text("Oppositie →");
 
-const spectrumOrder = ["MR", "Les Engagés", "Onafhankelijk", "PS", "Ecolo", "PTB"];
-data.sort((a, b) => spectrumOrder.indexOf(a.name) - spectrumOrder.indexOf(b.name));
+function generateSeats(partyList, side) {
+  let allSeats = [];
+  partyList.forEach(p => {
+    for (let i = 0; i < p.seats; i++) {
+      allSeats.push({ color: p.color, coalition: p.coalition, name: p.name, seats: p.seats });
+    }
+  });
+  const availW = centerX - aisleW / 2 - 20;
+  const seatsPerRow = Math.floor(availW / step);
+  return allSeats.map((seat, idx) => {
+    const row = Math.floor(idx / seatsPerRow);
+    const col = idx % seatsPerRow;
+    const y = topY + row * step + r;
+    const x = side === 'left'
+      ? centerX - aisleW / 2 - r - col * step
+      : centerX + aisleW / 2 + r + col * step;
+    return { ...seat, x, y, idx };
+  });
+}
 
-let seatPointer = 0;
-data.forEach(group => {
-  for (let i = 0; i < group.seats; i++) {
-    const seat = seats[seatPointer];
+const coalitionSeats = generateSeats(coalition, 'left');
+const oppositionSeats = generateSeats(opposition, 'right');
+
+function drawSeats(seats) {
+  seats.forEach((s, i) => {
     svg.append("circle")
-      .attr("cx", seat.x)
-      .attr("cy", seat.y)
+      .attr("cx", s.x)
+      .attr("cy", s.y)
       .attr("r", 0)
-      .attr("fill", group.color)
-      .attr("opacity", group.coalition ? 1 : 0.35)
-      .attr("stroke", group.coalition ? "#000" : "none")
-      .attr("stroke-width", group.coalition ? 0.6 : 0)
+      .attr("fill", s.color)
+      .attr("opacity", s.coalition ? 1 : 0.38)
+      .attr("stroke", s.coalition ? "rgba(0,0,0,0.35)" : "none")
+      .attr("stroke-width", s.coalition ? 0.6 : 0)
       .on("mouseover", (event) => {
-        tooltip.style("display", "block")
-          .html(`<strong>${group.name}</strong><br>${group.seats} zetels`);
+        tooltip.style("display","block")
+          .html(`<strong>${s.name}</strong><br>${s.seats} zetels`);
       })
       .on("mousemove", (event) => {
-        tooltip.style("left", (event.pageX + 12) + "px")
-          .style("top", (event.pageY + 12) + "px");
+        tooltip.style("left",(event.pageX+12)+"px").style("top",(event.pageY+12)+"px");
       })
-      .on("mouseout", () => tooltip.style("display", "none"))
+      .on("mouseout", () => tooltip.style("display","none"))
       .transition()
-      .delay(seatPointer * 8)
-      .duration(200)
-      .attr("r", seatRadius);
-    seatPointer++;
-  }
-});
+      .delay(i * 6)
+      .duration(180)
+      .attr("r", r);
+  });
+}
+
+drawSeats(coalitionSeats);
+drawSeats(oppositionSeats);
 
 const legend = d3.select("#parliament-legend");
 legend.html("");
-data.forEach(party => {
+[...coalition, ...opposition].forEach(party => {
   legend.append("div")
-    .attr("class", "legend-item")
+    .attr("class","legend-item")
     .html(`
       <span class="legend-color" style="background:${party.color};opacity:${party.coalition ? 1 : 0.55}"></span>
       <span>${party.name}</span>

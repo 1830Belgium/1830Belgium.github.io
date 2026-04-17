@@ -316,14 +316,6 @@ const coalTopY  = marginT;
 const aisleTopY = marginT + coalRows * step + 10;
 const oppoTopY  = aisleTopY + aisleH;
 
-// Labels
-svg.append("text").attr("x", marginL).attr("y", marginT - 16)
-  .attr("font-size","12px").attr("fill","#555").attr("font-weight","500")
-  .text("Coalitie (MR + Les Engagés) — 43 zetels");
-
-svg.append("text").attr("x", marginL).attr("y", oppoTopY + oppoRows * step + 22)
-  .attr("font-size","12px").attr("fill","#555").attr("font-weight","500")
-  .text("Oppositie (PS + PTB + Ecolo + Onafh.) — 32 zetels");
 
 // Middengang label
 svg.append("text")

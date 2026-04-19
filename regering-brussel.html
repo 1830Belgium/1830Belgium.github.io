@@ -31,6 +31,12 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .section-title{font-size:18px;font-weight:600;margin-bottom:20px;padding-bottom:12px;border-bottom:0.5px solid var(--border)}
 .party-badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap}
 .minister-card{background:var(--bg);border:0.5px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:12px;display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center}
+.minister-avatar img {
+  width:100%;
+  height:100%;
+  object-fit:cover; /* Zorgt dat de foto netjes binnen het rondje past */
+  border-radius:50%;
+}
 .minister-avatar{width:50px;height:50px;border-radius:50%;overflow:hidden;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:white}
 .minister-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .minister-info{flex:1}

@@ -120,9 +120,9 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .mp-votes{font-size:13px;font-weight:600;color:var(--blue);text-align:right;white-space:nowrap}
 .mp-votes .vlbl{display:block;font-size:10px;font-weight:400;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
 .mp-party-dots{display:flex;flex-wrap:wrap;gap:4px;align-items:center;flex:1;min-height:18px}
-.mp-dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex-shrink:0;box-shadow:0 0 0 1px rgba(255,255,255,0.6) inset;transition:opacity 0.2s ease}
+.mp-dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex-shrink:0;transition:opacity 0.2s ease}
 .mp-dot.pending{opacity:0}
-.fly-dot{position:fixed;width:14px;height:14px;border-radius:50%;pointer-events:none;z-index:1000;box-shadow:0 0 0 1px rgba(255,255,255,0.6) inset;will-change:transform}
+.fly-dot{position:fixed;width:14px;height:14px;border-radius:50%;pointer-events:none;z-index:1000;will-change:transform}
 
 /* Modal */
 .ks-modal{position:fixed;inset:0;z-index:500;display:none;align-items:flex-start;justify-content:center;padding:40px 16px;background:rgba(20,20,20,0.55);overflow-y:auto}
@@ -348,9 +348,10 @@ Promise.all([
   // Per-kieskring nudge for dot/label placement (viewBox units), used when
   // the geographic bbox centroid lands on a narrow strip of the province.
   var DOT_OFFSETS = {
-    'Henegouwen':     [0, -30],
+    'Henegouwen':     [14, -30],
     'Namen':          [0, -30],
-    'Vlaams-Brabant': [28, 0]
+    'Vlaams-Brabant': [48, 0],
+    'Luik':           [0, -40]
   };
 
   var gProvinces = svg.append('g').attr('class','g-provinces');

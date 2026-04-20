@@ -80,6 +80,20 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .callout-target.faded{opacity:0.15}
 .seat-dot{stroke:#ffffff;stroke-width:0.6;pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease}
 .seat-dot.faded{opacity:0.25}
+
+/* Intro animation */
+.map-intro{opacity:0;transform:translateY(8px);animation:mapIntroFadeUp 0.55s ease 0.05s forwards}
+.map-wrap{opacity:0;animation:mapFadeIn 0.7s ease 0.25s forwards}
+@keyframes mapIntroFadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes mapFadeIn{from{opacity:0;transform:scale(0.985)}to{opacity:1;transform:scale(1)}}
+.province-shape, .callout-rect, .callout-line, .callout-target{opacity:0;animation:provinceIn 0.55s ease forwards;animation-delay:calc(0.5s + var(--i, 0) * 0.04s)}
+.province-shape.faded, .callout-rect.faded, .callout-line.faded, .callout-target.faded{animation:none}
+.province-label{opacity:0;animation:provinceIn 0.4s ease forwards;animation-delay:calc(0.9s + var(--i, 0) * 0.04s)}
+@keyframes provinceIn{to{opacity:1}}
+.seat-dot{opacity:0;transform-box:fill-box;transform-origin:center;animation:seatPop 0.35s cubic-bezier(.2,.9,.3,1.4) forwards;animation-delay:calc(1.1s + var(--i, 0) * 0.012s)}
+.seat-dot.faded{animation:none}
+@keyframes seatPop{0%{opacity:0;transform:scale(0.2)}70%{opacity:1;transform:scale(1.15)}100%{opacity:1;transform:scale(1)}}
+.map-intro-done .map-intro, .map-intro-done .map-wrap, .map-intro-done .province-shape, .map-intro-done .callout-rect, .map-intro-done .callout-line, .map-intro-done .callout-target, .map-intro-done .province-label, .map-intro-done .seat-dot{animation:none;opacity:1}
 .map-back-btn{position:absolute;top:12px;left:12px;display:none;font-size:12px;padding:6px 12px;border-radius:20px;border:0.5px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer;z-index:3;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
 .map-back-btn.visible{display:inline-flex;align-items:center;gap:6px}
 .map-back-btn:hover{background:var(--bg-secondary)}
@@ -349,6 +363,7 @@ Promise.all([
     .append('path')
     .attr('class','province-shape')
     .attr('d', path)
+    .attr('style', function(_d, i){ return '--i:'+i; })
     .attr('data-geo', function(d){ return d.properties.NAME_2; })
     .on('mouseenter', function(event, d){
       if(window.__selected) return;
@@ -460,6 +475,7 @@ Promise.all([
         .attr('cx', x).attr('cy', y).attr('r', r)
         .attr('fill', PARTY_COLORS[seats[i].party]||'#888')
         .attr('data-ks', ks)
+        .attr('style', '--i:'+(window.__seatIdx = (window.__seatIdx||0)+1))
         .append('title').text(seats[i].name+' — '+seats[i].party+' ('+fmtVotes(seats[i].votes)+' stemmen)');
     }
   }

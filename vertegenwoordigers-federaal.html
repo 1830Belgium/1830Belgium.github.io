@@ -56,18 +56,14 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .zv-count{font-size:13px;font-weight:600;min-width:24px;text-align:right}
 
 /* Map section */
-.map-section{background:var(--bg);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:28px;overflow:hidden}
-.map-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:16px;flex-wrap:wrap}
-.map-intro .mi-text{flex:1;min-width:220px}
+.map-section{margin-bottom:28px;overflow:visible}
+.map-intro{text-align:center;max-width:720px;margin:0 auto 24px}
 .map-intro .mi-text .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:6px}
-.map-intro .mi-text h2{font-size:20px;font-weight:600;margin-bottom:6px}
-.map-intro .mi-text p{font-size:14px;color:var(--text-muted);max-width:560px}
-.map-legend{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;font-size:12px;color:var(--text-muted)}
-.legend-item{display:flex;align-items:center;gap:6px;white-space:nowrap}
-.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.map-intro .mi-text h2{font-size:22px;font-weight:600;margin-bottom:8px}
+.map-intro .mi-text p{font-size:14px;color:var(--text-muted)}
 
-.map-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,1fr);gap:24px;align-items:start}
-.map-wrap{background:var(--bg-secondary);border-radius:10px;border:0.5px solid var(--border);padding:8px;position:relative;aspect-ratio:5/4;overflow:hidden}
+.map-layout{display:block}
+.map-wrap{position:relative;width:100%;max-width:1100px;margin:0 auto;aspect-ratio:5/4;overflow:visible}
 .map-wrap svg{width:100%;height:100%;display:block;cursor:default}
 .province-shape{fill:#E9E5DD;stroke:#ffffff;stroke-width:1;transition:fill 0.25s ease,opacity 0.25s ease}
 .province-shape.hover{fill:#DDD5C6}
@@ -88,7 +84,6 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .map-back-btn.visible{display:inline-flex;align-items:center;gap:6px}
 .map-back-btn:hover{background:var(--bg-secondary)}
 
-.map-panel{background:var(--bg);border:0.5px solid var(--border);border-radius:10px;padding:20px;min-height:420px;display:flex;flex-direction:column;gap:14px}
 .mp-placeholder{color:var(--text-muted);font-size:14px;line-height:1.7}
 .mp-placeholder .big{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px;display:block}
 .mp-hint{display:inline-flex;align-items:center;gap:6px;background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:500;padding:5px 10px;border-radius:20px;margin-top:8px}
@@ -117,9 +112,7 @@ footer a:hover{color:white}
 .footer-links{display:flex;gap:20px}
 
 @media(max-width:900px){
-  .map-layout{grid-template-columns:1fr}
   .map-wrap{aspect-ratio:4/3}
-  .map-panel{min-height:0}
 }
 @media(max-width:768px){
   .nav-links{display:none}
@@ -180,20 +173,12 @@ footer a:hover{color:white}
         <h2>Zetels per kieskring</h2>
         <p>Elke bol is één zetel in de Kamer, gekleurd per partij. Klik op een kieskring om te zien wie er verkozen werd en met hoeveel voorkeurstemmen.</p>
       </div>
-      <div class="map-legend" id="map-legend"></div>
     </div>
     <div class="map-layout">
       <div class="map-wrap">
         <button class="map-back-btn" id="map-back" type="button">← Overzicht</button>
         <svg id="parliament-map" viewBox="0 0 800 640" preserveAspectRatio="xMidYMid meet"></svg>
       </div>
-      <aside class="map-panel" id="map-panel">
-        <div class="mp-placeholder">
-          <span class="big">Klik op een kieskring</span>
-          De bolletjes tonen hoeveel zetels elke provincie naar de Kamer stuurt. Kies een kieskring om de verkozenen met hun voorkeurstemmen te zien.
-          <div class="mp-hint">Tip: hover voor een kort overzicht</div>
-        </div>
-      </aside>
     </div>
   </section>
 </div>
@@ -255,12 +240,14 @@ var BACK_BTN = document.getElementById('map-back');
 var LEGEND = document.getElementById('map-legend');
 
 // Build legend
-PARTY_ORDER.forEach(function(p){
-  var el = document.createElement('div');
-  el.className = 'legend-item';
-  el.innerHTML = '<span class="legend-dot" style="background:'+PARTY_COLORS[p]+'"></span>'+p;
-  LEGEND.appendChild(el);
-});
+if(LEGEND){
+  PARTY_ORDER.forEach(function(p){
+    var el = document.createElement('div');
+    el.className = 'legend-item';
+    el.innerHTML = '<span class="legend-dot" style="background:'+PARTY_COLORS[p]+'"></span>'+p;
+    LEGEND.appendChild(el);
+  });
+}
 
 function fmtVotes(n){ return n.toLocaleString('nl-BE').replace(/,/g,'.'); }
 function textColor(p){ return PARTY_TEXT[p] || 'white'; }
@@ -482,7 +469,7 @@ Promise.all([
 
   // Hover panel (non-selected)
   function showHoverPanel(ks){
-    if(!ks) return;
+    if(!PANEL || !ks) return;
     var seats = byKS[ks]||[];
     var counts = {};
     seats.forEach(function(s){ counts[s.party]=(counts[s.party]||0)+1; });
@@ -502,6 +489,7 @@ Promise.all([
   }
 
   function resetPanel(){
+    if(!PANEL) return;
     PANEL.innerHTML = '<div class="mp-placeholder">'
       +'<span class="big">Klik op een kieskring</span>'
       +'De bolletjes tonen hoeveel zetels elke provincie naar de Kamer stuurt. Kies een kieskring om de verkozenen met hun voorkeurstemmen te zien.'
@@ -551,6 +539,7 @@ Promise.all([
   }
 
   function renderDetailPanel(ks){
+    if(!PANEL) return;
     var seats = byKS[ks]||[];
     var counts = {};
     seats.forEach(function(s){ counts[s.party]=(counts[s.party]||0)+1; });
@@ -599,7 +588,6 @@ Promise.all([
   });
 }).catch(function(err){
   console.error('Map init failed:', err);
-  document.getElementById('map-panel').innerHTML = '<div class="mp-placeholder" style="color:#b00">Kon de kaartdata niet laden.</div>';
 });
 </script>
 </body>

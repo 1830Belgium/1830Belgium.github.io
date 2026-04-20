@@ -74,6 +74,14 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .province-shape.selected{fill:#FFFFFF;stroke:var(--blue);stroke-width:1.5}
 .province-shape.faded{opacity:0.25}
 .province-label{font-size:10px;font-weight:600;fill:#1a1a1a;pointer-events:none;text-anchor:middle;paint-order:stroke;stroke:#ffffff;stroke-width:2.5px;stroke-linejoin:round}
+.callout-rect{fill:#F4EFE4;stroke:var(--border);stroke-width:1;transition:fill 0.25s ease,opacity 0.25s ease,stroke 0.25s ease}
+.callout-rect.hover{fill:#E8E1D0}
+.callout-rect.selected{fill:#FFFFFF;stroke:var(--blue);stroke-width:1.5}
+.callout-rect.faded{opacity:0.25}
+.callout-line{stroke:var(--text-muted);stroke-width:1;stroke-dasharray:3 3;fill:none;opacity:0.6;pointer-events:none}
+.callout-line.faded{opacity:0.15}
+.callout-target{fill:var(--text-muted);opacity:0.6;pointer-events:none}
+.callout-target.faded{opacity:0.15}
 .seat-dot{stroke:#ffffff;stroke-width:0.6;pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease}
 .seat-dot.faded{opacity:0.25}
 .map-back-btn{position:absolute;top:12px;left:12px;display:none;font-size:12px;padding:6px 12px;border-radius:20px;border:0.5px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer;z-index:3;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
@@ -165,13 +173,6 @@ footer a:hover{color:white}
   <p>Alle 150 verkozenen in de Kamer van Volksvertegenwoordigers, per kieskring en met voorkeurstemmen. Verkiezingen van 9 juni 2024.</p>
 </div>
 <div class="content">
-  <div class="stat-row">
-    <div class="stat-card"><div class="val">150</div><div class="lbl">Volksvertegenwoordigers</div></div>
-    <div class="stat-card"><div class="val">11</div><div class="lbl">Kieskringen</div></div>
-    <div class="stat-card"><div class="val">13</div><div class="lbl">Partijen</div></div>
-    <div class="stat-card"><div class="val">2024</div><div class="lbl">Verkiezingen</div></div>
-  </div>
-
   <section class="map-section" id="kaart">
     <div class="map-intro">
       <div class="mi-text">
@@ -509,11 +510,20 @@ Promise.all([
   var projection = d3.geoMercator().fitSize([W, H], geojson);
   var path = d3.geoPath().projection(projection);
 
+  // Callout layout: kieskringen that are too small / overlap with a neighbour
+  // are rendered in a dedicated rectangle in otherwise-empty map space,
+  // connected to their real location with a leader line.
+  var CALLOUTS = {
+    'Brussel-Hoofdstad': { bbox: [[30, 22], [206, 170]] }
+  };
+
   var gProvinces = svg.append('g').attr('class','g-provinces');
+  var gCallouts  = svg.append('g').attr('class','g-callouts');
   var gDots = svg.append('g').attr('class','g-dots');
   var gLabels = svg.append('g').attr('class','g-labels');
 
   var provPaths = {}; var provCentroids = {}; var provBounds = {};
+  var calloutEls = {};
 
   var paths = gProvinces.selectAll('path')
     .data(geojson.features)
@@ -543,6 +553,52 @@ Promise.all([
     provBounds[ks] = path.bounds(d);
   });
 
+  // Effective bbox (callout overrides the geographic bbox)
+  function effectiveBounds(ks){
+    return (CALLOUTS[ks] && CALLOUTS[ks].bbox) ? CALLOUTS[ks].bbox : provBounds[ks];
+  }
+
+  // Draw callout rectangles + leader lines (under the dots)
+  Object.keys(CALLOUTS).forEach(function(ks){
+    if(!provBounds[ks]) return;
+    var bb = CALLOUTS[ks].bbox;
+    var cx = (bb[0][0]+bb[1][0])/2, cy = (bb[0][1]+bb[1][1])/2;
+    var target = provCentroids[ks];
+
+    gCallouts.append('line')
+      .attr('class','callout-line')
+      .attr('data-ks', ks)
+      .attr('x1', cx).attr('y1', bb[1][1])
+      .attr('x2', target[0]).attr('y2', target[1]);
+
+    gCallouts.append('circle')
+      .attr('class','callout-target')
+      .attr('data-ks', ks)
+      .attr('cx', target[0]).attr('cy', target[1]).attr('r', 3);
+
+    var rect = gCallouts.append('rect')
+      .attr('class','callout-rect')
+      .attr('data-ks', ks)
+      .attr('x', bb[0][0]).attr('y', bb[0][1])
+      .attr('width', bb[1][0]-bb[0][0]).attr('height', bb[1][1]-bb[0][1])
+      .attr('rx', 10)
+      .style('cursor','pointer')
+      .on('mouseenter', function(){
+        if(window.__selected) return;
+        d3.select(this).classed('hover', true);
+        showHoverPanel(ks);
+      })
+      .on('mouseleave', function(){
+        d3.select(this).classed('hover', false);
+        if(!window.__selected) resetPanel();
+      })
+      .on('click', function(event){
+        event.stopPropagation();
+        selectKieskring(ks);
+      });
+    calloutEls[ks] = rect.node();
+  });
+
   // Place dots
   function placeDots(ks, bbox){
     var seats = byKS[ks]||[];
@@ -556,13 +612,14 @@ Promise.all([
     var maxByWidth  = (w*0.58) / (cols*2+1);
     var maxByHeight = (h*0.58) / (rows*2+1);
     var r = Math.max(4, Math.min(maxByWidth, maxByHeight, 9));
+    if(CALLOUTS[ks]) r = Math.max(r, 7); // callout boxes have room for larger dots
     var spacing = r*2 + 2;
     var totalW = cols*spacing - 2;
     var totalH = rows*spacing - 2;
     var cx = (bbox[0][0]+bbox[1][0])/2;
     var cy = (bbox[0][1]+bbox[1][1])/2;
-    // Nudge Brussels a bit so dots sit over the city (small shape)
-    if(ks === 'Brussel-Hoofdstad'){ cy += 1; }
+    // Inside a callout: leave a little extra room at the top for the label
+    if(CALLOUTS[ks]){ cy += 6; }
     var startX = cx - totalW/2 + r;
     var startY = cy - totalH/2 + r;
     var g = gDots.append('g').attr('class','g-dots-'+ks.replace(/[^a-z]/gi,''))
@@ -583,7 +640,7 @@ Promise.all([
         .append('title').text(seats[i].name+' — '+seats[i].party+' ('+fmtVotes(seats[i].votes)+' stemmen)');
     }
   }
-  Object.keys(provBounds).forEach(function(ks){ placeDots(ks, provBounds[ks]); });
+  Object.keys(provBounds).forEach(function(ks){ placeDots(ks, effectiveBounds(ks)); });
 
   // Province labels
   gLabels.selectAll('text')
@@ -593,9 +650,13 @@ Promise.all([
     .attr('class','province-label')
     .attr('transform', function(d){
       var ks = GEO_TO_KIESKRING[d.properties.NAME_2];
-      var b = provBounds[ks];
+      var b = effectiveBounds(ks);
       var bw = b[1][0]-b[0][0], bh = b[1][1]-b[0][1];
       var cx = (b[0][0]+b[1][0])/2;
+      if(CALLOUTS[ks]){
+        // Label sits at the top of the callout box
+        return 'translate('+cx+','+(b[0][1]+12)+')';
+      }
       // Put label above the dot cluster
       var spacingGuess = 12;
       var n = (byKS[ks]||[]).length;
@@ -644,18 +705,28 @@ Promise.all([
   function selectKieskring(ks){
     if(!ks || !byKS[ks]) return;
     window.__selected = ks;
+    var geoForKs = Object.keys(GEO_TO_KIESKRING).find(function(k){return GEO_TO_KIESKRING[k]===ks;});
     // Style provinces
     d3.selectAll('.province-shape').classed('faded', function(){
-      return this.getAttribute('data-geo') !== Object.keys(GEO_TO_KIESKRING).find(function(k){return GEO_TO_KIESKRING[k]===ks;});
+      return this.getAttribute('data-geo') !== geoForKs;
     });
     d3.selectAll('.province-shape').classed('selected', function(){
-      return this.getAttribute('data-geo') === Object.keys(GEO_TO_KIESKRING).find(function(k){return GEO_TO_KIESKRING[k]===ks;});
+      return this.getAttribute('data-geo') === geoForKs;
+    });
+    // Style callouts
+    d3.selectAll('.callout-rect').classed('faded', function(){
+      return this.getAttribute('data-ks') !== ks;
+    }).classed('selected', function(){
+      return this.getAttribute('data-ks') === ks;
+    });
+    d3.selectAll('.callout-line,.callout-target').classed('faded', function(){
+      return this.getAttribute('data-ks') !== ks;
     });
     d3.selectAll('.seat-dot').classed('faded', function(){
       return d3.select(this).attr('data-ks') !== ks;
     });
-    // Zoom to bounds
-    var b = provBounds[ks];
+    // Zoom to bounds (callout bbox if defined, else real geographic bbox)
+    var b = effectiveBounds(ks);
     var pad = 20;
     var bx = b[0][0]-pad, by = b[0][1]-pad;
     var bw = (b[1][0]-b[0][0])+pad*2, bh = (b[1][1]-b[0][1])+pad*2;
@@ -700,6 +771,8 @@ Promise.all([
   function deselect(){
     window.__selected = null;
     d3.selectAll('.province-shape').classed('faded', false).classed('selected', false);
+    d3.selectAll('.callout-rect').classed('faded', false).classed('selected', false);
+    d3.selectAll('.callout-line,.callout-target').classed('faded', false);
     d3.selectAll('.seat-dot').classed('faded', false);
     d3.selectAll('.province-label').style('opacity', 1);
     svg.transition().duration(500).attr('viewBox', '0 0 '+W+' '+H);
@@ -709,8 +782,11 @@ Promise.all([
 
   BACK_BTN.addEventListener('click', deselect);
   svg.on('click', function(event){
-    // Clicking on background (not a province) deselects
-    if(event.target.tagName !== 'path' && event.target.tagName !== 'circle'){
+    // Clicking on background deselects (not a province, dot, callout rect, or leader line)
+    var tag = event.target.tagName;
+    var cls = event.target.getAttribute('class') || '';
+    var isInteractive = tag === 'path' || tag === 'circle' || cls.indexOf('callout-rect') !== -1;
+    if(!isInteractive){
       if(window.__selected) deselect();
     }
   });

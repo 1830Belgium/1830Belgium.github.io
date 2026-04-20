@@ -517,6 +517,14 @@ Promise.all([
     'Brussel-Hoofdstad': { bbox: [[30, 462], [206, 610]] }
   };
 
+  // Per-kieskring nudge for dot/label placement (viewBox units), used when
+  // the geographic bbox centroid lands on a narrow strip of the province.
+  var DOT_OFFSETS = {
+    'Henegouwen':     [0, -30],
+    'Namen':          [0, -30],
+    'Vlaams-Brabant': [28, 0]
+  };
+
   var gProvinces = svg.append('g').attr('class','g-provinces');
   var gCallouts  = svg.append('g').attr('class','g-callouts');
   var gDots = svg.append('g').attr('class','g-dots');
@@ -622,6 +630,9 @@ Promise.all([
     var cy = (bbox[0][1]+bbox[1][1])/2;
     // Inside a callout: leave a little extra room at the top for the label
     if(CALLOUTS[ks]){ cy += 6; }
+    // Apply per-kieskring nudge so dots sit inside the province shape
+    var off = DOT_OFFSETS[ks];
+    if(off && !CALLOUTS[ks]){ cx += off[0]; cy += off[1]; }
     var startX = cx - totalW/2 + r;
     var startY = cy - totalH/2 + r;
     var g = gDots.append('g').attr('class','g-dots-'+ks.replace(/[^a-z]/gi,''))
@@ -668,6 +679,8 @@ Promise.all([
       spacingGuess = r*2+2;
       var clusterH = rows*spacingGuess;
       var cy = (b[0][1]+b[1][1])/2 - clusterH/2 - 6;
+      var off = DOT_OFFSETS[ks];
+      if(off){ cx += off[0]; cy += off[1]; }
       return 'translate('+cx+','+cy+')';
     })
     .text(function(d){

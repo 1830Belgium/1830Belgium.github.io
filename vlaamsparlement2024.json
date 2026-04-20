@@ -1,0 +1,1118 @@
+[
+  {
+    "name": "Inge Brocken",
+    "party": "N-VA",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 5064,
+    "successor": true,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Jurgen Callaerts",
+    "party": "N-VA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 6798,
+    "successor": true,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Mieke Claes",
+    "party": "N-VA",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 7424,
+    "successor": true,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Arnout Coel",
+    "party": "N-VA",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 6806,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Koen Daniëls",
+    "party": "N-VA",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 14040,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Gijs Degrande",
+    "party": "N-VA",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 8630,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Manu Diericx",
+    "party": "N-VA",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 2548,
+    "successor": true,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Koen Dillen",
+    "party": "N-VA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 8501,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Karolien Grosemans",
+    "party": "N-VA",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 15241,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Andries Gryffroy",
+    "party": "N-VA",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 5909,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Marc Hendrickx",
+    "party": "N-VA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 3529,
+    "successor": true,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "An Hermans",
+    "party": "N-VA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 5813,
+    "successor": true,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Liesbeth Homans",
+    "party": "N-VA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 23772,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Katrien Houtmeyers",
+    "party": "N-VA",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 15517,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Sofie Joosen",
+    "party": "N-VA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 12324,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Sander Loones",
+    "party": "N-VA",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 38449,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Bert Maertens",
+    "party": "N-VA",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 10721,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Philippe Muyters",
+    "party": "N-VA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 11237,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Freya Perdaens",
+    "party": "N-VA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 10035,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Andy Pieters",
+    "party": "N-VA",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 7844,
+    "successor": true,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Tomas Roggeman",
+    "party": "N-VA",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 7895,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Eva Ryde",
+    "party": "N-VA",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 12644,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Tom Seurs",
+    "party": "N-VA",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 14688,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Sarah Smeyers",
+    "party": "N-VA",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 17481,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Nadia Sminate",
+    "party": "N-VA",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 21906,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Ine Tombeur",
+    "party": "N-VA",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 9542,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Hans Vanhoof",
+    "party": "N-VA",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 4812,
+    "successor": true,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Sanne Van Looy",
+    "party": "N-VA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 12063,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Paul Van Miert",
+    "party": "N-VA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 11968,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Karl Vanlouwe",
+    "party": "N-VA",
+    "kieskring": "Brussel-Hoofdstad",
+    "taalgroep": "Nederlands",
+    "votes": 2062,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Griet Vanryckegem",
+    "party": "N-VA",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 9159,
+    "successor": false,
+    "list_color": "#F5A623"
+  },
+  {
+    "name": "Michiel Awouters",
+    "party": "Vlaams Belang",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 11018,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Roosmarijn Beckers",
+    "party": "Vlaams Belang",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 13733,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Adeline Blancquaert",
+    "party": "Vlaams Belang",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 7607,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Filip Brusselmans",
+    "party": "Vlaams Belang",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 14894,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Yves Buysse",
+    "party": "Vlaams Belang",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 9028,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Bart Claes",
+    "party": "Vlaams Belang",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 9552,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Mercina Claesen",
+    "party": "Vlaams Belang",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 9729,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Immanuel De Reuse",
+    "party": "Vlaams Belang",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 27434,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Johan Deckmyn",
+    "party": "Vlaams Belang",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 7586,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Dries Devillé",
+    "party": "Vlaams Belang",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 7539,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Filip Dewinter",
+    "party": "Vlaams Belang",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 11974,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Guy D'haeseleer",
+    "party": "Vlaams Belang",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 55938,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Frédéric Erens",
+    "party": "Vlaams Belang",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 0,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Chris Janssens",
+    "party": "Vlaams Belang",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 41803,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Jan Laeremans",
+    "party": "Vlaams Belang",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 0,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Tom Lamont",
+    "party": "Vlaams Belang",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 10168,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Dominiek Lootens-Stael",
+    "party": "Vlaams Belang",
+    "kieskring": "Brussel-Hoofdstad",
+    "taalgroep": "Nederlands",
+    "votes": 2200,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Ilse Malfroot",
+    "party": "Vlaams Belang",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 10138,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Leo Pieters",
+    "party": "Vlaams Belang",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 9896,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Carmen Ryheul",
+    "party": "Vlaams Belang",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 7936,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Stefaan Sintobin",
+    "party": "Vlaams Belang",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 12261,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Kristof Slagmulder",
+    "party": "Vlaams Belang",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 10647,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Klaas Slootmans",
+    "party": "Vlaams Belang",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 0,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Els Sterckx",
+    "party": "Vlaams Belang",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 7168,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Sarah T'Joens",
+    "party": "Vlaams Belang",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 13103,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Freija Van den Driessche",
+    "party": "Vlaams Belang",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 15995,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Anke Van dermeersch",
+    "party": "Vlaams Belang",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 17075,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Tom Van Grieken",
+    "party": "Vlaams Belang",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 153596,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Bart Van Opstal",
+    "party": "Vlaams Belang",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 7993,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Wim Verheyden",
+    "party": "Vlaams Belang",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 8266,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Suzy Wouters",
+    "party": "Vlaams Belang",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 0,
+    "successor": false,
+    "list_color": "#FFD700"
+  },
+  {
+    "name": "Hannes Anaf",
+    "party": "Vooruit",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 12899,
+    "successor": false,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Simon Bekaert",
+    "party": "Vooruit",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 4136,
+    "successor": true,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Kurt De Loor",
+    "party": "Vooruit",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 9944,
+    "successor": false,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Hiba Faraji",
+    "party": "Vooruit",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 2268,
+    "successor": true,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Hannelore Goeman",
+    "party": "Vooruit",
+    "kieskring": "Brussel-Hoofdstad",
+    "taalgroep": "Nederlands",
+    "votes": 2641,
+    "successor": false,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Nawal Maghroud",
+    "party": "Vooruit",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 6429,
+    "successor": false,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Els Robeyns",
+    "party": "Vooruit",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 11485,
+    "successor": false,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Conner Rousseau",
+    "party": "Vooruit",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 75801,
+    "successor": false,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Jill Schellens",
+    "party": "Vooruit",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 4040,
+    "successor": true,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Katia Segers",
+    "party": "Vooruit",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 7309,
+    "successor": false,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Frederik Sioen",
+    "party": "Vooruit",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 8457,
+    "successor": false,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Freya Van den Bossche",
+    "party": "Vooruit",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 28409,
+    "successor": false,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Stephanie Vanden Eede",
+    "party": "Vooruit",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 3021,
+    "successor": true,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Tina Van Havere",
+    "party": "Vooruit",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 4130,
+    "successor": true,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Kelly Van Tendeloo",
+    "party": "Vooruit",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 7853,
+    "successor": false,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Kris Verduyckt",
+    "party": "Vooruit",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 12555,
+    "successor": false,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Bieke Verlinden",
+    "party": "Vooruit",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 19588,
+    "successor": false,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Gianna Werbrouck",
+    "party": "Vooruit",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 3179,
+    "successor": true,
+    "list_color": "#E8172B"
+  },
+  {
+    "name": "Robrecht Bothuyne",
+    "party": "cd&v",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 8970,
+    "successor": false,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Gilles Bultinck",
+    "party": "cd&v",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 6079,
+    "successor": false,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "An Christiaens",
+    "party": "cd&v",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 11970,
+    "successor": false,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Kris Declercq",
+    "party": "cd&v",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 9454,
+    "successor": true,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Stijn De Roo",
+    "party": "cd&v",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 9132,
+    "successor": true,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Bart Dochy",
+    "party": "cd&v",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 26487,
+    "successor": false,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Sofie Mertens",
+    "party": "cd&v",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 7841,
+    "successor": true,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Katrien Partyka",
+    "party": "cd&v",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 11295,
+    "successor": false,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Kris Poelaert",
+    "party": "cd&v",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 9518,
+    "successor": false,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Katrien Schryvers",
+    "party": "cd&v",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 26870,
+    "successor": false,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Lien Van Dooren",
+    "party": "cd&v",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 2811,
+    "successor": true,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Mien Van Olmen",
+    "party": "cd&v",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 13145,
+    "successor": false,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Peter Van Rompuy",
+    "party": "cd&v",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 19169,
+    "successor": false,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Toon Vandeurzen",
+    "party": "cd&v",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 11414,
+    "successor": false,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Loes Vandromme",
+    "party": "cd&v",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 14759,
+    "successor": false,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Brecht Warnez",
+    "party": "cd&v",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 17518,
+    "successor": false,
+    "list_color": "#F07D00"
+  },
+  {
+    "name": "Eva De Bleeker",
+    "party": "Anders",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 9998,
+    "successor": false,
+    "list_color": "#94D8FC"
+  },
+  {
+    "name": "Stephanie D'Hose",
+    "party": "Anders",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 20135,
+    "successor": false,
+    "list_color": "#94D8FC"
+  },
+  {
+    "name": "Egbert Lachaert",
+    "party": "Anders",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 14710,
+    "successor": false,
+    "list_color": "#94D8FC"
+  },
+  {
+    "name": "Tom Ongena",
+    "party": "Anders",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 3175,
+    "successor": false,
+    "list_color": "#94D8FC"
+  },
+  {
+    "name": "Lydia Peeters",
+    "party": "Anders",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 10825,
+    "successor": false,
+    "list_color": "#94D8FC"
+  },
+  {
+    "name": "Jasper Pillen",
+    "party": "Anders",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 12282,
+    "successor": false,
+    "list_color": "#94D8FC"
+  },
+  {
+    "name": "Gwendolyn Rutten",
+    "party": "Anders",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 23752,
+    "successor": false,
+    "list_color": "#94D8FC"
+  },
+  {
+    "name": "Maurits Vande Reyde",
+    "party": "Anders",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 6093,
+    "successor": false,
+    "list_color": "#94D8FC"
+  },
+  {
+    "name": "Marianne Verhaert",
+    "party": "Anders",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 1642,
+    "successor": false,
+    "list_color": "#94D8FC"
+  },
+  {
+    "name": "Debby Burssens",
+    "party": "PVDA",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 4762,
+    "successor": false,
+    "list_color": "#CC0000"
+  },
+  {
+    "name": "Gaby Colebunders",
+    "party": "PVDA",
+    "kieskring": "Limburg",
+    "taalgroep": "Nederlands",
+    "votes": 13116,
+    "successor": false,
+    "list_color": "#CC0000"
+  },
+  {
+    "name": "Jos D'Haese",
+    "party": "PVDA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 66384,
+    "successor": false,
+    "list_color": "#CC0000"
+  },
+  {
+    "name": "Line De Witte",
+    "party": "PVDA",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 12924,
+    "successor": false,
+    "list_color": "#CC0000"
+  },
+  {
+    "name": "Raf Van Gestel",
+    "party": "PVDA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 4876,
+    "successor": false,
+    "list_color": "#CC0000"
+  },
+  {
+    "name": "Lise Vandecasteele",
+    "party": "PVDA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 9373,
+    "successor": false,
+    "list_color": "#CC0000"
+  },
+  {
+    "name": "Ilona Vandenberghe",
+    "party": "PVDA",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 6488,
+    "successor": false,
+    "list_color": "#CC0000"
+  },
+  {
+    "name": "Amina Vandenheuvel",
+    "party": "PVDA",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 8827,
+    "successor": false,
+    "list_color": "#CC0000"
+  },
+  {
+    "name": "Onno Vandewalle",
+    "party": "PVDA",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 10817,
+    "successor": false,
+    "list_color": "#CC0000"
+  },
+  {
+    "name": "Fourat Ben Chikha",
+    "party": "Groen",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 6517,
+    "successor": false,
+    "list_color": "#5FAD41"
+  },
+  {
+    "name": "Kim Buyst",
+    "party": "Groen",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 16410,
+    "successor": false,
+    "list_color": "#5FAD41"
+  },
+  {
+    "name": "Aimen Horch",
+    "party": "Groen",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 0,
+    "successor": false,
+    "list_color": "#5FAD41"
+  },
+  {
+    "name": "Bram Jaques",
+    "party": "Groen",
+    "kieskring": "Brussel-Hoofdstad",
+    "taalgroep": "Nederlands",
+    "votes": 1252,
+    "successor": false,
+    "list_color": "#5FAD41"
+  },
+  {
+    "name": "Nadia Naji",
+    "party": "Groen",
+    "kieskring": "Brussel-Hoofdstad",
+    "taalgroep": "Nederlands",
+    "votes": 6122,
+    "successor": false,
+    "list_color": "#5FAD41"
+  },
+  {
+    "name": "Eva Platteau",
+    "party": "Groen",
+    "kieskring": "Vlaams-Brabant",
+    "taalgroep": "Nederlands",
+    "votes": 0,
+    "successor": false,
+    "list_color": "#5FAD41"
+  },
+  {
+    "name": "Mieke Schauvliege",
+    "party": "Groen",
+    "kieskring": "Oost-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 17202,
+    "successor": false,
+    "list_color": "#5FAD41"
+  },
+  {
+    "name": "Bogdan Vanden Berghe",
+    "party": "Groen",
+    "kieskring": "Antwerpen",
+    "taalgroep": "Nederlands",
+    "votes": 8268,
+    "successor": false,
+    "list_color": "#5FAD41"
+  },
+  {
+    "name": "Jeremie Vaneeckhout",
+    "party": "Groen",
+    "kieskring": "West-Vlaanderen",
+    "taalgroep": "Nederlands",
+    "votes": 7903,
+    "successor": false,
+    "list_color": "#5FAD41"
+  },
+  {
+    "name": "M'Hamed Kasmi",
+    "party": "Team Fouad Ahidar",
+    "kieskring": "Brussel-Hoofdstad",
+    "taalgroep": "Nederlands",
+    "votes": 3045,
+    "successor": false,
+    "list_color": "#888888"
+  }
+]

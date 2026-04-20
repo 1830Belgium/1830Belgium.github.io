@@ -33,7 +33,8 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .filter-bar{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;align-items:center}
 .filter-label{font-size:13px;color:var(--text-muted);margin-right:4px}
 .filter-btn{font-size:12px;padding:5px 14px;border-radius:20px;border:0.5px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.15s}
-.filter-btn.active,.filter-btn:hover{background:var(--blue);color:white;border-color:var(--blue)}
+.filter-btn.active{background:var(--blue);color:white;border-color:var(--blue)}
+.filter-btn:not(.active):hover{background:var(--bg-secondary);color:var(--text)}
 .table-wrap{background:var(--bg);border-radius:12px;border:0.5px solid var(--border);overflow:hidden;margin-bottom:32px}
 .member-table{width:100%;border-collapse:collapse}
 .member-table th{font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:var(--text-muted);padding:12px 16px;background:var(--bg-secondary);text-align:left;border-bottom:0.5px solid var(--border);font-weight:500}
@@ -46,11 +47,78 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .stat-card{background:var(--bg);border-radius:12px;border:0.5px solid var(--border);padding:20px;text-align:center}
 .stat-card .val{font-size:24px;font-weight:600;color:var(--blue);margin-bottom:4px}
 .stat-card .lbl{font-size:12px;color:var(--text-muted)}
+.zv-card{background:var(--bg);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:28px}
+.zv-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.zv-row:last-child{margin-bottom:0}
+.zv-name{width:130px;font-size:13px;color:var(--text-muted)}
+.zv-track{flex:1;background:#f0ede8;border-radius:4px;height:8px;overflow:hidden}
+.zv-fill{height:100%;border-radius:4px;transition:width 0.4s ease}
+.zv-count{font-size:13px;font-weight:600;min-width:24px;text-align:right}
+
+/* Map section */
+.map-section{background:var(--bg);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:28px;overflow:hidden}
+.map-intro{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:16px;flex-wrap:wrap}
+.map-intro .mi-text{flex:1;min-width:220px}
+.map-intro .mi-text .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:6px}
+.map-intro .mi-text h2{font-size:20px;font-weight:600;margin-bottom:6px}
+.map-intro .mi-text p{font-size:14px;color:var(--text-muted);max-width:560px}
+.map-legend{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;font-size:12px;color:var(--text-muted)}
+.legend-item{display:flex;align-items:center;gap:6px;white-space:nowrap}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+.map-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,1fr);gap:24px;align-items:start}
+.map-wrap{background:var(--bg-secondary);border-radius:10px;border:0.5px solid var(--border);padding:8px;position:relative;aspect-ratio:5/4;overflow:hidden}
+.map-wrap svg{width:100%;height:100%;display:block;cursor:default}
+.province-shape{fill:#E9E5DD;stroke:#ffffff;stroke-width:1;transition:fill 0.25s ease,opacity 0.25s ease}
+.province-shape.hover{fill:#DDD5C6}
+.province-shape.selected{fill:#FFFFFF;stroke:var(--blue);stroke-width:1.5}
+.province-shape.faded{opacity:0.25}
+.province-label{font-size:10px;font-weight:600;fill:#1a1a1a;pointer-events:none;text-anchor:middle;paint-order:stroke;stroke:#ffffff;stroke-width:2.5px;stroke-linejoin:round}
+.seat-dot{stroke:#ffffff;stroke-width:0.6;pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease}
+.seat-dot.faded{opacity:0.25}
+.map-back-btn{position:absolute;top:12px;left:12px;display:none;font-size:12px;padding:6px 12px;border-radius:20px;border:0.5px solid var(--border);background:var(--bg);color:var(--text);cursor:pointer;z-index:3;box-shadow:0 2px 6px rgba(0,0,0,0.06)}
+.map-back-btn.visible{display:inline-flex;align-items:center;gap:6px}
+.map-back-btn:hover{background:var(--bg-secondary)}
+
+.map-panel{background:var(--bg);border:0.5px solid var(--border);border-radius:10px;padding:20px;min-height:420px;display:flex;flex-direction:column;gap:14px}
+.mp-placeholder{color:var(--text-muted);font-size:14px;line-height:1.7}
+.mp-placeholder .big{font-size:16px;font-weight:600;color:var(--text);margin-bottom:8px;display:block}
+.mp-hint{display:inline-flex;align-items:center;gap:6px;background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:500;padding:5px 10px;border-radius:20px;margin-top:8px}
+.mp-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.mp-stat{background:var(--bg-secondary);border-radius:8px;padding:10px 12px}
+.mp-stat .val{font-size:18px;font-weight:600;color:var(--blue)}
+.mp-stat .lbl{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
+.mp-title{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.mp-title h3{font-size:20px;font-weight:600}
+.mp-title .mp-sub{font-size:12px;color:var(--text-muted)}
+.mp-bars{display:flex;flex-direction:column;gap:5px;margin-top:4px}
+.mp-bars .zv-row{margin:0}
+.mp-bars .zv-name{width:96px;font-size:12px}
+.mp-reps{display:flex;flex-direction:column;gap:0;max-height:360px;overflow-y:auto;border-top:0.5px solid var(--border);padding-top:10px;margin-top:4px}
+.mp-rep{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:8px 2px;border-bottom:0.5px solid var(--border)}
+.mp-rep:last-child{border-bottom:none}
+.mp-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;flex-shrink:0}
+.mp-name{font-size:13px;font-weight:500;color:var(--text);line-height:1.25}
+.mp-meta{font-size:11px;color:var(--text-muted);margin-top:2px}
+.mp-votes{font-size:13px;font-weight:600;color:var(--blue);text-align:right;white-space:nowrap}
+.mp-votes .vlbl{display:block;font-size:10px;font-weight:400;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
+
 footer{background:#1a1a1a;color:rgba(255,255,255,0.6);padding:24px 32px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
 footer a{color:rgba(255,255,255,0.6);text-decoration:none}
 footer a:hover{color:white}
 .footer-links{display:flex;gap:20px}
-@media(max-width:768px){.nav-links{display:none}.content{padding:16px}.stat-row{grid-template-columns:1fr 1fr}footer{flex-direction:column;gap:12px;text-align:center}}
+
+@media(max-width:900px){
+  .map-layout{grid-template-columns:1fr}
+  .map-wrap{aspect-ratio:4/3}
+  .map-panel{min-height:0}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .content{padding:16px}
+  .stat-row{grid-template-columns:1fr 1fr}
+  footer{flex-direction:column;gap:12px;text-align:center}
+}
 </style>
 </head><nav>
   <a href="index.html" style="display:flex;align-items:center;text-decoration:none;line-height:1;">
@@ -94,105 +162,562 @@ footer a:hover{color:white}
 <div class="page-hero">
   <div class="page-hero-eyebrow">Kamer van Volksvertegenwoordigers</div>
   <h1>Federaal parlement</h1>
-  <p>Alle vertegenwoordigers verkozen in de Kamer van Volksvertegenwoordigers, per kieskring en met voorkeurstemmen.</p>
+  <p>Alle 150 verkozenen in de Kamer van Volksvertegenwoordigers, per kieskring en met voorkeurstemmen. Verkiezingen van 9 juni 2024.</p>
 </div>
 <div class="content">
   <div class="stat-row">
-    <div class="stat-card"><div class="val">50</div><div class="lbl">Vertegenwoordigers (selectie)</div></div>
-    <div class="stat-card"><div class="val">150</div><div class="lbl">Totaal zetels</div></div>
-    <div class="stat-card"><div class="val">11</div><div class="lbl">Partijen</div></div>
+    <div class="stat-card"><div class="val">150</div><div class="lbl">Volksvertegenwoordigers</div></div>
+    <div class="stat-card"><div class="val">11</div><div class="lbl">Kieskringen</div></div>
+    <div class="stat-card"><div class="val">13</div><div class="lbl">Partijen</div></div>
     <div class="stat-card"><div class="val">2024</div><div class="lbl">Verkiezingen</div></div>
   </div>
 
-  <div style="background:var(--bg);border:0.5px solid var(--border);border-radius:12px;padding:24px;margin-bottom:28px">
+  <section class="map-section" id="kaart">
+    <div class="map-intro">
+      <div class="mi-text">
+        <div class="eyebrow">Interactieve kaart</div>
+        <h2>Zetels per kieskring</h2>
+        <p>Elke bol is één zetel in de Kamer, gekleurd per partij. Klik op een kieskring om te zien wie er verkozen werd en met hoeveel voorkeurstemmen.</p>
+      </div>
+      <div class="map-legend" id="map-legend"></div>
+    </div>
+    <div class="map-layout">
+      <div class="map-wrap">
+        <button class="map-back-btn" id="map-back" type="button">← Overzicht</button>
+        <svg id="parliament-map" viewBox="0 0 800 640" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+      <aside class="map-panel" id="map-panel">
+        <div class="mp-placeholder">
+          <span class="big">Klik op een kieskring</span>
+          De bolletjes tonen hoeveel zetels elke provincie naar de Kamer stuurt. Kies een kieskring om de verkozenen met hun voorkeurstemmen te zien.
+          <div class="mp-hint">Tip: hover voor een kort overzicht</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="zv-card">
     <div class="section-title">Zetelverdeling</div>
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="width:130px;font-size:13px;color:var(--text-muted)">MR</span><div style="flex:1;background:#f0ede8;border-radius:4px;height:8px;overflow:hidden"><div style="width:27%;background:#005E9E;height:100%;border-radius:4px"></div></div><span style="font-size:13px;font-weight:600;min-width:24px">9</span></div><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="width:130px;font-size:13px;color:var(--text-muted)">N-VA</span><div style="flex:1;background:#f0ede8;border-radius:4px;height:8px;overflow:hidden"><div style="width:21%;background:#F5A623;height:100%;border-radius:4px"></div></div><span style="font-size:13px;font-weight:600;min-width:24px">7</span></div><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="width:130px;font-size:13px;color:var(--text-muted)">cd&v</span><div style="flex:1;background:#f0ede8;border-radius:4px;height:8px;overflow:hidden"><div style="width:18%;background:#F07D00;height:100%;border-radius:4px"></div></div><span style="font-size:13px;font-weight:600;min-width:24px">6</span></div><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="width:130px;font-size:13px;color:var(--text-muted)">Vlaams Belang</span><div style="flex:1;background:#f0ede8;border-radius:4px;height:8px;overflow:hidden"><div style="width:15%;background:#FFD700;height:100%;border-radius:4px"></div></div><span style="font-size:13px;font-weight:600;min-width:24px">5</span></div><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="width:130px;font-size:13px;color:var(--text-muted)">PS</span><div style="flex:1;background:#f0ede8;border-radius:4px;height:8px;overflow:hidden"><div style="width:15%;background:#C8001E;height:100%;border-radius:4px"></div></div><span style="font-size:13px;font-weight:600;min-width:24px">5</span></div><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="width:130px;font-size:13px;color:var(--text-muted)">Anders</span><div style="flex:1;background:#f0ede8;border-radius:4px;height:8px;overflow:hidden"><div style="width:12%;background:#00AEEF;height:100%;border-radius:4px"></div></div><span style="font-size:13px;font-weight:600;min-width:24px">4</span></div><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="width:130px;font-size:13px;color:var(--text-muted)">PTB/PVDA</span><div style="flex:1;background:#f0ede8;border-radius:4px;height:8px;overflow:hidden"><div style="width:12%;background:#8B0000;height:100%;border-radius:4px"></div></div><span style="font-size:13px;font-weight:600;min-width:24px">4</span></div><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="width:130px;font-size:13px;color:var(--text-muted)">Les Engagés</span><div style="flex:1;background:#f0ede8;border-radius:4px;height:8px;overflow:hidden"><div style="width:12%;background:#00A693;height:100%;border-radius:4px"></div></div><span style="font-size:13px;font-weight:600;min-width:24px">4</span></div><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="width:130px;font-size:13px;color:var(--text-muted)">Groen</span><div style="flex:1;background:#f0ede8;border-radius:4px;height:8px;overflow:hidden"><div style="width:6%;background:#5FAD41;height:100%;border-radius:4px"></div></div><span style="font-size:13px;font-weight:600;min-width:24px">2</span></div><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="width:130px;font-size:13px;color:var(--text-muted)">Vooruit</span><div style="flex:1;background:#f0ede8;border-radius:4px;height:8px;overflow:hidden"><div style="width:6%;background:#E8172B;height:100%;border-radius:4px"></div></div><span style="font-size:13px;font-weight:600;min-width:24px">2</span></div><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="width:130px;font-size:13px;color:var(--text-muted)">Ecolo</span><div style="flex:1;background:#f0ede8;border-radius:4px;height:8px;overflow:hidden"><div style="width:6%;background:#4CAF50;height:100%;border-radius:4px"></div></div><span style="font-size:13px;font-weight:600;min-width:24px">2</span></div>
+<div class="zv-row"><span class="zv-name">N-VA</span><div class="zv-track"><div class="zv-fill" style="width:15.3%;background:#F5A623"></div></div><span class="zv-count">23</span></div>
+<div class="zv-row"><span class="zv-name">Vlaams Belang</span><div class="zv-track"><div class="zv-fill" style="width:13.3%;background:#FFD700"></div></div><span class="zv-count">20</span></div>
+<div class="zv-row"><span class="zv-name">MR</span><div class="zv-track"><div class="zv-fill" style="width:12.0%;background:#005E9E"></div></div><span class="zv-count">18</span></div>
+<div class="zv-row"><span class="zv-name">PS</span><div class="zv-track"><div class="zv-fill" style="width:10.7%;background:#C8001E"></div></div><span class="zv-count">16</span></div>
+<div class="zv-row"><span class="zv-name">PVDA/PTB</span><div class="zv-track"><div class="zv-fill" style="width:10.0%;background:#8B0000"></div></div><span class="zv-count">15</span></div>
+<div class="zv-row"><span class="zv-name">Les Engagés</span><div class="zv-track"><div class="zv-fill" style="width:10.0%;background:#00A693"></div></div><span class="zv-count">15</span></div>
+<div class="zv-row"><span class="zv-name">Vooruit</span><div class="zv-track"><div class="zv-fill" style="width:8.7%;background:#E8172B"></div></div><span class="zv-count">13</span></div>
+<div class="zv-row"><span class="zv-name">cd&v</span><div class="zv-track"><div class="zv-fill" style="width:7.3%;background:#F07D00"></div></div><span class="zv-count">11</span></div>
+<div class="zv-row"><span class="zv-name">Open Vld</span><div class="zv-track"><div class="zv-fill" style="width:5.3%;background:#00AEEF"></div></div><span class="zv-count">8</span></div>
+<div class="zv-row"><span class="zv-name">Groen</span><div class="zv-track"><div class="zv-fill" style="width:4.0%;background:#5FAD41"></div></div><span class="zv-count">6</span></div>
+<div class="zv-row"><span class="zv-name">Ecolo</span><div class="zv-track"><div class="zv-fill" style="width:2.0%;background:#4CAF50"></div></div><span class="zv-count">3</span></div>
+<div class="zv-row"><span class="zv-name">DéFI</span><div class="zv-track"><div class="zv-fill" style="width:0.7%;background:#DD007A"></div></div><span class="zv-count">1</span></div>
+<div class="zv-row"><span class="zv-name">Onafhankelijk</span><div class="zv-track"><div class="zv-fill" style="width:0.7%;background:#888888"></div></div><span class="zv-count">1</span></div>
   </div>
 
   <div class="section-title">Vertegenwoordigers</div>
   <div class="filter-bar">
     <span class="filter-label">Partij:</span>
     <button class="filter-btn active" data-group="party" onclick="filterBy('all','party')">Alle</button>
-    <button class="filter-btn" data-group="party" onclick="filterBy('Anders','party')"><span class="party-badge" style="background:#00AEEF;color:white">Anders</span></button> <button class="filter-btn" data-group="party" onclick="filterBy('Ecolo','party')"><span class="party-badge" style="background:#4CAF50;color:white">Ecolo</span></button> <button class="filter-btn" data-group="party" onclick="filterBy('Groen','party')"><span class="party-badge" style="background:#5FAD41;color:white">Groen</span></button> <button class="filter-btn" data-group="party" onclick="filterBy('Les Engagés','party')"><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></button> <button class="filter-btn" data-group="party" onclick="filterBy('MR','party')"><span class="party-badge" style="background:#005E9E;color:white">MR</span></button> <button class="filter-btn" data-group="party" onclick="filterBy('N-VA','party')"><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></button> <button class="filter-btn" data-group="party" onclick="filterBy('PS','party')"><span class="party-badge" style="background:#C8001E;color:white">PS</span></button> <button class="filter-btn" data-group="party" onclick="filterBy('PTB/PVDA','party')"><span class="party-badge" style="background:#8B0000;color:white">PTB/PVDA</span></button> <button class="filter-btn" data-group="party" onclick="filterBy('Vlaams Belang','party')"><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></button> <button class="filter-btn" data-group="party" onclick="filterBy('Vooruit','party')"><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></button> <button class="filter-btn" data-group="party" onclick="filterBy('cd&v','party')"><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></button>
+<button class="filter-btn" data-group="party" onclick="filterBy('N-VA','party')"><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></button>
+<button class="filter-btn" data-group="party" onclick="filterBy('Vlaams Belang','party')"><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></button>
+<button class="filter-btn" data-group="party" onclick="filterBy('MR','party')"><span class="party-badge" style="background:#005E9E;color:white">MR</span></button>
+<button class="filter-btn" data-group="party" onclick="filterBy('PS','party')"><span class="party-badge" style="background:#C8001E;color:white">PS</span></button>
+<button class="filter-btn" data-group="party" onclick="filterBy('PVDA/PTB','party')"><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></button>
+<button class="filter-btn" data-group="party" onclick="filterBy('Les Engagés','party')"><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></button>
+<button class="filter-btn" data-group="party" onclick="filterBy('Vooruit','party')"><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></button>
+<button class="filter-btn" data-group="party" onclick="filterBy('cd&v','party')"><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></button>
+<button class="filter-btn" data-group="party" onclick="filterBy('Open Vld','party')"><span class="party-badge" style="background:#00AEEF;color:white">Open Vld</span></button>
+<button class="filter-btn" data-group="party" onclick="filterBy('Groen','party')"><span class="party-badge" style="background:#5FAD41;color:white">Groen</span></button>
+<button class="filter-btn" data-group="party" onclick="filterBy('Ecolo','party')"><span class="party-badge" style="background:#4CAF50;color:white">Ecolo</span></button>
+<button class="filter-btn" data-group="party" onclick="filterBy('DéFI','party')"><span class="party-badge" style="background:#DD007A;color:white">DéFI</span></button>
+<button class="filter-btn" data-group="party" onclick="filterBy('Onafhankelijk','party')"><span class="party-badge" style="background:#888888;color:white">Onafhankelijk</span></button>
   </div>
   <div class="filter-bar">
     <span class="filter-label">Kieskring:</span>
     <button class="filter-btn active" data-group="prov" onclick="filterBy('all','prov')">Alle</button>
-    <button class="filter-btn" data-group="prov" onclick="filterBy('Antwerpen','prov')">Antwerpen</button> <button class="filter-btn" data-group="prov" onclick="filterBy('Brabant Wallon','prov')">Brabant Wallon</button> <button class="filter-btn" data-group="prov" onclick="filterBy('Brussel','prov')">Brussel</button> <button class="filter-btn" data-group="prov" onclick="filterBy('Henegouwen','prov')">Henegouwen</button> <button class="filter-btn" data-group="prov" onclick="filterBy('Limburg','prov')">Limburg</button> <button class="filter-btn" data-group="prov" onclick="filterBy('Luik','prov')">Luik</button> <button class="filter-btn" data-group="prov" onclick="filterBy('Luxemburg','prov')">Luxemburg</button> <button class="filter-btn" data-group="prov" onclick="filterBy('Namen','prov')">Namen</button> <button class="filter-btn" data-group="prov" onclick="filterBy('Oost-Vlaanderen','prov')">Oost-Vlaanderen</button> <button class="filter-btn" data-group="prov" onclick="filterBy('Vlaams-Brabant','prov')">Vlaams-Brabant</button> <button class="filter-btn" data-group="prov" onclick="filterBy('West-Vlaanderen','prov')">West-Vlaanderen</button>
+<button class="filter-btn" data-group="prov" onclick="filterBy('Antwerpen','prov')">Antwerpen</button>
+<button class="filter-btn" data-group="prov" onclick="filterBy('Brussel-Hoofdstad','prov')">Brussel-Hoofdstad</button>
+<button class="filter-btn" data-group="prov" onclick="filterBy('Henegouwen','prov')">Henegouwen</button>
+<button class="filter-btn" data-group="prov" onclick="filterBy('Limburg','prov')">Limburg</button>
+<button class="filter-btn" data-group="prov" onclick="filterBy('Luik','prov')">Luik</button>
+<button class="filter-btn" data-group="prov" onclick="filterBy('Luxemburg','prov')">Luxemburg</button>
+<button class="filter-btn" data-group="prov" onclick="filterBy('Namen','prov')">Namen</button>
+<button class="filter-btn" data-group="prov" onclick="filterBy('Oost-Vlaanderen','prov')">Oost-Vlaanderen</button>
+<button class="filter-btn" data-group="prov" onclick="filterBy('Vlaams-Brabant','prov')">Vlaams-Brabant</button>
+<button class="filter-btn" data-group="prov" onclick="filterBy('Waals-Brabant','prov')">Waals-Brabant</button>
+<button class="filter-btn" data-group="prov" onclick="filterBy('West-Vlaanderen','prov')">West-Vlaanderen</button>
   </div>
   <div class="table-wrap">
     <table class="member-table">
       <thead><tr><th>Naam</th><th>Partij</th><th>Kieskring</th><th>Voorkeurstemmen</th></tr></thead>
-      <tbody><tr data-group="party" data-val="N-VA"><td style="font-weight:500">Bart De Wever</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">187,543</td></tr>
-<tr data-group="party" data-val="Vlaams Belang"><td style="font-weight:500">Tom Van Grieken</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">156,789</td></tr>
-<tr data-group="party" data-val="PS"><td style="font-weight:500">Paul Magnette</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">134,567</td></tr>
-<tr data-group="party" data-val="N-VA"><td style="font-weight:500">Theo Francken</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">112,456</td></tr>
-<tr data-group="party" data-val="N-VA"><td style="font-weight:500">Zuhal Demir</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">98,234</td></tr>
-<tr data-group="party" data-val="PTB/PVDA"><td style="font-weight:500">Raoul Hedebouw</td><td><span class="party-badge" style="background:#8B0000;color:white">PTB/PVDA</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">89,456</td></tr>
-<tr data-group="party" data-val="MR"><td style="font-weight:500">George-Louis Bouchez</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Brussel</td><td class="votes">89,234</td></tr>
-<tr data-group="party" data-val="N-VA"><td style="font-weight:500">Valerie Van Peel</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">89,012</td></tr>
-<tr data-group="party" data-val="Anders"><td style="font-weight:500">Egbert Lachaert</td><td><span class="party-badge" style="background:#00AEEF;color:white">Anders</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">78,923</td></tr>
-<tr data-group="party" data-val="PTB/PVDA"><td style="font-weight:500">Peter Mertens</td><td><span class="party-badge" style="background:#8B0000;color:white">PTB/PVDA</span></td><td style="color:var(--text-muted);font-size:13px">Brussel</td><td class="votes">78,901</td></tr>
-<tr data-group="party" data-val="Vooruit"><td style="font-weight:500">Melissa Depraetere</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">78,456</td></tr>
-<tr data-group="party" data-val="Vlaams Belang"><td style="font-weight:500">Tomas Roggeman</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">72,345</td></tr>
-<tr data-group="party" data-val="Groen"><td style="font-weight:500">Tinne Van der Straeten</td><td><span class="party-badge" style="background:#5FAD41;color:white">Groen</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">72,108</td></tr>
-<tr data-group="party" data-val="Vooruit"><td style="font-weight:500">Caroline Gennez</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">71,234</td></tr>
-<tr data-group="party" data-val="Vlaams Belang"><td style="font-weight:500">Dries Van Langenhove</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">67,890</td></tr>
-<tr data-group="party" data-val="N-VA"><td style="font-weight:500">Frieda Brepoels</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">67,890</td></tr>
-<tr data-group="party" data-val="PS"><td style="font-weight:500">Thierry Giet</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">67,890</td></tr>
-<tr data-group="party" data-val="N-VA"><td style="font-weight:500">Peter De Roover</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">67,234</td></tr>
-<tr data-group="party" data-val="PS"><td style="font-weight:500">Ahmed Laaouej</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Brussel</td><td class="votes">67,234</td></tr>
-<tr data-group="party" data-val="Anders"><td style="font-weight:500">Lydia Peeters</td><td><span class="party-badge" style="background:#00AEEF;color:white">Anders</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">65,890</td></tr>
-<tr data-group="party" data-val="cd&v"><td style="font-weight:500">Sammy Mahdi</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">65,123</td></tr>
-<tr data-group="party" data-val="Vlaams Belang"><td style="font-weight:500">Barbara Pas</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">58,901</td></tr>
-<tr data-group="party" data-val="cd&v"><td style="font-weight:500">Hendrik Bogaert</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">56,789</td></tr>
-<tr data-group="party" data-val="MR"><td style="font-weight:500">David Clarinval</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Brussel</td><td class="votes">56,789</td></tr>
-<tr data-group="party" data-val="PTB/PVDA"><td style="font-weight:500">Roberto D'Amico</td><td><span class="party-badge" style="background:#8B0000;color:white">PTB/PVDA</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">56,789</td></tr>
-<tr data-group="party" data-val="MR"><td style="font-weight:500">Valérie Glatigny</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">55,234</td></tr>
-<tr data-group="party" data-val="Vlaams Belang"><td style="font-weight:500">Mathias Vanden Borre</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">54,321</td></tr>
-<tr data-group="party" data-val="N-VA"><td style="font-weight:500">Bert Wollants</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">54,321</td></tr>
-<tr data-group="party" data-val="cd&v"><td style="font-weight:500">Nathalie Muylle</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">52,341</td></tr>
-<tr data-group="party" data-val="Anders"><td style="font-weight:500">Alexia Bertrand</td><td><span class="party-badge" style="background:#00AEEF;color:white">Anders</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">48,901</td></tr>
-<tr data-group="party" data-val="PS"><td style="font-weight:500">Pierre-Yves Dermagne</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Namen</td><td class="votes">48,901</td></tr>
-<tr data-group="party" data-val="PS"><td style="font-weight:500">Nathalie Massain</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">48,567</td></tr>
-<tr data-group="party" data-val="cd&v"><td style="font-weight:500">Raf Terwingen</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">45,678</td></tr>
-<tr data-group="party" data-val="PTB/PVDA"><td style="font-weight:500">Sofie Merckx</td><td><span class="party-badge" style="background:#8B0000;color:white">PTB/PVDA</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">45,678</td></tr>
-<tr data-group="party" data-val="Ecolo"><td style="font-weight:500">Ecolo-Brussels</td><td><span class="party-badge" style="background:#4CAF50;color:white">Ecolo</span></td><td style="color:var(--text-muted);font-size:13px">Brussel</td><td class="votes">45,678</td></tr>
-<tr data-group="party" data-val="Anders"><td style="font-weight:500">Tim Vandenput</td><td><span class="party-badge" style="background:#00AEEF;color:white">Anders</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">43,210</td></tr>
-<tr data-group="party" data-val="cd&v"><td style="font-weight:500">Katrien Partyka</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">43,210</td></tr>
-<tr data-group="party" data-val="Les Engagés"><td style="font-weight:500">Marie-Hélène Ska</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">43,210</td></tr>
-<tr data-group="party" data-val="MR"><td style="font-weight:500">Willy Borsus</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Namen</td><td class="votes">43,210</td></tr>
-<tr data-group="party" data-val="MR"><td style="font-weight:500">Adrien Dolimont</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">39,456</td></tr>
-<tr data-group="party" data-val="MR"><td style="font-weight:500">Gilles Foret</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">38,901</td></tr>
-<tr data-group="party" data-val="Ecolo"><td style="font-weight:500">Philippe Henry</td><td><span class="party-badge" style="background:#4CAF50;color:white">Ecolo</span></td><td style="color:var(--text-muted);font-size:13px">Brabant Wallon</td><td class="votes">38,901</td></tr>
-<tr data-group="party" data-val="cd&v"><td style="font-weight:500">Sophie Claes</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">38,765</td></tr>
-<tr data-group="party" data-val="Groen"><td style="font-weight:500">Gilles Vanden Burre</td><td><span class="party-badge" style="background:#5FAD41;color:white">Groen</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">34,567</td></tr>
-<tr data-group="party" data-val="Les Engagés"><td style="font-weight:500">Francis Delpérée</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">34,567</td></tr>
-<tr data-group="party" data-val="MR"><td style="font-weight:500">Sophie Clarinval</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Luxemburg</td><td class="votes">34,567</td></tr>
-<tr data-group="party" data-val="MR"><td style="font-weight:500">Françoise Bertieaux</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Brabant Wallon</td><td class="votes">33,456</td></tr>
-<tr data-group="party" data-val="Les Engagés"><td style="font-weight:500">Mathilde Vandorpe</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">32,456</td></tr>
-<tr data-group="party" data-val="Les Engagés"><td style="font-weight:500">Benoît Dispa</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Namen</td><td class="votes">29,876</td></tr>
-<tr data-group="party" data-val="MR"><td style="font-weight:500">Jean-Luc Crucke</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Luxemburg</td><td class="votes">28,901</td></tr>
-</tbody>
+      <tbody id="member-tbody">
+<tr data-party="PS" data-prov="Henegouwen"><td style="font-weight:500">Paul Magnette (politicus)</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">90.198</td></tr>
+<tr data-party="MR" data-prov="Henegouwen"><td style="font-weight:500">Georges-Louis Bouchez</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">79.447</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Antwerpen"><td style="font-weight:500">Lode Vereeck</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">59.581</td></tr>
+<tr data-party="Onafhankelijk" data-prov="West-Vlaanderen"><td style="font-weight:500">Jean-Marie Dedecker</td><td><span class="party-badge" style="background:#888888;color:white">Onafhankelijk</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">58.603</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Barbara Pas</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">57.051</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Antwerpen"><td style="font-weight:500">Peter Mertens</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">47.730</td></tr>
+<tr data-party="PS" data-prov="Luik"><td style="font-weight:500">Frédéric Daerden</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">44.458</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Luik"><td style="font-weight:500">Raoul Hedebouw</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">42.328</td></tr>
+<tr data-party="cd&v" data-prov="Vlaams-Brabant"><td style="font-weight:500">Sammy Mahdi</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">37.868</td></tr>
+<tr data-party="cd&v" data-prov="West-Vlaanderen"><td style="font-weight:500">Nathalie Muylle</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">37.115</td></tr>
+<tr data-party="Vlaams Belang" data-prov="West-Vlaanderen"><td style="font-weight:500">Wouter Vermeersch</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">35.200</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Limburg"><td style="font-weight:500">Annick Ponthier</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">34.830</td></tr>
+<tr data-party="N-VA" data-prov="Limburg"><td style="font-weight:500">Steven Vandeput</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">34.045</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Nabil Boukili</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">29.627</td></tr>
+<tr data-party="PS" data-prov="Henegouwen"><td style="font-weight:500">Ludivine Dedonder</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">29.525</td></tr>
+<tr data-party="MR" data-prov="Waals-Brabant"><td style="font-weight:500">Florence Reuter</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Waals-Brabant</td><td class="votes">28.047</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Vlaams-Brabant"><td style="font-weight:500">Britt Huybrechts</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">24.408</td></tr>
+<tr data-party="Groen" data-prov="Antwerpen"><td style="font-weight:500">Meyrem Almaci</td><td><span class="party-badge" style="background:#5FAD41;color:white">Groen</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">23.876</td></tr>
+<tr data-party="N-VA" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Christoph D'Haese</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">23.635</td></tr>
+<tr data-party="MR" data-prov="Henegouwen"><td style="font-weight:500">Julie Taton</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">23.633</td></tr>
+<tr data-party="Open Vld" data-prov="Antwerpen"><td style="font-weight:500">Paul Van Tigchelt</td><td><span class="party-badge" style="background:#00AEEF;color:white">Open Vld</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">23.274</td></tr>
+<tr data-party="N-VA" data-prov="Antwerpen"><td style="font-weight:500">Peter De Roover</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">23.254</td></tr>
+<tr data-party="cd&v" data-prov="Limburg"><td style="font-weight:500">Nawal Farih</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">22.523</td></tr>
+<tr data-party="Les Engagés" data-prov="Luxemburg"><td style="font-weight:500">Benoît Lutgen</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Luxemburg</td><td class="votes">22.480</td></tr>
+<tr data-party="PS" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Caroline Désir</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">20.924</td></tr>
+<tr data-party="N-VA" data-prov="Antwerpen"><td style="font-weight:500">Sophie De Wit</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">20.674</td></tr>
+<tr data-party="N-VA" data-prov="Antwerpen"><td style="font-weight:500">Koen Metsu</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">20.616</td></tr>
+<tr data-party="N-VA" data-prov="Limburg"><td style="font-weight:500">Frieda Gijbels</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">20.581</td></tr>
+<tr data-party="Open Vld" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Alexia Bertrand</td><td><span class="party-badge" style="background:#00AEEF;color:white">Open Vld</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">20.528</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Antwerpen"><td style="font-weight:500">Ellen Samyn</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">19.379</td></tr>
+<tr data-party="MR" data-prov="Henegouwen"><td style="font-weight:500">Denis Ducarme</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">19.205</td></tr>
+<tr data-party="MR" data-prov="Luxemburg"><td style="font-weight:500">Benoît Piedbœuf</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Luxemburg</td><td class="votes">19.127</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Henegouwen"><td style="font-weight:500">Sofie Merckx</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">18.587</td></tr>
+<tr data-party="N-VA" data-prov="West-Vlaanderen"><td style="font-weight:500">Maaike De Vreese</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">18.512</td></tr>
+<tr data-party="MR" data-prov="Luik"><td style="font-weight:500">Philippe Goffin</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">18.331</td></tr>
+<tr data-party="PS" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Ridouane Chahid</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">18.001</td></tr>
+<tr data-party="Les Engagés" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Michel De Maegd</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">17.946</td></tr>
+<tr data-party="N-VA" data-prov="Vlaams-Brabant"><td style="font-weight:500">Kristien Van Vaerenbergh</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">17.462</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Vlaams-Brabant"><td style="font-weight:500">Kemal Bilmez</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">17.297</td></tr>
+<tr data-party="N-VA" data-prov="Antwerpen"><td style="font-weight:500">Michael Freilich</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">16.374</td></tr>
+<tr data-party="Open Vld" data-prov="Vlaams-Brabant"><td style="font-weight:500">Irina De Knop</td><td><span class="party-badge" style="background:#00AEEF;color:white">Open Vld</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">15.391</td></tr>
+<tr data-party="cd&v" data-prov="West-Vlaanderen"><td style="font-weight:500">Franky Demon</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">15.199</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Antwerpen"><td style="font-weight:500">Sam van Rooy</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">15.179</td></tr>
+<tr data-party="MR" data-prov="Namen"><td style="font-weight:500">Charlotte Deborsu</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Namen</td><td class="votes">14.785</td></tr>
+<tr data-party="cd&v" data-prov="Vlaams-Brabant"><td style="font-weight:500">Els Van Hoof</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">14.747</td></tr>
+<tr data-party="Open Vld" data-prov="West-Vlaanderen"><td style="font-weight:500">Vincent Van Quickenborne</td><td><span class="party-badge" style="background:#00AEEF;color:white">Open Vld</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">14.438</td></tr>
+<tr data-party="N-VA" data-prov="Vlaams-Brabant"><td style="font-weight:500">Darya Safai</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">14.350</td></tr>
+<tr data-party="Vooruit" data-prov="Limburg"><td style="font-weight:500">Funda Oru</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">14.334</td></tr>
+<tr data-party="PS" data-prov="Namen"><td style="font-weight:500">Pierre-Yves Dermagne</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Namen</td><td class="votes">14.319</td></tr>
+<tr data-party="N-VA" data-prov="Limburg"><td style="font-weight:500">Wouter Raskin</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">13.764</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Limburg"><td style="font-weight:500">Frank Troosters</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">13.728</td></tr>
+<tr data-party="N-VA" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Kathleen Depoorter</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">13.600</td></tr>
+<tr data-party="cd&v" data-prov="Antwerpen"><td style="font-weight:500">Koen Van den Heuvel</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">13.514</td></tr>
+<tr data-party="N-VA" data-prov="West-Vlaanderen"><td style="font-weight:500">Axel Ronse</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">13.323</td></tr>
+<tr data-party="N-VA" data-prov="Antwerpen"><td style="font-weight:500">Bert Wollants</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">13.282</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Limburg"><td style="font-weight:500">Kim De Witte</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">13.262</td></tr>
+<tr data-party="MR" data-prov="Luik"><td style="font-weight:500">Catherine Delcourt</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">13.228</td></tr>
+<tr data-party="PS" data-prov="Henegouwen"><td style="font-weight:500">Eric Thiébaut</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">12.990</td></tr>
+<tr data-party="N-VA" data-prov="Antwerpen"><td style="font-weight:500">Dorien Cuylaerts</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">12.901</td></tr>
+<tr data-party="MR" data-prov="Henegouwen"><td style="font-weight:500">Anthony Dufrane</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">12.475</td></tr>
+<tr data-party="PS" data-prov="Luik"><td style="font-weight:500">Christophe Lacroix</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">11.879</td></tr>
+<tr data-party="Les Engagés" data-prov="Namen"><td style="font-weight:500">Anne Pirson</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Namen</td><td class="votes">11.870</td></tr>
+<tr data-party="cd&v" data-prov="Limburg"><td style="font-weight:500">Steven Matheï</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">11.733</td></tr>
+<tr data-party="N-VA" data-prov="West-Vlaanderen"><td style="font-weight:500">Charlotte Verkeyn</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">11.500</td></tr>
+<tr data-party="N-VA" data-prov="Vlaams-Brabant"><td style="font-weight:500">Eva Demesmaeker</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">11.494</td></tr>
+<tr data-party="PS" data-prov="Luik"><td style="font-weight:500">Sophie Thémont</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">11.363</td></tr>
+<tr data-party="Ecolo" data-prov="Luik"><td style="font-weight:500">Sarah Schlitz</td><td><span class="party-badge" style="background:#4CAF50;color:white">Ecolo</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">11.359</td></tr>
+<tr data-party="MR" data-prov="Luik"><td style="font-weight:500">Daniel Bacquelaine</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">11.260</td></tr>
+<tr data-party="MR" data-prov="Luik"><td style="font-weight:500">Gilles Foret</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">11.204</td></tr>
+<tr data-party="Les Engagés" data-prov="Henegouwen"><td style="font-weight:500">Aurore Tourneur</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">11.015</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Werner Somers</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">10.900</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Antwerpen"><td style="font-weight:500">Marijke Dillen</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">10.795</td></tr>
+<tr data-party="Vooruit" data-prov="Limburg"><td style="font-weight:500">Alain Yzermans</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">10.755</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Limburg"><td style="font-weight:500">Dieter Keuten</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">10.721</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Ortwin Depoortere</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">10.705</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Robin Tonniau</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">10.625</td></tr>
+<tr data-party="Ecolo" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Rajae Maouane</td><td><span class="party-badge" style="background:#4CAF50;color:white">Ecolo</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">10.556</td></tr>
+<tr data-party="Vlaams Belang" data-prov="West-Vlaanderen"><td style="font-weight:500">Kristien Verbelen</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">10.532</td></tr>
+<tr data-party="Vooruit" data-prov="Vlaams-Brabant"><td style="font-weight:500">Fatima Lamarti</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">10.521</td></tr>
+<tr data-party="PS" data-prov="Luxemburg"><td style="font-weight:500">Philippe Courard</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Luxemburg</td><td class="votes">10.511</td></tr>
+<tr data-party="cd&v" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Leentje Grillaert</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">10.285</td></tr>
+<tr data-party="Vooruit" data-prov="West-Vlaanderen"><td style="font-weight:500">Annick Lambrecht</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">10.263</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Francesca Van Belleghem</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">10.229</td></tr>
+<tr data-party="Vlaams Belang" data-prov="West-Vlaanderen"><td style="font-weight:500">Dominiek Spinnewyn-Sneppe</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">10.122</td></tr>
+<tr data-party="Open Vld" data-prov="Limburg"><td style="font-weight:500">Steven Coenegrachts</td><td><span class="party-badge" style="background:#00AEEF;color:white">Open Vld</span></td><td style="color:var(--text-muted);font-size:13px">Limburg</td><td class="votes">10.120</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Annik Van den Bosch</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">9.937</td></tr>
+<tr data-party="PS" data-prov="Henegouwen"><td style="font-weight:500">Patrick Prévot</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">9.798</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Antwerpen"><td style="font-weight:500">Reccino Van Lommel</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">9.684</td></tr>
+<tr data-party="N-VA" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Lotte Peeters</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">9.666</td></tr>
+<tr data-party="PS" data-prov="Henegouwen"><td style="font-weight:500">Marie Meunier</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">9.478</td></tr>
+<tr data-party="MR" data-prov="Waals-Brabant"><td style="font-weight:500">Vincent Scourneau</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Waals-Brabant</td><td class="votes">9.465</td></tr>
+<tr data-party="PVDA/PTB" data-prov="West-Vlaanderen"><td style="font-weight:500">Natalie Eggermont</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">9.224</td></tr>
+<tr data-party="PS" data-prov="Henegouwen"><td style="font-weight:500">Hugues Bayet</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">9.016</td></tr>
+<tr data-party="cd&v" data-prov="Antwerpen"><td style="font-weight:500">Tine Gielis</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">8.991</td></tr>
+<tr data-party="Vooruit" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Anja Vanrobaeys</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">8.756</td></tr>
+<tr data-party="DéFI" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">François De Smet (politicus)</td><td><span class="party-badge" style="background:#DD007A;color:white">DéFI</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">8.741</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Alexander Van Hoecke</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">8.696</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Antwerpen"><td style="font-weight:500">Greet Daems</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">8.522</td></tr>
+<tr data-party="Open Vld" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Katja Gabriëls</td><td><span class="party-badge" style="background:#00AEEF;color:white">Open Vld</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">8.458</td></tr>
+<tr data-party="Vlaams Belang" data-prov="West-Vlaanderen"><td style="font-weight:500">Kurt Ravyts</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">8.410</td></tr>
+<tr data-party="Les Engagés" data-prov="Luik"><td style="font-weight:500">Luc Frank</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">8.317</td></tr>
+<tr data-party="N-VA" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Peter Buysrogge</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">8.315</td></tr>
+<tr data-party="MR" data-prov="Waals-Brabant"><td style="font-weight:500">Mathieu Michel</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Waals-Brabant</td><td class="votes">8.263</td></tr>
+<tr data-party="MR" data-prov="Henegouwen"><td style="font-weight:500">Hervé Cornillie</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">8.246</td></tr>
+<tr data-party="Les Engagés" data-prov="Luxemburg"><td style="font-weight:500">Carmen Ramlot</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Luxemburg</td><td class="votes">8.164</td></tr>
+<tr data-party="MR" data-prov="Luik"><td style="font-weight:500">Victoria Vandeberg</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">7.878</td></tr>
+<tr data-party="Les Engagés" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Pierre Kompany</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">7.872</td></tr>
+<tr data-party="PS" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Lydia Mutyebele Ngoi</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">7.871</td></tr>
+<tr data-party="Les Engagés" data-prov="Luik"><td style="font-weight:500">Isabelle Hansez</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">7.839</td></tr>
+<tr data-party="Les Engagés" data-prov="Namen"><td style="font-weight:500">Marc Lejeune</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Namen</td><td class="votes">7.750</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Vlaams-Brabant"><td style="font-weight:500">Kurt Moons</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">7.745</td></tr>
+<tr data-party="Vooruit" data-prov="Antwerpen"><td style="font-weight:500">Jan Bertels</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">7.732</td></tr>
+<tr data-party="Vooruit" data-prov="West-Vlaanderen"><td style="font-weight:500">Jeroen Soete</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">7.454</td></tr>
+<tr data-party="Groen" data-prov="Antwerpen"><td style="font-weight:500">Staf Aerts</td><td><span class="party-badge" style="background:#5FAD41;color:white">Groen</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">7.290</td></tr>
+<tr data-party="Groen" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Stefaan Van Hecke</td><td><span class="party-badge" style="background:#5FAD41;color:white">Groen</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">7.228</td></tr>
+<tr data-party="Les Engagés" data-prov="Namen"><td style="font-weight:500">Stéphane Lasseaux</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Namen</td><td class="votes">7.025</td></tr>
+<tr data-party="Groen" data-prov="Vlaams-Brabant"><td style="font-weight:500">Dieter Van Besien</td><td><span class="party-badge" style="background:#5FAD41;color:white">Groen</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">6.997</td></tr>
+<tr data-party="N-VA" data-prov="Antwerpen"><td style="font-weight:500">Wim Van der Donckt</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">6.986</td></tr>
+<tr data-party="cd&v" data-prov="Antwerpen"><td style="font-weight:500">Nahima Lanjri</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">6.946</td></tr>
+<tr data-party="Vooruit" data-prov="Antwerpen"><td style="font-weight:500">Oskar Seuntjens</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">6.826</td></tr>
+<tr data-party="Vlaams Belang" data-prov="Vlaams-Brabant"><td style="font-weight:500">Katleen Bury</td><td><span class="party-badge" style="background:#FFD700;color:#333">Vlaams Belang</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">6.803</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Luik"><td style="font-weight:500">Nadia Moscufo</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">6.709</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Julien Ribaudo</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">6.318</td></tr>
+<tr data-party="Les Engagés" data-prov="Henegouwen"><td style="font-weight:500">Jean-François Gatelier</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">6.317</td></tr>
+<tr data-party="PS" data-prov="Waals-Brabant"><td style="font-weight:500">Dimitri Legasse</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Waals-Brabant</td><td class="votes">6.300</td></tr>
+<tr data-party="N-VA" data-prov="Antwerpen"><td style="font-weight:500">Katrijn van Riet</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">6.272</td></tr>
+<tr data-party="MR" data-prov="Namen"><td style="font-weight:500">Christophe Bombled</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Namen</td><td class="votes">6.144</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Henegouwen"><td style="font-weight:500">Roberto D'Amico</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">6.078</td></tr>
+<tr data-party="Les Engagés" data-prov="Henegouwen"><td style="font-weight:500">Julien Matagne</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">5.619</td></tr>
+<tr data-party="cd&v" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Phaedra Van Keymolen</td><td><span class="party-badge" style="background:#F07D00;color:white">cd&v</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">5.586</td></tr>
+<tr data-party="Vooruit" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Brent Meuleman</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">5.581</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Henegouwen"><td style="font-weight:500">Ayse Yigit</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Henegouwen</td><td class="votes">5.531</td></tr>
+<tr data-party="N-VA" data-prov="Vlaams-Brabant"><td style="font-weight:500">Jeroen Bergers</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">5.452</td></tr>
+<tr data-party="Groen" data-prov="West-Vlaanderen"><td style="font-weight:500">Matti Vandemaele</td><td><span class="party-badge" style="background:#5FAD41;color:white">Groen</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">5.357</td></tr>
+<tr data-party="PS" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Khalil Aouasti</td><td><span class="party-badge" style="background:#C8001E;color:white">PS</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">5.343</td></tr>
+<tr data-party="N-VA" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Lieve Truyman</td><td><span class="party-badge" style="background:#F5A623;color:#333">N-VA</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">5.301</td></tr>
+<tr data-party="PVDA/PTB" data-prov="Namen"><td style="font-weight:500">Farah Jacquet</td><td><span class="party-badge" style="background:#8B0000;color:white">PVDA/PTB</span></td><td style="color:var(--text-muted);font-size:13px">Namen</td><td class="votes">4.970</td></tr>
+<tr data-party="Vooruit" data-prov="West-Vlaanderen"><td style="font-weight:500">Axel Weydts</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">West-Vlaanderen</td><td class="votes">4.878</td></tr>
+<tr data-party="Vooruit" data-prov="Vlaams-Brabant"><td style="font-weight:500">Nele Daenen</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">4.345</td></tr>
+<tr data-party="Open Vld" data-prov="Vlaams-Brabant"><td style="font-weight:500">Kjell Vander Elst</td><td><span class="party-badge" style="background:#00AEEF;color:white">Open Vld</span></td><td style="color:var(--text-muted);font-size:13px">Vlaams-Brabant</td><td class="votes">4.307</td></tr>
+<tr data-party="Vooruit" data-prov="Antwerpen"><td style="font-weight:500">Achraf El Yakhloufi</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">Antwerpen</td><td class="votes">4.247</td></tr>
+<tr data-party="MR" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Pierre Jadoul</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">3.937</td></tr>
+<tr data-party="Vooruit" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Niels Tas</td><td><span class="party-badge" style="background:#E8172B;color:white">Vooruit</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">3.639</td></tr>
+<tr data-party="Ecolo" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Claire Hugon</td><td><span class="party-badge" style="background:#4CAF50;color:white">Ecolo</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">3.514</td></tr>
+<tr data-party="Open Vld" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Sandro Di Nunzio</td><td><span class="party-badge" style="background:#00AEEF;color:white">Open Vld</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">3.394</td></tr>
+<tr data-party="MR" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Youssef Handichi</td><td><span class="party-badge" style="background:#005E9E;color:white">MR</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">3.280</td></tr>
+<tr data-party="Les Engagés" data-prov="Luik"><td style="font-weight:500">Serge Hiligsmann</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Luik</td><td class="votes">2.671</td></tr>
+<tr data-party="Les Engagés" data-prov="Waals-Brabant"><td style="font-weight:500">Xavier Dubois</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Waals-Brabant</td><td class="votes">2.623</td></tr>
+<tr data-party="Groen" data-prov="Oost-Vlaanderen"><td style="font-weight:500">Jeroen Van Lysebettens</td><td><span class="party-badge" style="background:#5FAD41;color:white">Groen</span></td><td style="color:var(--text-muted);font-size:13px">Oost-Vlaanderen</td><td class="votes">2.566</td></tr>
+<tr data-party="Les Engagés" data-prov="Brussel-Hoofdstad"><td style="font-weight:500">Ismaël Nuino</td><td><span class="party-badge" style="background:#00A693;color:white">Les Engagés</span></td><td style="color:var(--text-muted);font-size:13px">Brussel-Hoofdstad</td><td class="votes">1.543</td></tr>
+      </tbody>
     </table>
   </div>
 </div>
+
 <footer>
-  <div>1830 — Onafhankelijk opinieonderzoek</div>
+  <div>© 2026 1830 — Onafhankelijk opinieonderzoek</div>
   <div class="footer-links">
     <a href="methodologie.html">Methodologie</a>
-    <a href="over-ons.html">Contact</a>
-    <a href="#">Privacy</a>
+    <a href="over-ons.html">Over ons</a>
   </div>
 </footer>
+
 <script>
-function setLang(lang){{document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');}}
-function filterBy(val,group){{
-  document.querySelectorAll('.filter-btn[data-group="'+group+'"]').forEach(b=>b.classList.remove('active'));
-  event.target.classList.add('active');
-  document.querySelectorAll('tr[data-group]').forEach(row=>{{
-    if(row.getAttribute('data-group')!==group)return;
-    row.style.display=(val==='all'||row.getAttribute('data-val')===val)?'':'none';
-  }});
-}}
+function setLang(l){document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));(event&&event.target?event.target:document.querySelector('.lang-btn')).classList.add('active');}
+function filterBy(val, group){
+  var btns = document.querySelectorAll('.filter-btn[data-group="'+group+'"]');
+  btns.forEach(function(b){b.classList.remove('active');});
+  var self = event && event.target ? event.target.closest('.filter-btn') : null;
+  if(self) self.classList.add('active');
+  var state = window.__filterState || (window.__filterState = {party:'all', prov:'all'});
+  state[group] = val;
+  var rows = document.querySelectorAll('#member-tbody tr');
+  rows.forEach(function(r){
+    var p = r.getAttribute('data-party');
+    var k = r.getAttribute('data-prov');
+    var showP = state.party === 'all' || state.party === p;
+    var showK = state.prov === 'all' || state.prov === k;
+    r.style.display = (showP && showK) ? '' : 'none';
+  });
+}
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+<script>
+var PARTY_COLORS = {
+  'N-VA':'#F5A623','Vlaams Belang':'#FFD700','MR':'#005E9E','PS':'#C8001E',
+  'PVDA/PTB':'#8B0000','Les Engagés':'#00A693','Vooruit':'#E8172B','cd&v':'#F07D00',
+  'Open Vld':'#00AEEF','Groen':'#5FAD41','Ecolo':'#4CAF50','DéFI':'#DD007A',
+  'Onafhankelijk':'#888888'
+};
+var PARTY_TEXT = {'Vlaams Belang':'#333','N-VA':'#333'};
+var PARTY_ORDER = ['N-VA','Vlaams Belang','MR','PS','PVDA/PTB','Les Engagés','Vooruit','cd&v','Open Vld','Groen','Ecolo','DéFI','Onafhankelijk'];
+// Map TopoJSON NAME_2 → our kieskring key
+var GEO_TO_KIESKRING = {
+  'Bruxelles':'Brussel-Hoofdstad','Antwerpen':'Antwerpen','Limburg':'Limburg',
+  'Oost-Vlaanderen':'Oost-Vlaanderen','Vlaams Brabant':'Vlaams-Brabant',
+  'West-Vlaanderen':'West-Vlaanderen','Brabant Wallon':'Waals-Brabant',
+  'Hainaut':'Henegouwen','Liège':'Luik','Luxembourg':'Luxemburg','Namur':'Namen'
+};
+var DISPLAY_SHORT = {
+  'Brussel-Hoofdstad':'Brussel','Oost-Vlaanderen':'Oost-Vl.',
+  'West-Vlaanderen':'West-Vl.','Vlaams-Brabant':'Vl.-Brabant',
+  'Waals-Brabant':'Waals-Br.'
+};
+
+var PANEL = document.getElementById('map-panel');
+var BACK_BTN = document.getElementById('map-back');
+var LEGEND = document.getElementById('map-legend');
+
+// Build legend
+PARTY_ORDER.forEach(function(p){
+  var el = document.createElement('div');
+  el.className = 'legend-item';
+  el.innerHTML = '<span class="legend-dot" style="background:'+PARTY_COLORS[p]+'"></span>'+p;
+  LEGEND.appendChild(el);
+});
+
+function fmtVotes(n){ return n.toLocaleString('nl-BE').replace(/,/g,'.'); }
+function textColor(p){ return PARTY_TEXT[p] || 'white'; }
+function partyBadge(p){
+  return '<span class="party-badge" style="background:'+(PARTY_COLORS[p]||'#888')+';color:'+textColor(p)+'">'+p+'</span>';
+}
+function initialsFor(name){
+  var parts = name.trim().split(/\s+/);
+  var first = parts[0]||'';
+  var last  = parts[parts.length-1]||'';
+  return (first.charAt(0)+last.charAt(0)).toUpperCase();
+}
+
+Promise.all([
+  fetch('Provincies.json').then(function(r){return r.json();}),
+  fetch('kamer2024.json').then(function(r){return r.json();})
+]).then(function(res){
+  var topo = res[0];
+  var members = res[1];
+
+  // Group members by kieskring
+  var byKS = {};
+  members.forEach(function(m){
+    if(!byKS[m.kieskring]) byKS[m.kieskring] = [];
+    byKS[m.kieskring].push(m);
+  });
+  Object.keys(byKS).forEach(function(k){
+    byKS[k].sort(function(a,b){
+      var ai = PARTY_ORDER.indexOf(a.party); var bi = PARTY_ORDER.indexOf(b.party);
+      if(ai!==bi) return ai-bi;
+      return b.votes - a.votes;
+    });
+  });
+
+  var svg = d3.select('#parliament-map');
+  var W = 800, H = 640;
+
+  var geojson = topojson.feature(topo, topo.objects.layer);
+  var projection = d3.geoMercator().fitSize([W, H], geojson);
+  var path = d3.geoPath().projection(projection);
+
+  var gProvinces = svg.append('g').attr('class','g-provinces');
+  var gDots = svg.append('g').attr('class','g-dots');
+  var gLabels = svg.append('g').attr('class','g-labels');
+
+  var provPaths = {}; var provCentroids = {}; var provBounds = {};
+
+  var paths = gProvinces.selectAll('path')
+    .data(geojson.features)
+    .enter()
+    .append('path')
+    .attr('class','province-shape')
+    .attr('d', path)
+    .attr('data-geo', function(d){ return d.properties.NAME_2; })
+    .on('mouseenter', function(event, d){
+      if(window.__selected) return;
+      d3.select(this).classed('hover', true);
+      showHoverPanel(GEO_TO_KIESKRING[d.properties.NAME_2]);
+    })
+    .on('mouseleave', function(event, d){
+      d3.select(this).classed('hover', false);
+      if(!window.__selected) resetPanel();
+    })
+    .on('click', function(event, d){
+      selectKieskring(GEO_TO_KIESKRING[d.properties.NAME_2]);
+    });
+
+  paths.each(function(d){
+    var geoName = d.properties.NAME_2;
+    var ks = GEO_TO_KIESKRING[geoName];
+    provPaths[ks] = this;
+    provCentroids[ks] = path.centroid(d);
+    provBounds[ks] = path.bounds(d);
+  });
+
+  // Place dots
+  function placeDots(ks, bbox){
+    var seats = byKS[ks]||[];
+    var n = seats.length; if(!n) return;
+    var w = bbox[1][0]-bbox[0][0], h = bbox[1][1]-bbox[0][1];
+    // Pack into a square grid, slightly wider than tall to fit most shapes
+    var cols = Math.ceil(Math.sqrt(n * (w/h)));
+    cols = Math.max(2, Math.min(cols, 7));
+    var rows = Math.ceil(n/cols);
+    // Dot radius: limit by available space
+    var maxByWidth  = (w*0.58) / (cols*2+1);
+    var maxByHeight = (h*0.58) / (rows*2+1);
+    var r = Math.max(4, Math.min(maxByWidth, maxByHeight, 9));
+    var spacing = r*2 + 2;
+    var totalW = cols*spacing - 2;
+    var totalH = rows*spacing - 2;
+    var cx = (bbox[0][0]+bbox[1][0])/2;
+    var cy = (bbox[0][1]+bbox[1][1])/2;
+    // Nudge Brussels a bit so dots sit over the city (small shape)
+    if(ks === 'Brussel-Hoofdstad'){ cy += 1; }
+    var startX = cx - totalW/2 + r;
+    var startY = cy - totalH/2 + r;
+    var g = gDots.append('g').attr('class','g-dots-'+ks.replace(/[^a-z]/gi,''))
+      .attr('data-ks', ks);
+    for(var i=0;i<n;i++){
+      var row = Math.floor(i/cols);
+      var col = i%cols;
+      // Center last row
+      var itemsInRow = (row === rows-1) ? (n - row*cols) : cols;
+      var rowOffset = (cols - itemsInRow) * spacing / 2;
+      var x = startX + col*spacing + rowOffset;
+      var y = startY + row*spacing;
+      g.append('circle')
+        .attr('class','seat-dot')
+        .attr('cx', x).attr('cy', y).attr('r', r)
+        .attr('fill', PARTY_COLORS[seats[i].party]||'#888')
+        .attr('data-ks', ks)
+        .append('title').text(seats[i].name+' — '+seats[i].party+' ('+fmtVotes(seats[i].votes)+' stemmen)');
+    }
+  }
+  Object.keys(provBounds).forEach(function(ks){ placeDots(ks, provBounds[ks]); });
+
+  // Province labels
+  gLabels.selectAll('text')
+    .data(geojson.features)
+    .enter()
+    .append('text')
+    .attr('class','province-label')
+    .attr('transform', function(d){
+      var ks = GEO_TO_KIESKRING[d.properties.NAME_2];
+      var b = provBounds[ks];
+      var bw = b[1][0]-b[0][0], bh = b[1][1]-b[0][1];
+      var cx = (b[0][0]+b[1][0])/2;
+      // Put label above the dot cluster
+      var spacingGuess = 12;
+      var n = (byKS[ks]||[]).length;
+      var cols = Math.max(2, Math.min(Math.ceil(Math.sqrt(n*(bw/bh))), 7));
+      var rows = Math.ceil(n/cols);
+      var r = Math.max(4, Math.min((bw*0.58)/(cols*2+1), (bh*0.58)/(rows*2+1), 9));
+      spacingGuess = r*2+2;
+      var clusterH = rows*spacingGuess;
+      var cy = (b[0][1]+b[1][1])/2 - clusterH/2 - 6;
+      return 'translate('+cx+','+cy+')';
+    })
+    .text(function(d){
+      var ks = GEO_TO_KIESKRING[d.properties.NAME_2];
+      return DISPLAY_SHORT[ks]||ks;
+    });
+
+  // Hover panel (non-selected)
+  function showHoverPanel(ks){
+    if(!ks) return;
+    var seats = byKS[ks]||[];
+    var counts = {};
+    seats.forEach(function(s){ counts[s.party]=(counts[s.party]||0)+1; });
+    var barsHtml = PARTY_ORDER.filter(function(p){return counts[p];}).map(function(p){
+      var pct = counts[p]*100/seats.length;
+      return '<div class="zv-row"><span class="zv-name">'+p+'</span>'
+        +'<div class="zv-track"><div class="zv-fill" style="width:'+pct.toFixed(1)+'%;background:'+PARTY_COLORS[p]+'"></div></div>'
+        +'<span class="zv-count">'+counts[p]+'</span></div>';
+    }).join('');
+    PANEL.innerHTML = '<div class="mp-title"><h3>'+ks+'</h3><span class="mp-sub">'+seats.length+' zetels</span></div>'
+      +'<div class="mp-stats">'
+      +'<div class="mp-stat"><div class="val">'+seats.length+'</div><div class="lbl">Zetels</div></div>'
+      +'<div class="mp-stat"><div class="val">'+Object.keys(counts).length+'</div><div class="lbl">Partijen</div></div>'
+      +'</div>'
+      +'<div class="mp-bars">'+barsHtml+'</div>'
+      +'<div class="mp-placeholder" style="margin-top:4px"><div class="mp-hint">Klik voor alle verkozenen →</div></div>';
+  }
+
+  function resetPanel(){
+    PANEL.innerHTML = '<div class="mp-placeholder">'
+      +'<span class="big">Klik op een kieskring</span>'
+      +'De bolletjes tonen hoeveel zetels elke provincie naar de Kamer stuurt. Kies een kieskring om de verkozenen met hun voorkeurstemmen te zien.'
+      +'<div class="mp-hint">Tip: hover voor een kort overzicht</div>'
+      +'</div>';
+  }
+
+  function selectKieskring(ks){
+    if(!ks || !byKS[ks]) return;
+    window.__selected = ks;
+    // Style provinces
+    d3.selectAll('.province-shape').classed('faded', function(){
+      return this.getAttribute('data-geo') !== Object.keys(GEO_TO_KIESKRING).find(function(k){return GEO_TO_KIESKRING[k]===ks;});
+    });
+    d3.selectAll('.province-shape').classed('selected', function(){
+      return this.getAttribute('data-geo') === Object.keys(GEO_TO_KIESKRING).find(function(k){return GEO_TO_KIESKRING[k]===ks;});
+    });
+    d3.selectAll('.seat-dot').classed('faded', function(){
+      return d3.select(this).attr('data-ks') !== ks;
+    });
+    // Zoom to bounds
+    var b = provBounds[ks];
+    var pad = 20;
+    var bx = b[0][0]-pad, by = b[0][1]-pad;
+    var bw = (b[1][0]-b[0][0])+pad*2, bh = (b[1][1]-b[0][1])+pad*2;
+    // Maintain 800/640 aspect ratio
+    var ratio = W/H;
+    if(bw/bh > ratio){ var nh = bw/ratio; by -= (nh-bh)/2; bh = nh; }
+    else { var nw = bh*ratio; bx -= (nw-bw)/2; bw = nw; }
+    svg.transition().duration(650).attr('viewBox', bx+' '+by+' '+bw+' '+bh);
+    // Hide province labels of other provinces
+    d3.selectAll('.province-label').style('opacity', function(d){
+      return GEO_TO_KIESKRING[d.properties.NAME_2]===ks ? 1 : 0;
+    });
+    BACK_BTN.classList.add('visible');
+    renderDetailPanel(ks);
+  }
+
+  function renderDetailPanel(ks){
+    var seats = byKS[ks]||[];
+    var counts = {};
+    seats.forEach(function(s){ counts[s.party]=(counts[s.party]||0)+1; });
+    var barsHtml = PARTY_ORDER.filter(function(p){return counts[p];}).map(function(p){
+      var pct = counts[p]*100/seats.length;
+      return '<div class="zv-row"><span class="zv-name">'+p+'</span>'
+        +'<div class="zv-track"><div class="zv-fill" style="width:'+pct.toFixed(1)+'%;background:'+PARTY_COLORS[p]+'"></div></div>'
+        +'<span class="zv-count">'+counts[p]+'</span></div>';
+    }).join('');
+    var sortedByVotes = seats.slice().sort(function(a,b){ return b.votes-a.votes; });
+    var repsHtml = sortedByVotes.map(function(m){
+      var col = PARTY_COLORS[m.party]||'#888';
+      var txt = textColor(m.party);
+      return '<div class="mp-rep">'
+        +'<div class="mp-avatar" style="background:'+col+';color:'+txt+'" title="'+m.party+'">'+initialsFor(m.name)+'</div>'
+        +'<div><div class="mp-name">'+m.name+'</div><div class="mp-meta">'+partyBadge(m.party)+(m.successor?' · opvolger':'')+'</div></div>'
+        +'<div class="mp-votes">'+fmtVotes(m.votes)+'<span class="vlbl">stemmen</span></div>'
+        +'</div>';
+    }).join('');
+    PANEL.innerHTML = '<div class="mp-title"><h3>'+ks+'</h3><span class="mp-sub">'+seats.length+' zetels · '+Object.keys(counts).length+' partijen</span></div>'
+      +'<div class="mp-bars">'+barsHtml+'</div>'
+      +'<div class="mp-reps">'+repsHtml+'</div>';
+  }
+
+  function deselect(){
+    window.__selected = null;
+    d3.selectAll('.province-shape').classed('faded', false).classed('selected', false);
+    d3.selectAll('.seat-dot').classed('faded', false);
+    d3.selectAll('.province-label').style('opacity', 1);
+    svg.transition().duration(500).attr('viewBox', '0 0 '+W+' '+H);
+    BACK_BTN.classList.remove('visible');
+    resetPanel();
+  }
+
+  BACK_BTN.addEventListener('click', deselect);
+  svg.on('click', function(event){
+    // Clicking on background (not a province) deselects
+    if(event.target.tagName !== 'path' && event.target.tagName !== 'circle'){
+      if(window.__selected) deselect();
+    }
+  });
+}).catch(function(err){
+  console.error('Map init failed:', err);
+  document.getElementById('map-panel').innerHTML = '<div class="mp-placeholder" style="color:#b00">Kon de kaartdata niet laden.</div>';
+});
+</script>
+</body>
+</html>

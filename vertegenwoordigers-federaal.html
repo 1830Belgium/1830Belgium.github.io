@@ -119,6 +119,10 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .mp-meta{font-size:11px;color:var(--text-muted);margin-top:2px}
 .mp-votes{font-size:13px;font-weight:600;color:var(--blue);text-align:right;white-space:nowrap}
 .mp-votes .vlbl{display:block;font-size:10px;font-weight:400;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px}
+.mp-party-dots{display:flex;flex-wrap:wrap;gap:4px;align-items:center;flex:1;min-height:18px}
+.mp-dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex-shrink:0;box-shadow:0 0 0 1px rgba(255,255,255,0.6) inset;transition:opacity 0.2s ease}
+.mp-dot.pending{opacity:0}
+.fly-dot{position:fixed;width:14px;height:14px;border-radius:50%;pointer-events:none;z-index:1000;box-shadow:0 0 0 1px rgba(255,255,255,0.6) inset;will-change:transform}
 
 /* Modal */
 .ks-modal{position:fixed;inset:0;z-index:500;display:none;align-items:flex-start;justify-content:center;padding:40px 16px;background:rgba(20,20,20,0.55);overflow-y:auto}
@@ -475,6 +479,7 @@ Promise.all([
         .attr('cx', x).attr('cy', y).attr('r', r)
         .attr('fill', PARTY_COLORS[seats[i].party]||'#888')
         .attr('data-ks', ks)
+        .attr('data-seat-idx', i)
         .attr('style', '--i:'+(window.__seatIdx = (window.__seatIdx||0)+1))
         .append('title').text(seats[i].name+' — '+seats[i].party+' ('+fmtVotes(seats[i].votes)+' stemmen)');
     }
@@ -548,6 +553,18 @@ Promise.all([
     if(!ks || !byKS[ks]) return;
     window.__selected = ks;
     var geoForKs = Object.keys(GEO_TO_KIESKRING).find(function(k){return GEO_TO_KIESKRING[k]===ks;});
+
+    // Capture start positions of map dots for this kieskring BEFORE fading
+    var startPositions = {};
+    var startColors = {};
+    var mapDots = document.querySelectorAll('.seat-dot[data-ks="'+ks+'"]');
+    mapDots.forEach(function(el){
+      var idx = el.getAttribute('data-seat-idx');
+      var r = el.getBoundingClientRect();
+      startPositions[idx] = { x: r.left + r.width/2, y: r.top + r.height/2 };
+      startColors[idx] = el.getAttribute('fill');
+    });
+
     // Style provinces
     d3.selectAll('.province-shape').classed('faded', function(){
       return this.getAttribute('data-geo') !== geoForKs;
@@ -567,35 +584,71 @@ Promise.all([
     d3.selectAll('.seat-dot').classed('faded', function(){
       return d3.select(this).attr('data-ks') !== ks;
     });
-    // Zoom to bounds (callout bbox if defined, else real geographic bbox)
-    var b = effectiveBounds(ks);
-    var pad = 20;
-    var bx = b[0][0]-pad, by = b[0][1]-pad;
-    var bw = (b[1][0]-b[0][0])+pad*2, bh = (b[1][1]-b[0][1])+pad*2;
-    // Maintain 800/640 aspect ratio
-    var ratio = W/H;
-    if(bw/bh > ratio){ var nh = bw/ratio; by -= (nh-bh)/2; bh = nh; }
-    else { var nw = bh*ratio; bx -= (nw-bw)/2; bw = nw; }
-    svg.transition().duration(650).attr('viewBox', bx+' '+by+' '+bw+' '+bh);
     // Hide province labels of other provinces
     d3.selectAll('.province-label').style('opacity', function(d){
       return GEO_TO_KIESKRING[d.properties.NAME_2]===ks ? 1 : 0;
     });
+
     renderDetailPanel(ks);
     openModal();
+
+    // Fly the map dots into the modal
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ flyDotsToModal(ks, startPositions, startColors); });
+    });
   }
   window.__deselectFromModal = function(){ deselect(); };
+
+  function flyDotsToModal(ks, startPositions, startColors){
+    var modalDots = document.querySelectorAll('.mp-dot[data-ks="'+ks+'"]');
+    if(!modalDots.length) return;
+    // Hide the source map dots during flight (we'll keep them hidden)
+    document.querySelectorAll('.seat-dot[data-ks="'+ks+'"]').forEach(function(el){
+      el.style.opacity = '0';
+    });
+    modalDots.forEach(function(dotEl, i){
+      var idx = dotEl.getAttribute('data-seat-idx');
+      var start = startPositions[idx];
+      var tr = dotEl.getBoundingClientRect();
+      if(!start){ dotEl.classList.remove('pending'); return; }
+      dotEl.classList.add('pending');
+      var fly = document.createElement('span');
+      fly.className = 'fly-dot';
+      fly.style.background = startColors[idx] || dotEl.style.background;
+      fly.style.left = (tr.left + tr.width/2 - 7) + 'px';
+      fly.style.top = (tr.top + tr.height/2 - 7) + 'px';
+      var dx = start.x - (tr.left + tr.width/2);
+      var dy = start.y - (tr.top + tr.height/2);
+      fly.style.transform = 'translate('+dx+'px,'+dy+'px) scale(1.15)';
+      fly.style.transition = 'transform 0.55s cubic-bezier(.4,0,.2,1)';
+      document.body.appendChild(fly);
+      var delay = i * 12;
+      setTimeout(function(){
+        fly.style.transform = 'translate(0,0) scale(1)';
+      }, delay);
+      setTimeout(function(){
+        dotEl.classList.remove('pending');
+        fly.remove();
+      }, delay + 560);
+    });
+  }
 
   function renderDetailPanel(ks){
     if(!PANEL) return;
     var seats = byKS[ks]||[];
-    var counts = {};
-    seats.forEach(function(s){ counts[s.party]=(counts[s.party]||0)+1; });
-    var barsHtml = PARTY_ORDER.filter(function(p){return counts[p];}).map(function(p){
-      var pct = counts[p]*100/seats.length;
+    var byParty = {};
+    seats.forEach(function(s, i){
+      if(!byParty[s.party]) byParty[s.party] = [];
+      byParty[s.party].push({seat: s, idx: i});
+    });
+    var barsHtml = PARTY_ORDER.filter(function(p){return byParty[p];}).map(function(p){
+      var items = byParty[p];
+      var dotsHtml = items.map(function(it){
+        return '<span class="mp-dot" data-ks="'+ks+'" data-seat-idx="'+it.idx+'" style="background:'+PARTY_COLORS[p]+'"></span>';
+      }).join('');
       return '<div class="zv-row"><span class="zv-name">'+p+'</span>'
-        +'<div class="zv-track"><div class="zv-fill" style="width:'+pct.toFixed(1)+'%;background:'+PARTY_COLORS[p]+'"></div></div>'
-        +'<span class="zv-count">'+counts[p]+'</span></div>';
+        +'<div class="mp-party-dots">'+dotsHtml+'</div>'
+        +'<span class="zv-count">'+items.length+'</span></div>';
     }).join('');
     var sortedByVotes = seats.slice().sort(function(a,b){ return b.votes-a.votes; });
     var repsHtml = sortedByVotes.map(function(m){
@@ -607,7 +660,7 @@ Promise.all([
         +'<div class="mp-votes">'+fmtVotes(m.votes)+'<span class="vlbl">stemmen</span></div>'
         +'</div>';
     }).join('');
-    PANEL.innerHTML = '<div class="mp-title"><h3>'+ks+'</h3><span class="mp-sub">'+seats.length+' zetels · '+Object.keys(counts).length+' partijen</span></div>'
+    PANEL.innerHTML = '<div class="mp-title"><h3>'+ks+'</h3></div>'
       +'<div class="mp-bars">'+barsHtml+'</div>'
       +'<div class="mp-reps">'+repsHtml+'</div>';
   }
@@ -617,9 +670,8 @@ Promise.all([
     d3.selectAll('.province-shape').classed('faded', false).classed('selected', false);
     d3.selectAll('.callout-rect').classed('faded', false).classed('selected', false);
     d3.selectAll('.callout-line,.callout-target').classed('faded', false);
-    d3.selectAll('.seat-dot').classed('faded', false);
+    d3.selectAll('.seat-dot').classed('faded', false).style('opacity', null);
     d3.selectAll('.province-label').style('opacity', 1);
-    svg.transition().duration(500).attr('viewBox', '0 0 '+W+' '+H);
     closeModal();
     resetPanel();
   }

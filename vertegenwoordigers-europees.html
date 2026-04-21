@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>1830 — Brussels parlement</title>
+<title>1830 — Europees Parlement (België)</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -27,12 +27,12 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .page-hero{background:var(--bg);border-bottom:0.5px solid var(--border);padding:48px 32px 40px}
 .page-hero-eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:12px}
 .page-hero h1{font-size:32px;font-weight:600;line-height:1.2;margin-bottom:12px}
-.page-hero p{font-size:16px;color:var(--text-muted);max-width:700px}
+.page-hero p{font-size:16px;color:var(--text-muted);max-width:720px}
 .content{padding:32px}
 .party-badge{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap;color:#fff}
 .zv-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
 .zv-row:last-child{margin-bottom:0}
-.zv-name{width:130px;font-size:13px;color:var(--text-muted)}
+.zv-name{width:150px;font-size:13px;color:var(--text-muted)}
 .zv-count{font-size:13px;font-weight:600;min-width:24px;text-align:right}
 
 /* Map section */
@@ -45,12 +45,15 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .map-layout{display:block}
 .map-wrap{position:relative;width:100%;max-width:1100px;margin:0 auto;aspect-ratio:3/2;overflow:visible}
 .map-wrap svg{width:100%;height:100%;display:block;cursor:default}
-.province-shape{fill:#E9E5DD;stroke:#ffffff;stroke-width:1;transition:fill 0.25s ease,opacity 0.25s ease;cursor:pointer}
-.province-shape.hover{fill:#DDD5C6}
-.province-shape.selected{fill:#FFFFFF;stroke:var(--blue);stroke-width:1.5}
+.province-shape{stroke:#ffffff;stroke-width:1.2;transition:fill 0.25s ease,opacity 0.25s ease;cursor:pointer}
+.province-shape.NL{fill:#FFD24D}
+.province-shape.FR{fill:#E24B4B}
+.province-shape.DE{fill:#3B7FC9}
+.province-shape.hover{filter:brightness(1.07)}
+.province-shape.selected{stroke:var(--blue);stroke-width:2}
 .province-shape.faded{opacity:0.25}
-.province-label{font-size:11px;font-weight:600;fill:#1a1a1a;pointer-events:none;text-anchor:middle;paint-order:stroke;stroke:#ffffff;stroke-width:2.5px;stroke-linejoin:round}
-.seat-dot{stroke:#ffffff;stroke-width:0.6;pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease}
+.province-label{font-size:13px;font-weight:600;fill:#1a1a1a;pointer-events:none;text-anchor:middle;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round}
+.seat-dot{stroke:#ffffff;stroke-width:0.8;pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease}
 .seat-dot.faded{opacity:0.25}
 
 /* Intro animation */
@@ -58,11 +61,11 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .map-wrap{opacity:0;animation:mapFadeIn 0.7s ease 0.25s forwards}
 @keyframes mapIntroFadeUp{to{opacity:1;transform:translateY(0)}}
 @keyframes mapFadeIn{from{opacity:0;transform:scale(0.985)}to{opacity:1;transform:scale(1)}}
-.province-shape{opacity:0;animation:provinceIn 0.55s ease forwards;animation-delay:calc(0.5s + var(--i, 0) * 0.04s)}
+.province-shape{opacity:0;animation:provinceIn 0.55s ease forwards;animation-delay:calc(0.5s + var(--i, 0) * 0.12s)}
 .province-shape.faded{animation:none}
-.province-label{opacity:0;animation:provinceIn 0.4s ease forwards;animation-delay:calc(0.9s + var(--i, 0) * 0.04s)}
+.province-label{opacity:0;animation:provinceIn 0.4s ease forwards;animation-delay:calc(0.95s + var(--i, 0) * 0.12s)}
 @keyframes provinceIn{to{opacity:1}}
-.seat-dot{opacity:0;transform-box:fill-box;transform-origin:center;animation:seatPop 0.35s cubic-bezier(.2,.9,.3,1.4) forwards;animation-delay:calc(1.1s + var(--i, 0) * 0.012s)}
+.seat-dot{opacity:0;transform-box:fill-box;transform-origin:center;animation:seatPop 0.35s cubic-bezier(.2,.9,.3,1.4) forwards;animation-delay:calc(1.2s + var(--i, 0) * 0.025s)}
 .seat-dot.faded{animation:none}
 @keyframes seatPop{0%{opacity:0;transform:scale(0.2)}70%{opacity:1;transform:scale(1.15)}100%{opacity:1;transform:scale(1)}}
 .map-intro-done .map-intro, .map-intro-done .map-wrap, .map-intro-done .province-shape, .map-intro-done .province-label, .map-intro-done .seat-dot{animation:none;opacity:1}
@@ -70,19 +73,10 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .mp-title{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
 .mp-title h3{font-size:20px;font-weight:600}
 .mp-title .mp-sub{font-size:12px;color:var(--text-muted)}
-.mp-tabs{display:flex;gap:8px;margin-top:14px;border-bottom:0.5px solid var(--border);padding-bottom:0}
-.mp-tab{font-size:13px;font-weight:500;padding:8px 14px;border:0;background:transparent;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;margin-bottom:-0.5px}
-.mp-tab.active{color:var(--blue);border-bottom-color:var(--blue)}
-.mp-tab:hover:not(.active){color:var(--text)}
-.mp-tab .mp-tab-count{font-size:11px;color:var(--text-muted);margin-left:4px;font-weight:400}
-.mp-tab.active .mp-tab-count{color:var(--blue)}
-.mp-tabpane{display:none;padding-top:12px}
-.mp-tabpane.active{display:block}
-.mp-empty{color:var(--text-muted);font-size:13px;padding:16px 0;text-align:center}
-.mp-bars{display:flex;flex-direction:column;gap:5px;margin-top:4px}
+.mp-bars{display:flex;flex-direction:column;gap:5px;margin-top:14px}
 .mp-bars .zv-row{margin:0}
-.mp-bars .zv-name{width:130px;font-size:12px}
-.mp-reps{display:flex;flex-direction:column;gap:0;max-height:min(48vh, 420px);overflow-y:auto;border-top:0.5px solid var(--border);padding-top:10px;margin-top:10px}
+.mp-bars .zv-name{width:150px;font-size:12px}
+.mp-reps{display:flex;flex-direction:column;gap:0;max-height:min(52vh, 460px);overflow-y:auto;border-top:0.5px solid var(--border);padding-top:10px;margin-top:14px}
 .mp-rep{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:8px 2px;border-bottom:0.5px solid var(--border)}
 .mp-rep:last-child{border-bottom:none}
 .mp-avatar{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;flex-shrink:0}
@@ -93,7 +87,6 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .mp-party-dots{display:flex;flex-wrap:wrap;gap:4px;align-items:center;flex:1;min-height:18px}
 .mp-dot{width:14px;height:14px;border-radius:50%;display:inline-block;flex-shrink:0;transition:opacity 0.2s ease}
 .mp-dot.pending{opacity:0}
-.mp-onzeker{font-size:11px;color:var(--text-muted);font-style:italic;margin-top:8px}
 .fly-dot{position:fixed;width:14px;height:14px;border-radius:50%;pointer-events:none;z-index:1000;will-change:transform}
 
 /* Modal */
@@ -147,11 +140,11 @@ footer a:hover{color:white}
     <li class="dropdown">
       <a href="#" class="dropdown-toggle active">Vertegenwoordigers ▾</a>
       <ul class="dropdown-menu">
-        <li><a href="vertegenwoordigers-federaal.html" >Federaal parlement</a></li>
-        <li><a href="vertegenwoordigers-vlaams.html" >Vlaams parlement</a></li>
-        <li><a href="vertegenwoordigers-waals.html" >Waals parlement</a></li>
-        <li><a href="vertegenwoordigers-brussel.html" class="active">Brussels parlement</a></li>
-        <li><a href="vertegenwoordigers-europees.html" >Europees parlement</a></li>
+        <li><a href="vertegenwoordigers-federaal.html">Federaal parlement</a></li>
+        <li><a href="vertegenwoordigers-vlaams.html">Vlaams parlement</a></li>
+        <li><a href="vertegenwoordigers-waals.html">Waals parlement</a></li>
+        <li><a href="vertegenwoordigers-brussel.html">Brussels parlement</a></li>
+        <li><a href="vertegenwoordigers-europees.html" class="active">Europees parlement</a></li>
       </ul>
     </li>
     <li><a href="methodologie.html">Methodologie</a></li>
@@ -163,22 +156,22 @@ footer a:hover{color:white}
   </div>
 </nav>
 <div class="page-hero">
-  <div class="page-hero-eyebrow">Brussels Parlement</div>
-  <h1>Brussels Hoofdstedelijk Parlement</h1>
-  <p>Alle 89 verkozenen in het Brussels Parlement (72 Franstalig + 17 Nederlandstalig), verdeeld over de 19 Brusselse gemeenten op basis van hun woon- of mandaatgemeente. Verkiezingen van 9 juni 2024.</p>
+  <div class="page-hero-eyebrow">Europees Parlement</div>
+  <h1>Belgische Europarlementsleden 2024–2029</h1>
+  <p>De 22 Belgische afgevaardigden in het Europees Parlement, verdeeld over drie taalcolleges: 13 Nederlandstalig, 8 Franstalig en 1 Duitstalig. Verkiezingen van 9 juni 2024.</p>
 </div>
 <div class="content">
   <section class="map-section" id="kaart">
     <div class="map-intro">
       <div class="mi-text">
         <div class="eyebrow">Interactieve kaart</div>
-        <h2>Verkozenen per gemeente</h2>
-        <p>Elke bol is één parlementslid, geplaatst in zijn of haar thuisgemeente. Klik op een gemeente om te zien wie er uit die gemeente komt — opgesplitst in de Franstalige en Nederlandstalige taalgroep.</p>
+        <h2>Verkozenen per taalcollege</h2>
+        <p>Elke bol is één Europarlementslid. De kaart toont de drie taalcolleges — Nederlandstalig (Vlaanderen &amp; Brussel), Franstalig (Wallonië min de Oostkantons) en Duitstalig (Oostkantons). Klik op een taalcollege om de verkozenen te zien.</p>
       </div>
     </div>
     <div class="map-layout">
       <div class="map-wrap">
-        <svg id="parliament-map" viewBox="0 0 800 540" preserveAspectRatio="xMidYMid meet"></svg>
+        <svg id="parliament-map" viewBox="0 0 800 560" preserveAspectRatio="xMidYMid meet"></svg>
       </div>
     </div>
   </section>
@@ -206,41 +199,39 @@ function setLang(l){document.querySelectorAll('.lang-btn').forEach(b=>b.classLis
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script>
 var PARTY_COLORS = {
-  // Franstalig
-  'MR':'#005E9E','PS':'#C8001E','PTB':'#8B0000','Les Engagés':'#00A693',
-  'Ecolo':'#4CAF50','DéFI':'#C2007A',
   // Nederlandstalig
-  'Groen':'#59A93C','Team Fouad Ahidar':'#5B2C91','N-VA':'#F7A72E',
-  'Anders':'#94D8FC','Vlaams Belang':'#FFE03D','Vooruit.brussels':'#E6222E',
-  'PVDA':'#8B0000','CD&V':'#F58025',
-  'Onafhankelijk':'#888888','Indépendant':'#888888'
+  'N-VA':'#F5A623','Vlaams Belang':'#FFD700','CD&V':'#F07D00','Vooruit':'#E8172B',
+  'Groen':'#5FAD41','Anders':'#94D8FC','PVDA':'#8B0000',
+  // Franstalig
+  'MR':'#005E9E','PS':'#C8001E','PTB':'#8B0000','Les Engagés':'#00A693','Ecolo':'#4CAF50',
+  // Duitstalig
+  'CSP':'#E8A540',
+  'Onafhankelijk':'#888888'
 };
-var PARTY_TEXT = { 'Anders':'#1a1a1a','Vlaams Belang':'#1a1a1a' };
-var PARTY_ORDER_FR = ['MR','PS','PTB','Les Engagés','Ecolo','DéFI','Indépendant','Onafhankelijk'];
-var PARTY_ORDER_NL = ['Groen','Team Fouad Ahidar','N-VA','Anders','Vlaams Belang','Vooruit.brussels','PVDA','CD&V','Onafhankelijk'];
-var PARTY_ORDER_ALL = PARTY_ORDER_FR.concat(PARTY_ORDER_NL.filter(function(p){return PARTY_ORDER_FR.indexOf(p)===-1;}));
-
-// Per-gemeente nudge for dot/label placement (viewBox units).
-// Bruxelles has a very elongated shape — the geographic centroid falls in the
-// narrow southern pentagon strip. Move its dots up to the big Laeken area.
+var PARTY_TEXT = {'Vlaams Belang':'#1a1a1a','Anders':'#1a1a1a'};
+var PARTY_ORDER = {
+  'NL': ['N-VA','Vlaams Belang','CD&V','Vooruit','Groen','Anders','PVDA'],
+  'FR': ['MR','PS','PTB','Les Engagés','Ecolo'],
+  'DE': ['CSP']
+};
+var COLLEGE_NAMES = {
+  'NL': 'Nederlands taalcollege',
+  'FR': 'Frans taalcollege',
+  'DE': 'Duitstalig taalcollege'
+};
+// Per-taalcollege dot cluster nudge (viewBox units).
 var DOT_OFFSETS = {
-  'Bruxelles': [0, -120],
-  'Schaerbeek': [0, 10],
-  'Jette': [0, -20],
-  'Molenbeek-Saint-Jean': [20, 15],
-  'Ixelles': [15, 5],
-  'Woluwe-Saint-Pierre': [0, 25]
+  'NL': [0, 20],
+  'FR': [-20, 0],
+  'DE': [0, 0]
 };
-// Per-gemeente radius override (absolute pixels). Smaller = less overlap.
 var DOT_SIZE_OVERRIDE = {
-  'Bruxelles': 5,
-  'Schaerbeek': 5,
-  'Anderlecht': 5,
-  'Ixelles': 5
+  'DE': 7
 };
-// Per-gemeente label nudge (only the text label, not the dots).
 var LABEL_OFFSETS = {
-  'Saint-Josse-ten-Noode': [-20, 20]
+  'NL': [30, -10],
+  'FR': [0, 0],
+  'DE': [40, -10]
 };
 
 var PANEL = document.getElementById('map-panel');
@@ -269,24 +260,22 @@ function initialsFor(name){
 }
 
 Promise.all([
-  fetch('BrusselseGemeenten.geojson').then(function(r){return r.json();}),
-  fetch('brusselsparlement2024.json').then(function(r){return r.json();})
+  fetch('Taalcolleges.geojson').then(function(r){return r.json();}),
+  fetch('europeesparlement2024.json').then(function(r){return r.json();})
 ]).then(function(res){
   var geojson = res[0];
   var members = res[1];
 
-  // Group members by gemeente
-  var byGem = {};
+  // Group members by taalcollege code (NL/FR/DE)
+  var byCol = {};
   members.forEach(function(m){
-    var g = m.gemeente || 'Bruxelles';
-    if(!byGem[g]) byGem[g] = [];
-    byGem[g].push(m);
+    var c = m.taalcollege || 'NL';
+    if(!byCol[c]) byCol[c] = [];
+    byCol[c].push(m);
   });
-  // Sort each gemeente: by taalgroep (FR first), then party order, then votes desc
-  Object.keys(byGem).forEach(function(g){
-    byGem[g].sort(function(a,b){
-      if(a.taalgroep !== b.taalgroep) return a.taalgroep === 'FR' ? -1 : 1;
-      var order = a.taalgroep === 'FR' ? PARTY_ORDER_FR : PARTY_ORDER_NL;
+  Object.keys(byCol).forEach(function(c){
+    byCol[c].sort(function(a,b){
+      var order = PARTY_ORDER[c] || [];
       var ai = order.indexOf(a.party); var bi = order.indexOf(b.party);
       if(ai === -1) ai = 99; if(bi === -1) bi = 99;
       if(ai !== bi) return ai - bi;
@@ -295,7 +284,7 @@ Promise.all([
   });
 
   var svg = d3.select('#parliament-map');
-  var W = 800, H = 540;
+  var W = 800, H = 560;
 
   var projection = d3.geoMercator().fitSize([W, H], geojson);
   var path = d3.geoPath().projection(projection);
@@ -304,118 +293,107 @@ Promise.all([
   var gDots = svg.append('g').attr('class','g-dots');
   var gLabels = svg.append('g').attr('class','g-labels');
 
-  var provPaths = {}; var provCentroids = {}; var provBounds = {};
+  var provPaths = {}, provCentroids = {}, provBounds = {};
 
   var paths = gProvinces.selectAll('path')
     .data(geojson.features)
     .enter()
     .append('path')
-    .attr('class','province-shape')
+    .attr('class', function(d){ return 'province-shape ' + d.properties.code; })
     .attr('d', path)
     .attr('style', function(_d, i){ return '--i:'+i; })
-    .attr('data-geo', function(d){ return d.properties.name_fr; })
+    .attr('data-geo', function(d){ return d.properties.code; })
     .on('mouseenter', function(){ if(!window.__selected) d3.select(this).classed('hover', true); })
     .on('mouseleave', function(){ d3.select(this).classed('hover', false); })
-    .on('click', function(event, d){ selectGemeente(d.properties.name_fr); });
+    .on('click', function(event, d){ selectCollege(d.properties.code); });
 
   paths.each(function(d){
-    var g = d.properties.name_fr;
-    provPaths[g] = this;
-    provCentroids[g] = path.centroid(d);
-    provBounds[g] = path.bounds(d);
+    var c = d.properties.code;
+    provPaths[c] = this;
+    provCentroids[c] = path.centroid(d);
+    provBounds[c] = path.bounds(d);
   });
 
-  // Place dots
-  function placeDots(gem, bbox){
-    var seats = byGem[gem]||[];
+  // Place dots per taalcollege
+  function placeDots(col, bbox){
+    var seats = byCol[col]||[];
     var n = seats.length; if(!n) return;
     var w = bbox[1][0]-bbox[0][0], h = bbox[1][1]-bbox[0][1];
     var cols = Math.ceil(Math.sqrt(n * (w/h)));
-    cols = Math.max(2, Math.min(cols, 6));
+    cols = Math.max(2, Math.min(cols, 5));
+    if(n === 1) cols = 1;
     var rows = Math.ceil(n/cols);
-    var maxByWidth  = (w*0.62) / (cols*2+1);
-    var maxByHeight = (h*0.62) / (rows*2+1);
-    var r = Math.max(3.5, Math.min(maxByWidth, maxByHeight, 7));
-    if(DOT_SIZE_OVERRIDE[gem]) r = DOT_SIZE_OVERRIDE[gem];
-    var spacing = r*2 + 2;
-    var totalW = cols*spacing - 2;
-    var totalH = rows*spacing - 2;
+    var maxByWidth  = (w*0.55) / (cols*2+1);
+    var maxByHeight = (h*0.55) / (rows*2+1);
+    var r = Math.max(6, Math.min(maxByWidth, maxByHeight, 14));
+    if(DOT_SIZE_OVERRIDE[col]) r = DOT_SIZE_OVERRIDE[col];
+    var spacing = r*2 + 3;
+    var totalW = cols*spacing - 3;
+    var totalH = rows*spacing - 3;
     var cx = (bbox[0][0]+bbox[1][0])/2;
     var cy = (bbox[0][1]+bbox[1][1])/2;
-    var off = DOT_OFFSETS[gem];
+    var off = DOT_OFFSETS[col];
     if(off){ cx += off[0]; cy += off[1]; }
     var startX = cx - totalW/2 + r;
     var startY = cy - totalH/2 + r;
     var gg = gDots.append('g')
-      .attr('class','g-dots-'+gem.replace(/[^a-z]/gi,''))
-      .attr('data-gem', gem);
+      .attr('class','g-dots-'+col)
+      .attr('data-ks', col);
     for(var i=0;i<n;i++){
       var row = Math.floor(i/cols);
-      var col = i%cols;
+      var colI = i%cols;
       var itemsInRow = (row === rows-1) ? (n - row*cols) : cols;
       var rowOffset = (cols - itemsInRow) * spacing / 2;
-      var x = startX + col*spacing + rowOffset;
+      var x = startX + colI*spacing + rowOffset;
       var y = startY + row*spacing;
       gg.append('circle')
         .attr('class','seat-dot')
         .attr('cx', x).attr('cy', y).attr('r', r)
         .attr('fill', PARTY_COLORS[seats[i].party]||'#888')
-        .attr('data-gem', gem)
+        .attr('data-ks', col)
         .attr('data-seat-idx', i)
         .attr('style', '--i:'+(window.__seatIdx = (window.__seatIdx||0)+1))
-        .append('title').text(seats[i].name+' — '+seats[i].party+' ('+fmtVotes(seats[i].votes)+' stemmen)');
+        .append('title').text(seats[i].name+' — '+seats[i].party);
     }
   }
-  Object.keys(provBounds).forEach(function(gem){ placeDots(gem, provBounds[gem]); });
+  Object.keys(provBounds).forEach(function(col){ placeDots(col, provBounds[col]); });
 
-  // Gemeente labels
-  var SHORT_LABEL = {
-    'Berchem-Sainte-Agathe':'Berchem-Ste-A.',
-    'Molenbeek-Saint-Jean':'Molenbeek',
-    'Saint-Josse-ten-Noode':'Saint-Josse',
-    'Woluwe-Saint-Lambert':'Woluwe-St-L.',
-    'Woluwe-Saint-Pierre':'Woluwe-St-P.',
-    'Watermael-Boitsfort':'Watermael-B.'
-  };
+  // Labels
   gLabels.selectAll('text')
     .data(geojson.features)
     .enter()
     .append('text')
     .attr('class','province-label')
+    .attr('style', function(_d, i){ return '--i:'+i; })
     .attr('transform', function(d){
-      var gem = d.properties.name_fr;
-      var b = provBounds[gem];
+      var col = d.properties.code;
+      var b = provBounds[col];
       var bw = b[1][0]-b[0][0], bh = b[1][1]-b[0][1];
       var cx = (b[0][0]+b[1][0])/2;
-      var n = (byGem[gem]||[]).length;
-      var cols = Math.max(2, Math.min(Math.ceil(Math.sqrt(Math.max(n,1)*(bw/bh))), 6));
+      var n = (byCol[col]||[]).length;
+      var cols = Math.max(2, Math.min(Math.ceil(Math.sqrt(Math.max(n,1)*(bw/bh))), 5));
+      if(n === 1) cols = 1;
       var rows = Math.ceil(Math.max(n,1)/cols);
-      var r = Math.max(3.5, Math.min((bw*0.62)/(cols*2+1), (bh*0.62)/(rows*2+1), 7));
-      if(DOT_SIZE_OVERRIDE[gem]) r = DOT_SIZE_OVERRIDE[gem];
-      var spacingGuess = r*2+2;
+      var r = Math.max(6, Math.min((bw*0.55)/(cols*2+1), (bh*0.55)/(rows*2+1), 14));
+      if(DOT_SIZE_OVERRIDE[col]) r = DOT_SIZE_OVERRIDE[col];
+      var spacingGuess = r*2+3;
       var clusterH = rows*spacingGuess;
-      var cy = (b[0][1]+b[1][1])/2 - clusterH/2 - 5;
-      var off = DOT_OFFSETS[gem];
+      var cy = (b[0][1]+b[1][1])/2 - clusterH/2 - 8;
+      var off = DOT_OFFSETS[col];
       if(off){ cx += off[0]; cy += off[1]; }
-      var loff = LABEL_OFFSETS[gem];
+      var loff = LABEL_OFFSETS[col];
       if(loff){ cx += loff[0]; cy += loff[1]; }
       return 'translate('+cx+','+cy+')';
     })
-    .text(function(d){
-      var g = d.properties.name_fr;
-      return SHORT_LABEL[g] || g;
-    });
+    .text(function(d){ return COLLEGE_NAMES[d.properties.code] || d.properties.name_nl; });
 
-  function selectGemeente(gem){
-    if(!gem || !byGem[gem] || !byGem[gem].length) {
-      // Empty gemeente: still show a modal with a nice empty state
-      if(!byGem[gem]){ return; }
-    }
-    window.__selected = gem;
+  function selectCollege(col){
+    if(!col || !byCol[col] || !byCol[col].length) return;
+    window.__selected = col;
 
     var startPositions = {};
     var startColors = {};
-    var mapDots = document.querySelectorAll('.seat-dot[data-gem="'+gem+'"]');
+    var mapDots = document.querySelectorAll('.seat-dot[data-ks="'+col+'"]');
     mapDots.forEach(function(el){
       var idx = el.getAttribute('data-seat-idx');
       var r = el.getBoundingClientRect();
@@ -424,31 +402,31 @@ Promise.all([
     });
 
     d3.selectAll('.province-shape').classed('faded', function(){
-      return this.getAttribute('data-geo') !== gem;
+      return this.getAttribute('data-geo') !== col;
     });
     d3.selectAll('.province-shape').classed('selected', function(){
-      return this.getAttribute('data-geo') === gem;
+      return this.getAttribute('data-geo') === col;
     });
     d3.selectAll('.seat-dot').classed('faded', function(){
-      return d3.select(this).attr('data-gem') !== gem;
+      return d3.select(this).attr('data-ks') !== col;
     });
     d3.selectAll('.province-label').style('opacity', function(d){
-      return d.properties.name_fr===gem ? 1 : 0;
+      return d.properties.code===col ? 1 : 0;
     });
 
-    renderDetailPanel(gem);
+    renderDetailPanel(col);
     openModal();
 
     requestAnimationFrame(function(){
-      requestAnimationFrame(function(){ flyDotsToModal(gem, startPositions, startColors); });
+      requestAnimationFrame(function(){ flyDotsToModal(col, startPositions, startColors); });
     });
   }
   window.__deselectFromModal = function(){ deselect(); };
 
-  function flyDotsToModal(gem, startPositions, startColors){
-    var modalDots = document.querySelectorAll('.mp-dot[data-gem="'+gem+'"]');
+  function flyDotsToModal(col, startPositions, startColors){
+    var modalDots = document.querySelectorAll('.mp-dot[data-ks="'+col+'"]');
     if(!modalDots.length) return;
-    document.querySelectorAll('.seat-dot[data-gem="'+gem+'"]').forEach(function(el){
+    document.querySelectorAll('.seat-dot[data-ks="'+col+'"]').forEach(function(el){
       el.style.opacity = '0';
     });
     modalDots.forEach(function(dotEl, i){
@@ -473,77 +451,42 @@ Promise.all([
     });
   }
 
-  function renderGroup(gem, group, order, globalIdxStart){
-    // group: array of members. globalIdxStart: offset for data-seat-idx
-    if(!group.length){
-      return '<div class="mp-empty">Geen verkozenen uit deze taalgroep</div>';
-    }
+  function renderDetailPanel(col){
+    if(!PANEL) return;
+    var all = byCol[col]||[];
+    var order = PARTY_ORDER[col] || [];
     var byParty = {};
-    group.forEach(function(s, i){
+    all.forEach(function(s, i){
       if(!byParty[s.party]) byParty[s.party] = [];
-      byParty[s.party].push({seat: s, idx: globalIdxStart + i});
+      byParty[s.party].push({seat: s, idx: i});
     });
     var partyKeys = order.filter(function(p){return byParty[p];});
-    // Also append any party not listed in order (defensive)
     Object.keys(byParty).forEach(function(p){ if(partyKeys.indexOf(p)===-1) partyKeys.push(p); });
     var barsHtml = partyKeys.map(function(p){
       var items = byParty[p];
       var dotsHtml = items.map(function(it){
-        return '<span class="mp-dot" data-gem="'+gem+'" data-seat-idx="'+it.idx+'" style="background:'+(PARTY_COLORS[p]||'#888')+'"></span>';
+        return '<span class="mp-dot" data-ks="'+col+'" data-seat-idx="'+it.idx+'" style="background:'+(PARTY_COLORS[p]||'#888')+'"></span>';
       }).join('');
       return '<div class="zv-row"><span class="zv-name">'+p+'</span>'
         +'<div class="mp-party-dots">'+dotsHtml+'</div>'
         +'<span class="zv-count">'+items.length+'</span></div>';
     }).join('');
-    var sortedByVotes = group.slice().sort(function(a,b){ return (b.votes||0)-(a.votes||0); });
+    var sortedByVotes = all.slice().sort(function(a,b){ return (b.votes||0)-(a.votes||0); });
     var repsHtml = sortedByVotes.map(function(m){
-      var col = PARTY_COLORS[m.party]||'#888';
+      var colr = PARTY_COLORS[m.party]||'#888';
       var txt = textColor(m.party);
-      var metaExtra = m.successor ? ' · opvolger' : '';
-      if(m.gemeente_onzeker) metaExtra += ' · gemeente geschat';
       var votesHtml = (m.votes||0) > 0
         ? '<div class="mp-votes">'+fmtVotes(m.votes)+'<span class="vlbl">stemmen</span></div>'
         : '<div class="mp-votes" style="color:var(--text-muted)">—<span class="vlbl">stemmen</span></div>';
       return '<div class="mp-rep">'
-        +'<div class="mp-avatar" style="background:'+col+';color:'+txt+'" title="'+m.party+'">'+initialsFor(m.name)+'</div>'
-        +'<div><div class="mp-name">'+m.name+'</div><div class="mp-meta">'+partyBadge(m.party)+metaExtra+'</div></div>'
+        +'<div class="mp-avatar" style="background:'+colr+';color:'+txt+'" title="'+m.party+'">'+initialsFor(m.name)+'</div>'
+        +'<div><div class="mp-name">'+m.name+'</div><div class="mp-meta">'+partyBadge(m.party)+'</div></div>'
         +votesHtml
         +'</div>';
     }).join('');
-    return '<div class="mp-bars">'+barsHtml+'</div>'
+    PANEL.innerHTML = '<div class="mp-title"><h3>'+COLLEGE_NAMES[col]+'</h3></div>'
+      +'<div class="mp-bars">'+barsHtml+'</div>'
       +'<div class="mp-reps">'+repsHtml+'</div>';
-  }
-
-  function renderDetailPanel(gem){
-    if(!PANEL) return;
-    var all = byGem[gem]||[];
-    var fr = all.filter(function(m){return m.taalgroep === 'FR';});
-    var nl = all.filter(function(m){return m.taalgroep === 'NL';});
-    // Indices (data-seat-idx) need to match source dot order (which is FR-first, NL-second because of sort)
-    var frHtml = renderGroup(gem, fr, PARTY_ORDER_FR, 0);
-    var nlHtml = renderGroup(gem, nl, PARTY_ORDER_NL, fr.length);
-    // Onzeker-note if any member is flagged
-    var anyOnzeker = all.some(function(m){return m.gemeente_onzeker;});
-    var onzekerHtml = anyOnzeker
-      ? '<div class="mp-onzeker">⚠ Sommige toewijzingen zijn geschat op basis van publieke bronnen.</div>'
-      : '';
-    PANEL.innerHTML = '<div class="mp-title"><h3>'+gem+'</h3></div>'
-      +'<div class="mp-tabs">'
-      +'<button class="mp-tab active" data-tab="fr" type="button">Franstalig <span class="mp-tab-count">('+fr.length+')</span></button>'
-      +'<button class="mp-tab" data-tab="nl" type="button">Nederlandstalig <span class="mp-tab-count">('+nl.length+')</span></button>'
-      +'</div>'
-      +'<div class="mp-tabpane active" data-pane="fr">'+frHtml+'</div>'
-      +'<div class="mp-tabpane" data-pane="nl">'+nlHtml+'</div>'
-      +onzekerHtml;
-
-    // Tab switching
-    PANEL.querySelectorAll('.mp-tab').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        var tab = this.getAttribute('data-tab');
-        PANEL.querySelectorAll('.mp-tab').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-tab')===tab); });
-        PANEL.querySelectorAll('.mp-tabpane').forEach(function(p){ p.classList.toggle('active', p.getAttribute('data-pane')===tab); });
-      });
-    });
   }
 
   function deselect(){

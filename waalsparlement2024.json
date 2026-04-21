@@ -1,0 +1,752 @@
+[
+  {
+    "name": "Willy Borsus",
+    "party": "MR",
+    "kieskring": "Arlon-Marche-en-Famenne-Bastogne-Neufchâteau-Virton",
+    "taalgroep": "Frans",
+    "votes": 22574,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "François Huberty",
+    "party": "Les Engagés",
+    "kieskring": "Arlon-Marche-en-Famenne-Bastogne-Neufchâteau-Virton",
+    "taalgroep": "Frans",
+    "votes": 12922,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Anne Laffut",
+    "party": "MR",
+    "kieskring": "Arlon-Marche-en-Famenne-Bastogne-Neufchâteau-Virton",
+    "taalgroep": "Frans",
+    "votes": 12847,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Mélissa Hanus",
+    "party": "PS",
+    "kieskring": "Arlon-Marche-en-Famenne-Bastogne-Neufchâteau-Virton",
+    "taalgroep": "Frans",
+    "votes": 11864,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Anne-Catherine Goffinet",
+    "party": "Les Engagés",
+    "kieskring": "Arlon-Marche-en-Famenne-Bastogne-Neufchâteau-Virton",
+    "taalgroep": "Frans",
+    "votes": 10255,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Yves Evrard",
+    "party": "MR",
+    "kieskring": "Arlon-Marche-en-Famenne-Bastogne-Neufchâteau-Virton",
+    "taalgroep": "Frans",
+    "votes": 7659,
+    "nr_on_list": 3,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Caroline Taquin",
+    "party": "MR",
+    "kieskring": "Charleroi-Thuin",
+    "taalgroep": "Frans",
+    "votes": 15480,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Jean-Jacques Cloquet",
+    "party": "Les Engagés",
+    "kieskring": "Charleroi-Thuin",
+    "taalgroep": "Frans",
+    "votes": 6750,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Germain Mugemangango",
+    "party": "PTB",
+    "kieskring": "Charleroi-Thuin",
+    "taalgroep": "Frans",
+    "votes": 6520,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#8B0000"
+  },
+  {
+    "name": "Özlem Ozen",
+    "party": "PS",
+    "kieskring": "Charleroi-Thuin",
+    "taalgroep": "Frans",
+    "votes": 5969,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Nicolas Tzanetatos",
+    "party": "MR",
+    "kieskring": "Charleroi-Thuin",
+    "taalgroep": "Frans",
+    "votes": 5393,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Isabella Greco",
+    "party": "PS",
+    "kieskring": "Charleroi-Thuin",
+    "taalgroep": "Frans",
+    "votes": 4968,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Jamila Ammi",
+    "party": "PTB",
+    "kieskring": "Charleroi-Thuin",
+    "taalgroep": "Frans",
+    "votes": 3431,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#8B0000"
+  },
+  {
+    "name": "Caroline Desalle",
+    "party": "Les Engagés",
+    "kieskring": "Charleroi-Thuin",
+    "taalgroep": "Frans",
+    "votes": 3328,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Vincent Crampont",
+    "party": "PS",
+    "kieskring": "Charleroi-Thuin",
+    "taalgroep": "Frans",
+    "votes": 1801,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Hervé Fievet",
+    "party": "MR",
+    "kieskring": "Charleroi-Thuin",
+    "taalgroep": "Frans",
+    "votes": 1781,
+    "nr_on_list": 3,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Christophe Bastin",
+    "party": "Les Engagés",
+    "kieskring": "Dinant-Philippeville",
+    "taalgroep": "Frans",
+    "votes": 7664,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Valérie Warzee-caverenne",
+    "party": "MR",
+    "kieskring": "Dinant-Philippeville",
+    "taalgroep": "Frans",
+    "votes": 6552,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Eddy Fontaine",
+    "party": "PS",
+    "kieskring": "Dinant-Philippeville",
+    "taalgroep": "Frans",
+    "votes": 5168,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Grégory Chintinne",
+    "party": "MR",
+    "kieskring": "Dinant-Philippeville",
+    "taalgroep": "Frans",
+    "votes": 3646,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Caroline Cassart-mailleux",
+    "party": "MR",
+    "kieskring": "Huy-Waremme",
+    "taalgroep": "Frans",
+    "votes": 10650,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Christophe Collignon",
+    "party": "PS",
+    "kieskring": "Huy-Waremme",
+    "taalgroep": "Frans",
+    "votes": 10473,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Marie Jacqmin",
+    "party": "Les Engagés",
+    "kieskring": "Huy-Waremme",
+    "taalgroep": "Frans",
+    "votes": 6425,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Loïc Jacob",
+    "party": "Les Engagés",
+    "kieskring": "Huy-Waremme",
+    "taalgroep": "Frans",
+    "votes": 2553,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Christie Morreale",
+    "party": "PS",
+    "kieskring": "Liège",
+    "taalgroep": "Frans",
+    "votes": 29768,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Diana Nikolic",
+    "party": "MR",
+    "kieskring": "Liège",
+    "taalgroep": "Frans",
+    "votes": 17190,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Alice Bernard",
+    "party": "PTB",
+    "kieskring": "Liège",
+    "taalgroep": "Frans",
+    "votes": 11702,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#8B0000"
+  },
+  {
+    "name": "Philippe Dodrimont",
+    "party": "MR",
+    "kieskring": "Liège",
+    "taalgroep": "Frans",
+    "votes": 10765,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "de WASSEIGE Olivier",
+    "party": "Les Engagés",
+    "kieskring": "Liège",
+    "taalgroep": "Frans",
+    "votes": 9999,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Thierry Witsel",
+    "party": "PS",
+    "kieskring": "Liège",
+    "taalgroep": "Frans",
+    "votes": 8470,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Arnaud Dewez",
+    "party": "MR",
+    "kieskring": "Liège",
+    "taalgroep": "Frans",
+    "votes": 7734,
+    "nr_on_list": 4,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Sophie Fafchamps",
+    "party": "Les Engagés",
+    "kieskring": "Liège",
+    "taalgroep": "Frans",
+    "votes": 6337,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Rachida Ait Alouha",
+    "party": "Indépendant",
+    "kieskring": "Liège",
+    "taalgroep": "Frans",
+    "votes": 5742,
+    "nr_on_list": 3,
+    "successor": false,
+    "list_color": "#888888"
+  },
+  {
+    "name": "Sabine Roberty",
+    "party": "PS",
+    "kieskring": "Liège",
+    "taalgroep": "Frans",
+    "votes": 5321,
+    "nr_on_list": 3,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Veronica Cremasco",
+    "party": "Ecolo",
+    "kieskring": "Liège",
+    "taalgroep": "Frans",
+    "votes": 5238,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#4CAF50"
+  },
+  {
+    "name": "Julien Liradelfo",
+    "party": "PTB",
+    "kieskring": "Liège",
+    "taalgroep": "Frans",
+    "votes": 3718,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#8B0000"
+  },
+  {
+    "name": "Valérie Bluge",
+    "party": "MR",
+    "kieskring": "Liège",
+    "taalgroep": "Frans",
+    "votes": 1971,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Jean-Pierre Lepine",
+    "party": "PS",
+    "kieskring": "Mons",
+    "taalgroep": "Frans",
+    "votes": 4375,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Carlo Di Antonio",
+    "party": "Les Engagés",
+    "kieskring": "Mons",
+    "taalgroep": "Frans",
+    "votes": 3639,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Guillaume Soupart",
+    "party": "MR",
+    "kieskring": "Mons",
+    "taalgroep": "Frans",
+    "votes": 3487,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Chris Massaki Mbaki",
+    "party": "MR",
+    "kieskring": "Mons",
+    "taalgroep": "Frans",
+    "votes": 2441,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Sylvie Muratore",
+    "party": "PS",
+    "kieskring": "Mons",
+    "taalgroep": "Frans",
+    "votes": 1801,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Benoît Dispa",
+    "party": "Les Engagés",
+    "kieskring": "Namur",
+    "taalgroep": "Frans",
+    "votes": 11723,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Eliane Tillieux",
+    "party": "PS",
+    "kieskring": "Namur",
+    "taalgroep": "Frans",
+    "votes": 10859,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Vincent Maillen",
+    "party": "MR",
+    "kieskring": "Namur",
+    "taalgroep": "Frans",
+    "votes": 8589,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Geneviève Lazaron",
+    "party": "Les Engagés",
+    "kieskring": "Namur",
+    "taalgroep": "Frans",
+    "votes": 8296,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Stéphanie Thoron",
+    "party": "MR",
+    "kieskring": "Namur",
+    "taalgroep": "Frans",
+    "votes": 7238,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Patricia Van Walle",
+    "party": "PTB",
+    "kieskring": "Namur",
+    "taalgroep": "Frans",
+    "votes": 3274,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#8B0000"
+  },
+  {
+    "name": "Stéphane Hazee",
+    "party": "Ecolo",
+    "kieskring": "Namur",
+    "taalgroep": "Frans",
+    "votes": 3187,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#4CAF50"
+  },
+  {
+    "name": "Valérie De Bue",
+    "party": "MR",
+    "kieskring": "Nivelles",
+    "taalgroep": "Frans",
+    "votes": 22125,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Vincent Blondel",
+    "party": "Les Engagés",
+    "kieskring": "Nivelles",
+    "taalgroep": "Frans",
+    "votes": 13941,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Armelle Gysen",
+    "party": "Les Engagés",
+    "kieskring": "Nivelles",
+    "taalgroep": "Frans",
+    "votes": 10128,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Nicolas Janssen",
+    "party": "MR",
+    "kieskring": "Nivelles",
+    "taalgroep": "Frans",
+    "votes": 8807,
+    "nr_on_list": 4,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Jean-Paul Wahl",
+    "party": "MR",
+    "kieskring": "Nivelles",
+    "taalgroep": "Frans",
+    "votes": 7111,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Anne Lambelin",
+    "party": "PS",
+    "kieskring": "Nivelles",
+    "taalgroep": "Frans",
+    "votes": 6445,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Céline Tellier",
+    "party": "Ecolo",
+    "kieskring": "Nivelles",
+    "taalgroep": "Frans",
+    "votes": 6372,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#4CAF50"
+  },
+  {
+    "name": "Olivier Maroy",
+    "party": "MR",
+    "kieskring": "Nivelles",
+    "taalgroep": "Frans",
+    "votes": 5193,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Laurent Devin",
+    "party": "PS",
+    "kieskring": "Soignies-La Louvière",
+    "taalgroep": "Frans",
+    "votes": 13019,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Maxime Daye",
+    "party": "MR",
+    "kieskring": "Soignies-La Louvière",
+    "taalgroep": "Frans",
+    "votes": 9288,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Sophie Pecriaux",
+    "party": "PS",
+    "kieskring": "Soignies-La Louvière",
+    "taalgroep": "Frans",
+    "votes": 6300,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Amandine Pavet",
+    "party": "PTB",
+    "kieskring": "Soignies-La Louvière",
+    "taalgroep": "Frans",
+    "votes": 4073,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#8B0000"
+  },
+  {
+    "name": "Loris Resinelli",
+    "party": "Les Engagés",
+    "kieskring": "Soignies-La Louvière",
+    "taalgroep": "Frans",
+    "votes": 2467,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Bruno Lefebvre",
+    "party": "PS",
+    "kieskring": "Tournai-Ath-Mouscron",
+    "taalgroep": "Frans",
+    "votes": 13077,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Vincent Palermo",
+    "party": "MR",
+    "kieskring": "Tournai-Ath-Mouscron",
+    "taalgroep": "Frans",
+    "votes": 9108,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Mathilde Vandorpe",
+    "party": "Les Engagés",
+    "kieskring": "Tournai-Ath-Mouscron",
+    "taalgroep": "Frans",
+    "votes": 8521,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Dorothée De Rodder",
+    "party": "PS",
+    "kieskring": "Tournai-Ath-Mouscron",
+    "taalgroep": "Frans",
+    "votes": 8286,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Véronique Durenne",
+    "party": "MR",
+    "kieskring": "Tournai-Ath-Mouscron",
+    "taalgroep": "Frans",
+    "votes": 3404,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Jori Dupont",
+    "party": "Indépendant",
+    "kieskring": "Tournai-Ath-Mouscron",
+    "taalgroep": "Frans",
+    "votes": 3371,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#888888"
+  },
+  {
+    "name": "Bénédicte Linard",
+    "party": "Ecolo",
+    "kieskring": "Tournai-Ath-Mouscron",
+    "taalgroep": "Frans",
+    "votes": 2565,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#4CAF50"
+  },
+  {
+    "name": "Charles Gardier",
+    "party": "MR",
+    "kieskring": "Verviers",
+    "taalgroep": "Frans",
+    "votes": 10918,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Valérie Dejardin",
+    "party": "PS",
+    "kieskring": "Verviers",
+    "taalgroep": "Frans",
+    "votes": 10558,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Jean-Paul Bastin",
+    "party": "Les Engagés",
+    "kieskring": "Verviers",
+    "taalgroep": "Frans",
+    "votes": 8684,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#00A693"
+  },
+  {
+    "name": "Christine Mauel",
+    "party": "MR",
+    "kieskring": "Verviers",
+    "taalgroep": "Frans",
+    "votes": 7183,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#005E9E"
+  },
+  {
+    "name": "Patrick Spies",
+    "party": "PS",
+    "kieskring": "Verviers",
+    "taalgroep": "Frans",
+    "votes": 3738,
+    "nr_on_list": 2,
+    "successor": false,
+    "list_color": "#C8001E"
+  },
+  {
+    "name": "Freddy Mockel",
+    "party": "Ecolo",
+    "kieskring": "Verviers",
+    "taalgroep": "Frans",
+    "votes": 2397,
+    "nr_on_list": 1,
+    "successor": false,
+    "list_color": "#4CAF50"
+  }
+]

@@ -354,12 +354,14 @@ Promise.all([
   // Per-kieskring nudge for dot/label placement (viewBox units), used when
   // the geographic bbox centroid lands on a narrow strip of the kieskring.
   var DOT_OFFSETS = {
-    'Huy-Waremme': [-30, 0]
+    'Huy-Waremme': [-30, 0],
+    'Dinant-Philippeville': [0, -20]
   };
   // Per-kieskring radius override (absolute pixels) for kieskringen that
   // visually clash with a neighbour at the default auto-sized radius.
   var DOT_SIZE_OVERRIDE = {
-    'Huy-Waremme': 6
+    'Huy-Waremme': 6,
+    'Soignies-La Louvière': 6
   };
 
   var gProvinces = svg.append('g').attr('class','g-provinces');

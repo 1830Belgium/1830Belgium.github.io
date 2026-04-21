@@ -236,6 +236,10 @@ var DOT_SIZE_OVERRIDE = {
   'Anderlecht': 5,
   'Ixelles': 5
 };
+// Per-gemeente label nudge (only the text label, not the dots).
+var LABEL_OFFSETS = {
+  'Saint-Josse-ten-Noode': [-20, 20]
+};
 
 var PANEL = document.getElementById('map-panel');
 var MODAL = document.getElementById('ks-modal');
@@ -391,6 +395,8 @@ Promise.all([
       var cy = (b[0][1]+b[1][1])/2 - clusterH/2 - 5;
       var off = DOT_OFFSETS[gem];
       if(off){ cx += off[0]; cy += off[1]; }
+      var loff = LABEL_OFFSETS[gem];
+      if(loff){ cx += loff[0]; cy += loff[1]; }
       return 'translate('+cx+','+cy+')';
     })
     .text(function(d){

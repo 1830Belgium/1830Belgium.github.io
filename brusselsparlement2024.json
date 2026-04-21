@@ -5,7 +5,7 @@
     "taalgroep": "FR",
     "votes": 1411,
     "successor": false,
-    "gemeente": "Bruxelles",
+    "gemeente": "Ixelles",
     "gemeente_onzeker": true,
     "list_color": "#005E9E"
   },
@@ -80,10 +80,10 @@
     "list_color": "#005E9E"
   },
   {
-    "name": "Vincent De Wolf",
+    "name": "Henan Oflu",
     "party": "MR",
     "taalgroep": "FR",
-    "votes": 7560,
+    "votes": 1180,
     "successor": false,
     "gemeente": "Etterbeek",
     "gemeente_onzeker": true,
@@ -150,10 +150,10 @@
     "list_color": "#005E9E"
   },
   {
-    "name": "Éléonore Simonet",
+    "name": "Ismail Luahabi",
     "party": "MR",
     "taalgroep": "FR",
-    "votes": 4522,
+    "votes": 933,
     "successor": false,
     "gemeente": "Uccle",
     "gemeente_onzeker": true,
@@ -170,10 +170,10 @@
     "list_color": "#005E9E"
   },
   {
-    "name": "David Weytsman",
+    "name": "Angelina Chan",
     "party": "MR",
     "taalgroep": "FR",
-    "votes": 5938,
+    "votes": 2113,
     "successor": false,
     "gemeente": "Bruxelles",
     "gemeente_onzeker": true,
@@ -195,7 +195,7 @@
     "taalgroep": "FR",
     "votes": 2673,
     "successor": false,
-    "gemeente": "Jette",
+    "gemeente": "Molenbeek-Saint-Jean",
     "gemeente_onzeker": false,
     "list_color": "#C8001E"
   },
@@ -290,22 +290,22 @@
     "list_color": "#C8001E"
   },
   {
-    "name": "Ahmed Laaouej",
+    "name": "Cécile Vainsel",
     "party": "PS",
     "taalgroep": "FR",
-    "votes": 24978,
+    "votes": 2074,
     "successor": false,
-    "gemeente": "Koekelberg",
+    "gemeente": "Woluwe-Saint-Pierre",
     "gemeente_onzeker": true,
     "list_color": "#C8001E"
   },
   {
-    "name": "Karine Lalieux",
+    "name": "Yannick Piquet",
     "party": "PS",
     "taalgroep": "FR",
-    "votes": 11410,
+    "votes": 2612,
     "successor": false,
-    "gemeente": "Bruxelles",
+    "gemeente": "Ixelles",
     "gemeente_onzeker": true,
     "list_color": "#C8001E"
   },
@@ -320,12 +320,12 @@
     "list_color": "#C8001E"
   },
   {
-    "name": "Yannick Piquet",
+    "name": "Rudi Vervoort",
     "party": "PS",
     "taalgroep": "FR",
-    "votes": 2612,
+    "votes": 5466,
     "successor": true,
-    "gemeente": "Ixelles",
+    "gemeente": "Evere",
     "gemeente_onzeker": false,
     "list_color": "#C8001E"
   },
@@ -353,7 +353,7 @@
     "name": "Latifa Aït Baala",
     "party": "PS",
     "taalgroep": "FR",
-    "votes": 0,
+    "votes": 1015,
     "successor": true,
     "gemeente": "Etterbeek",
     "gemeente_onzeker": true,
@@ -441,13 +441,13 @@
   },
   {
     "name": "Soulaimane El Mokadem",
-    "party": "PTB",
+    "party": "PS",
     "taalgroep": "FR",
     "votes": 14861,
     "successor": false,
     "gemeente": "Bruxelles",
     "gemeente_onzeker": false,
-    "list_color": "#8B0000"
+    "list_color": "#C8001E"
   },
   {
     "name": "Danaé Michaux Maimone",
@@ -455,7 +455,7 @@
     "taalgroep": "FR",
     "votes": 2401,
     "successor": false,
-    "gemeente": "Bruxelles",
+    "gemeente": "Saint-Gilles",
     "gemeente_onzeker": true,
     "list_color": "#8B0000"
   },
@@ -520,12 +520,12 @@
     "list_color": "#00A693"
   },
   {
-    "name": "Christophe De Beukelaer",
+    "name": "Emel Köse",
     "party": "Les Engagés",
     "taalgroep": "FR",
-    "votes": 7925,
+    "votes": 1125,
     "successor": false,
-    "gemeente": "Woluwe-Saint-Pierre",
+    "gemeente": "Schaerbeek",
     "gemeente_onzeker": true,
     "list_color": "#00A693"
   },
@@ -610,20 +610,20 @@
     "list_color": "#4CAF50"
   },
   {
-    "name": "Marie Lecocq",
+    "name": "Alain Maron",
     "party": "Ecolo",
     "taalgroep": "FR",
-    "votes": 3547,
+    "votes": 2775,
     "successor": false,
-    "gemeente": "Anderlecht",
+    "gemeente": "Saint-Gilles",
     "gemeente_onzeker": true,
     "list_color": "#4CAF50"
   },
   {
-    "name": "John Pitseys",
+    "name": "Barbara Trachte",
     "party": "Ecolo",
     "taalgroep": "FR",
-    "votes": 1065,
+    "votes": 5343,
     "successor": true,
     "gemeente": "Schaerbeek",
     "gemeente_onzeker": true,
@@ -658,16 +658,6 @@
     "gemeente": "Schaerbeek",
     "gemeente_onzeker": false,
     "list_color": "#4CAF50"
-  },
-  {
-    "name": "Ludivine de Magnanville",
-    "party": "DéFI",
-    "taalgroep": "FR",
-    "votes": 1515,
-    "successor": false,
-    "gemeente": "Woluwe-Saint-Pierre",
-    "gemeente_onzeker": true,
-    "list_color": "#C2007A"
   },
   {
     "name": "Jonathan de Patoul",
@@ -710,12 +700,12 @@
     "list_color": "#C2007A"
   },
   {
-    "name": "Gisèle Mandaila",
+    "name": "Bernard Clerfayt",
     "party": "DéFI",
     "taalgroep": "FR",
-    "votes": 1339,
+    "votes": 5976,
     "successor": true,
-    "gemeente": "Etterbeek",
+    "gemeente": "Schaerbeek",
     "gemeente_onzeker": true,
     "list_color": "#C2007A"
   },
@@ -790,12 +780,12 @@
     "list_color": "#5B2C91"
   },
   {
-    "name": "Cieltje Van Achter",
+    "name": "Gilles Verstraeten",
     "party": "N-VA",
     "taalgroep": "NL",
-    "votes": 2579,
+    "votes": 904,
     "successor": false,
-    "gemeente": "Bruxelles",
+    "gemeente": "Anderlecht",
     "gemeente_onzeker": true,
     "list_color": "#F7A72E"
   },
@@ -820,10 +810,10 @@
     "list_color": "#94D8FC"
   },
   {
-    "name": "Martine Raets",
+    "name": "Sven Gatz",
     "party": "Anders",
     "taalgroep": "NL",
-    "votes": 672,
+    "votes": 2306,
     "successor": true,
     "gemeente": "Jette",
     "gemeente_onzeker": true,
@@ -835,17 +825,17 @@
     "taalgroep": "NL",
     "votes": 2237,
     "successor": false,
-    "gemeente": "Anderlecht",
+    "gemeente": "Berchem-Sainte-Agathe",
     "gemeente_onzeker": true,
     "list_color": "#FFE03D"
   },
   {
     "name": "Sonja Hoylaerts",
-    "party": "Vlaams Belang",
+    "party": "Onafhankelijk",
     "taalgroep": "NL",
     "votes": 701,
     "successor": false,
-    "gemeente": "Etterbeek",
+    "gemeente": "Bruxelles",
     "gemeente_onzeker": false,
     "list_color": "#FFE03D"
   },

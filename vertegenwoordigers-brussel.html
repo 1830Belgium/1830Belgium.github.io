@@ -220,9 +220,20 @@ var PARTY_ORDER_NL = ['Groen','Team Fouad Ahidar','N-VA','Anders','Vlaams Belang
 var PARTY_ORDER_ALL = PARTY_ORDER_FR.concat(PARTY_ORDER_NL.filter(function(p){return PARTY_ORDER_FR.indexOf(p)===-1;}));
 
 // Per-gemeente nudge for dot/label placement (viewBox units).
-var DOT_OFFSETS = {};
-// Per-gemeente radius override (absolute pixels).
-var DOT_SIZE_OVERRIDE = {};
+// Bruxelles has a very elongated shape — the geographic centroid falls in the
+// narrow southern pentagon strip. Move its dots up to the big Laeken area.
+var DOT_OFFSETS = {
+  'Bruxelles': [0, -120],
+  'Schaerbeek': [0, -30],
+  'Ixelles': [0, 20]
+};
+// Per-gemeente radius override (absolute pixels). Smaller = less overlap.
+var DOT_SIZE_OVERRIDE = {
+  'Bruxelles': 5,
+  'Schaerbeek': 5,
+  'Anderlecht': 5,
+  'Ixelles': 5
+};
 
 var PANEL = document.getElementById('map-panel');
 var MODAL = document.getElementById('ks-modal');

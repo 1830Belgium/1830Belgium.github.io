@@ -1,0 +1,26 @@
+[
+  {"name":"Gerolf Annemans","party":"Vlaams Belang","taalcollege":"NL","votes":0},
+  {"name":"Barbara Bonte","party":"Vlaams Belang","taalcollege":"NL","votes":0},
+  {"name":"Tom Vandendriessche","party":"Vlaams Belang","taalcollege":"NL","votes":0},
+  {"name":"Assita Kanko","party":"N-VA","taalcollege":"NL","votes":0},
+  {"name":"Kris Van Dijck","party":"N-VA","taalcollege":"NL","votes":0},
+  {"name":"Johan Van Overtveldt","party":"N-VA","taalcollege":"NL","votes":0},
+  {"name":"Wouter Beke","party":"CD&V","taalcollege":"NL","votes":0},
+  {"name":"Liesbet Sommen","party":"CD&V","taalcollege":"NL","votes":0},
+  {"name":"Bruno Tobback","party":"Vooruit","taalcollege":"NL","votes":0},
+  {"name":"Kathleen Van Brempt","party":"Vooruit","taalcollege":"NL","votes":0},
+  {"name":"Sara Matthieu","party":"Groen","taalcollege":"NL","votes":0},
+  {"name":"Hilde Vautmans","party":"Anders","taalcollege":"NL","votes":0},
+  {"name":"Rudi Kennes","party":"PVDA","taalcollege":"NL","votes":0},
+
+  {"name":"Sophie Wilmès","party":"MR","taalcollege":"FR","votes":0},
+  {"name":"Olivier Chastel","party":"MR","taalcollege":"FR","votes":0},
+  {"name":"Benoît Cassart","party":"MR","taalcollege":"FR","votes":0},
+  {"name":"Elio Di Rupo","party":"PS","taalcollege":"FR","votes":0},
+  {"name":"Estelle Ceulemans","party":"PS","taalcollege":"FR","votes":0},
+  {"name":"Marc Botenga","party":"PTB","taalcollege":"FR","votes":0},
+  {"name":"Yvan Verougstraete","party":"Les Engagés","taalcollege":"FR","votes":0},
+  {"name":"Saskia Bricmont","party":"Ecolo","taalcollege":"FR","votes":0},
+
+  {"name":"Pascal Arimont","party":"CSP","taalcollege":"DE","votes":0}
+]

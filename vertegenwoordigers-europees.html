@@ -45,12 +45,9 @@ nav{background:var(--bg);border-bottom:0.5px solid var(--border);padding:0 32px;
 .map-layout{display:block}
 .map-wrap{position:relative;width:100%;max-width:1100px;margin:0 auto;aspect-ratio:3/2;overflow:visible}
 .map-wrap svg{width:100%;height:100%;display:block;cursor:default}
-.province-shape{stroke:#ffffff;stroke-width:1.2;transition:fill 0.25s ease,opacity 0.25s ease;cursor:pointer}
-.province-shape.NL{fill:#FFD24D}
-.province-shape.FR{fill:#E24B4B}
-.province-shape.DE{fill:#3B7FC9}
-.province-shape.hover{filter:brightness(1.07)}
-.province-shape.selected{stroke:var(--blue);stroke-width:2}
+.province-shape{fill:#E9E5DD;stroke:#ffffff;stroke-width:1;transition:fill 0.25s ease,opacity 0.25s ease;cursor:pointer}
+.province-shape.hover{fill:#DDD5C6}
+.province-shape.selected{fill:#FFFFFF;stroke:var(--blue);stroke-width:1.5}
 .province-shape.faded{opacity:0.25}
 .province-label{font-size:13px;font-weight:600;fill:#1a1a1a;pointer-events:none;text-anchor:middle;paint-order:stroke;stroke:#ffffff;stroke-width:3px;stroke-linejoin:round}
 .seat-dot{stroke:#ffffff;stroke-width:0.8;pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease}
@@ -158,15 +155,15 @@ footer a:hover{color:white}
 <div class="page-hero">
   <div class="page-hero-eyebrow">Europees Parlement</div>
   <h1>Belgische Europarlementsleden 2024–2029</h1>
-  <p>De 22 Belgische afgevaardigden in het Europees Parlement, verdeeld over drie taalcolleges: 13 Nederlandstalig, 8 Franstalig en 1 Duitstalig. Verkiezingen van 9 juni 2024.</p>
+  <p>De 22 Belgische afgevaardigden in het Europees Parlement, verdeeld over drie electorale colleges: 13 Nederlandstalig, 8 Franstalig en 1 Duitstalig. Verkiezingen van 9 juni 2024.</p>
 </div>
 <div class="content">
   <section class="map-section" id="kaart">
     <div class="map-intro">
       <div class="mi-text">
         <div class="eyebrow">Interactieve kaart</div>
-        <h2>Verkozenen per taalcollege</h2>
-        <p>Elke bol is één Europarlementslid. De kaart toont de drie taalcolleges — Nederlandstalig (Vlaanderen &amp; Brussel), Franstalig (Wallonië min de Oostkantons) en Duitstalig (Oostkantons). Klik op een taalcollege om de verkozenen te zien.</p>
+        <h2>Verkozenen per electoraal college</h2>
+        <p>Elke bol is één Europarlementslid. De kaart toont de drie electorale colleges — Nederlandstalig (Vlaanderen &amp; Brussel), Franstalig (Wallonië min de Oostkantons) en Duitstalig (Oostkantons). Klik op een college om de verkozenen te zien.</p>
       </div>
     </div>
     <div class="map-layout">
@@ -215,15 +212,15 @@ var PARTY_ORDER = {
   'DE': ['CSP']
 };
 var COLLEGE_NAMES = {
-  'NL': 'Nederlands taalcollege',
-  'FR': 'Frans taalcollege',
-  'DE': 'Duitstalig taalcollege'
+  'NL': 'Nederlandstalig electoraal college',
+  'FR': 'Franstalig electoraal college',
+  'DE': 'Duitstalig electoraal college'
 };
-// Per-taalcollege dot cluster nudge (viewBox units).
+// Per-college dot cluster nudge (viewBox units).
 var DOT_OFFSETS = {
   'NL': [0, 20],
-  'FR': [-20, 0],
-  'DE': [0, 0]
+  'FR': [10, -60],
+  'DE': [0, 30]
 };
 var DOT_SIZE_OVERRIDE = {
   'DE': 7
@@ -231,7 +228,7 @@ var DOT_SIZE_OVERRIDE = {
 var LABEL_OFFSETS = {
   'NL': [30, -10],
   'FR': [0, 0],
-  'DE': [40, -10]
+  'DE': [0, 0]
 };
 
 var PANEL = document.getElementById('map-panel');
@@ -266,7 +263,7 @@ Promise.all([
   var geojson = res[0];
   var members = res[1];
 
-  // Group members by taalcollege code (NL/FR/DE)
+  // Group members by college code (NL/FR/DE)
   var byCol = {};
   members.forEach(function(m){
     var c = m.taalcollege || 'NL';
@@ -314,7 +311,7 @@ Promise.all([
     provBounds[c] = path.bounds(d);
   });
 
-  // Place dots per taalcollege
+  // Place dots per college
   function placeDots(col, bbox){
     var seats = byCol[col]||[];
     var n = seats.length; if(!n) return;

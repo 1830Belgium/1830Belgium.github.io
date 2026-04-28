@@ -5,104 +5,118 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>1830 — Onafhankelijk opinieonderzoek</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --text: #1a1a1a;
-      --text-muted: #5F5E5A;
-      --border: rgba(0,0,0,0.12);
-      --bg: #ffffff;
-      --bg-secondary: #f8f7f4;
-      --blue: #185FA5;
-      --blue-light: #E6F1FB;
+      --text: #0f0f0f; --text-muted: #6b6b68; --text-faint: #a0a09c;
+      --border: rgba(0,0,0,0.10); --bg: #faf9f6; --bg-white: #ffffff;
+      --blue: #185FA5; --blue-light: #E6F1FB;
     }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--text); background: var(--bg-secondary); font-size: 15px; line-height: 1.6; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--bg); font-size: 15px; line-height: 1.6; }
 
-    nav { background: var(--bg); border-bottom: 0.5px solid var(--border); padding: 0 32px; display: flex; align-items: center; justify-content: space-between; height: 56px; position: sticky; top: 0; z-index: 100; }
-    .logo { font-size: 22px; font-weight: 600; color: var(--blue); letter-spacing: -0.5px; text-decoration: none; }
+    nav { background: var(--bg-white); border-bottom: 0.5px solid var(--border); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 58px; position: sticky; top: 0; z-index: 100; }
+    .logo { display: flex; align-items: center; text-decoration: none; }
     .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+    .nav-links a { font-size: 13.5px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
     .nav-links a:hover { color: var(--text); }
     .lang-toggle { display: flex; gap: 4px; }
-    .lang-btn { font-size: 13px; padding: 4px 10px; border-radius: 6px; border: 0.5px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
+    .lang-btn { font-size: 12px; padding: 4px 10px; border-radius: 6px; border: 0.5px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all 0.15s; }
     .lang-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
-
     .dropdown { position: relative; }
-    .dropdown-toggle { display: flex; align-items: center; gap: 4px; }
-    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--bg); border: 0.5px solid var(--border); border-radius: 8px; min-width: 200px; padding: 6px 0; z-index: 200; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--bg-white); border: 0.5px solid var(--border); border-radius: 8px; min-width: 210px; padding: 6px 0; z-index: 200; box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
     .dropdown-menu li { list-style: none; }
-    .dropdown-menu a { display: block; padding: 9px 16px; font-size: 13px; color: var(--text-muted); text-decoration: none; transition: all 0.12s; }
-    .dropdown-menu a:hover { background: var(--bg-secondary); color: var(--text); }
+    .dropdown-menu a { display: block; padding: 9px 16px; font-size: 13px; color: var(--text-muted); text-decoration: none; }
+    .dropdown-menu a:hover { background: var(--bg); color: var(--text); }
     .dropdown:hover .dropdown-menu { display: block; }
 
-    .hero { background: var(--bg); border-bottom: 0.5px solid var(--border); padding: 48px 32px 40px; }
-    .hero-eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px; }
-    .hero h1 { font-size: 32px; font-weight: 600; line-height: 1.2; margin-bottom: 12px; color: var(--text); }
-    .hero p { font-size: 16px; color: var(--text-muted); max-width: 600px; margin-bottom: 20px; }
-    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
-    .badge { font-size: 12px; padding: 4px 12px; border-radius: 20px; font-weight: 500; }
-    .badge-blue { background: #E6F1FB; color: #185FA5; }
-    .badge-green { background: #EAF3DE; color: #3B6D11; }
-    .badge-amber { background: #FAEEDA; color: #854F0B; }
+    .hero { background: var(--bg-white); border-bottom: 0.5px solid var(--border); padding: 56px 40px 48px; display: grid; grid-template-columns: 1fr 400px; gap: 48px; align-items: start; }
+    .hero-eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-faint); margin-bottom: 14px; font-weight: 500; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; line-height: 1.15; margin-bottom: 14px; letter-spacing: -0.5px; }
+    .hero h1 em { font-style: italic; color: var(--blue); }
+    .hero-desc { font-size: 15px; color: var(--text-muted); max-width: 520px; margin-bottom: 28px; line-height: 1.75; }
+    .hero-meta { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+    .meta-item { display: flex; flex-direction: column; gap: 2px; }
+    .meta-val { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
+    .meta-lbl { font-size: 10px; color: var(--text-faint); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+    .meta-divider { width: 0.5px; height: 32px; background: var(--border); }
 
-    .main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: var(--bg); border-bottom: 0.5px solid var(--border); }
-    .panel { padding: 28px 32px; }
-    .panel-left { border-right: 0.5px solid var(--border); }
-    .panel-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 16px; }
+    .hero-right { background: var(--bg); border-radius: 14px; border: 0.5px solid var(--border); padding: 22px 24px; }
+    .snapshot-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-faint); margin-bottom: 14px; font-weight: 600; }
+    .snapshot-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; }
+    .snapshot-rank { font-size: 11px; color: var(--text-faint); width: 14px; text-align: right; flex-shrink: 0; }
+    .snapshot-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .snapshot-name { font-size: 13px; flex: 1; font-weight: 500; }
+    .snapshot-bar-wrap { width: 70px; height: 5px; background: rgba(0,0,0,0.07); border-radius: 3px; overflow: hidden; }
+    .snapshot-bar { height: 100%; border-radius: 3px; }
+    .snapshot-seats { font-size: 13px; font-weight: 700; width: 40px; text-align: right; }
+    .snapshot-date { font-size: 11px; color: var(--text-faint); margin-top: 14px; padding-top: 12px; border-top: 0.5px solid var(--border); }
 
-    .map-container { background: var(--bg-secondary); border-radius: 12px; border: 0.5px solid var(--border); padding: 12px; margin-bottom: 16px; }
-    #belgiumMap { width: 100%; height: auto; display: block; }
-    .province { cursor: pointer; transition: opacity 0.15s; stroke: white; stroke-width: 0.8; }
-    .province:hover { opacity: 0.75; stroke-width: 1.5; }
+    .chart-section { padding: 48px 40px; background: var(--bg-white); border-bottom: 0.5px solid var(--border); }
+    .section-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 28px; flex-wrap: wrap; gap: 16px; }
+    .section-eyebrow { font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-faint); margin-bottom: 6px; font-weight: 600; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; letter-spacing: -0.3px; }
+    .chart-controls { display: flex; gap: 6px; flex-wrap: wrap; }
+    .ctrl-btn { font-size: 12px; padding: 5px 14px; border-radius: 20px; border: 0.5px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all 0.15s; }
+    .ctrl-btn.active { background: var(--text); color: white; border-color: var(--text); }
+    .chart-wrapper { position: relative; width: 100%; height: 380px; }
+    .majority-note { font-size: 11px; color: var(--text-faint); margin-top: 10px; }
+    .party-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 20px; }
+    .legend-item { display: flex; align-items: center; gap: 6px; cursor: pointer; transition: opacity 0.15s; user-select: none; }
+    .legend-item.faded { opacity: 0.25; }
+    .legend-line { width: 20px; height: 3px; border-radius: 2px; }
+    .legend-name { font-size: 12px; color: var(--text-muted); font-weight: 500; }
 
-    .map-legend { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--text-muted); }
-    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .data-table-section { padding: 0 40px 40px; background: var(--bg-white); border-bottom: 0.5px solid var(--border); }
+    .data-table-toggle { font-size: 12px; color: var(--blue); cursor: pointer; font-weight: 500; display: inline-flex; align-items: center; gap: 4px; }
+    .data-table-wrap { overflow-x: auto; margin-top: 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-faint); font-weight: 600; padding: 8px 12px; text-align: right; border-bottom: 0.5px solid var(--border); white-space: nowrap; }
+    th:first-child { text-align: left; }
+    td { padding: 8px 12px; text-align: right; border-bottom: 0.5px solid rgba(0,0,0,0.05); }
+    td:first-child { text-align: left; font-weight: 600; }
+    tr.meta-row td { font-size: 10px; color: var(--text-faint); font-style: italic; font-weight: 400; background: var(--bg); }
+    .cell-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
 
-    .map-tooltip { display: none; position: fixed; background: rgba(20,20,20,0.95); color: white; font-size: 12px; padding: 10px 14px; border-radius: 8px; pointer-events: none; z-index: 200; max-width: 260px; line-height: 1.6; }
+    .peiling-cta { background: var(--bg); border-bottom: 0.5px solid var(--border); padding: 48px 40px; }
+    .cta-inner { background: var(--bg-white); border: 0.5px solid var(--border); border-radius: 16px; padding: 36px 40px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; }
+    .cta-tag { display: inline-block; font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; color: var(--blue); background: var(--blue-light); padding: 4px 10px; border-radius: 4px; margin-bottom: 12px; }
+    .cta-title { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.3px; }
+    .cta-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .cta-badge { background: var(--blue); color: white; font-size: 12px; font-weight: 600; padding: 8px 20px; border-radius: 20px; white-space: nowrap; font-family: 'DM Sans', sans-serif; opacity: 0.7; display: block; text-align: center; }
+    .cta-soon { font-size: 11px; color: var(--text-faint); text-align: center; margin-top: 6px; }
 
-    .region-tabs { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
-    .region-tab { font-size: 13px; padding: 5px 14px; border-radius: 20px; border: 0.5px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.15s; }
-    .region-tab.active { background: var(--blue); color: white; border-color: var(--blue); }
+    .archive-section { padding: 48px 40px; background: var(--bg-white); border-bottom: 0.5px solid var(--border); }
+    .archive-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
+    .archive-card { background: var(--bg); border-radius: 12px; padding: 20px; border: 0.5px solid var(--border); cursor: pointer; transition: all 0.2s; }
+    .archive-card:hover { border-color: var(--blue); background: var(--blue-light); transform: translateY(-1px); }
+    .archive-month { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-faint); margin-bottom: 8px; font-weight: 600; }
+    .archive-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; line-height: 1.4; }
+    .archive-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5; }
+    .archive-chips { display: flex; gap: 4px; flex-wrap: wrap; }
+    .chip { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 500; }
+    .chip-blue { background: var(--blue-light); color: var(--blue); }
+    .chip-green { background: #EAF3DE; color: #3B6D11; }
+    .chip-amber { background: #FAEEDA; color: #854F0B; }
 
-    .poll-card { background: var(--bg); border: 0.5px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
-    .poll-question { font-size: 14px; font-weight: 600; margin-bottom: 16px; color: var(--text); }
-    .bar-row { margin-bottom: 10px; }
-    .bar-meta { display: flex; justify-content: space-between; margin-bottom: 4px; }
-    .bar-name { font-size: 13px; color: var(--text-muted); }
-    .bar-pct { font-size: 13px; font-weight: 600; color: var(--text); }
-    .bar-track { height: 8px; background: #f0ede8; border-radius: 4px; overflow: hidden; }
-    .bar-fill { height: 100%; border-radius: 4px; transition: width 0.6s ease; }
-
-    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; padding-top: 16px; border-top: 0.5px solid var(--border); }
-    .stat-box { background: var(--bg-secondary); border-radius: 8px; padding: 12px; text-align: center; }
-    .stat-val { font-size: 20px; font-weight: 600; color: var(--text); }
-    .stat-lbl { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
-
-    .archive-section { padding: 32px; background: var(--bg); border-bottom: 0.5px solid var(--border); }
-    .section-title { font-size: 18px; font-weight: 600; margin-bottom: 20px; }
-    .archive-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .archive-card { background: var(--bg-secondary); border-radius: 10px; padding: 16px; border: 0.5px solid var(--border); cursor: pointer; transition: all 0.15s; }
-    .archive-card:hover { border-color: var(--blue); background: var(--blue-light); }
-    .archive-date { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
-    .archive-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-    .archive-desc { font-size: 12px; color: var(--text-muted); }
-
-    .about-section { padding: 32px; background: var(--bg-secondary); display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    .about-card { background: var(--bg); border-radius: 12px; padding: 24px; border: 0.5px solid var(--border); }
-    .about-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
-    .about-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
-
-    footer { background: #1a1a1a; color: rgba(255,255,255,0.6); padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
-    footer a { color: rgba(255,255,255,0.6); text-decoration: none; }
-    footer a:hover { color: white; }
+    footer { background: #0f0f0f; color: rgba(255,255,255,0.5); padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
     .footer-links { display: flex; gap: 20px; }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.15s; }
+    footer a:hover { color: white; }
 
-    @media (max-width: 768px) {
-      .main-grid { grid-template-columns: 1fr; }
-      .panel-left { border-right: none; border-bottom: 0.5px solid var(--border); }
+    .chart-tooltip { position: fixed; background: rgba(15,15,15,0.93); color: white; font-size: 12px; font-family: 'DM Sans', sans-serif; padding: 12px 16px; border-radius: 10px; pointer-events: none; z-index: 300; display: none; line-height: 1.6; min-width: 180px; }
+    .chart-tooltip-title { font-weight: 600; margin-bottom: 8px; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); }
+    .chart-tooltip-row { display: flex; align-items: center; gap: 7px; margin-bottom: 3px; }
+    .chart-tooltip-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+    .chart-tooltip-val { font-weight: 700; margin-left: auto; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { display: none; }
       .archive-grid { grid-template-columns: 1fr; }
-      .about-section { grid-template-columns: 1fr; }
+      .cta-inner { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       footer { flex-direction: column; gap: 12px; text-align: center; }
     }
@@ -110,361 +124,339 @@
 </head>
 <body>
 
-<div class="map-tooltip" id="tooltip"></div>
+<div class="chart-tooltip" id="chartTooltip"></div>
 
 <nav>
-  <a href="index.html" style="display:flex;align-items:center;text-decoration:none;line-height:1;">
-  <svg width="90" height="36" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
-    <rect x="0"  y="5" width="22" height="90" fill="#1a1a1a"/>
-    <rect x="22" y="5" width="22" height="90" fill="#F9C300"/>
-    <rect x="44" y="5" width="22" height="90" fill="#EF3340"/>
-    <text x="80" y="78" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;font-weight:600;font-size:80px;fill:#1a1a1a;letter-spacing:-2px;">1830</text>
-    <rect x="0" y="97" width="296" height="3" rx="1.5" fill="#F9C300"/>
-  </svg>
-</a>
+  <a href="index.html" class="logo">
+    <svg width="90" height="36" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0"  y="5" width="22" height="90" fill="#1a1a1a"/>
+      <rect x="22" y="5" width="22" height="90" fill="#F9C300"/>
+      <rect x="44" y="5" width="22" height="90" fill="#EF3340"/>
+      <text x="80" y="78" style="font-family:-apple-system,sans-serif;font-weight:600;font-size:80px;fill:#1a1a1a;letter-spacing:-2px;">1830</text>
+      <rect x="0" y="97" width="296" height="3" rx="1.5" fill="#F9C300"/>
+    </svg>
+  </a>
   <ul class="nav-links">
     <li><a href="index.html" data-nl="Peilingen" data-fr="Sondages">Peilingen</a></li>
-    <li><a href="index.html#kaart" data-nl="Kaart" data-fr="Carte">Kaart</a></li>
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-nl="Regering" data-fr="Gouvernement">Regering ▾</a>
+      <a href="#" data-nl="Regering ▾" data-fr="Gouvernement ▾">Regering ▾</a>
       <ul class="dropdown-menu">
-        <li><a href="regering-federaal.html" data-nl="Federale regering" data-fr="Gouvernement fédéral">Federale regering</a></li>
-        <li><a href="regering-vlaams.html" data-nl="Vlaamse regering" data-fr="Gouvernement flamand">Vlaamse regering</a></li>
-        <li><a href="regering-waals.html" data-nl="Waalse regering" data-fr="Gouvernement wallon">Waalse regering</a></li>
-        <li><a href="regering-brussel.html" data-nl="Brusselse regering" data-fr="Gouvernement bruxellois">Brusselse regering</a></li>
+        <li><a href="regering-federaal.html">Federale regering</a></li>
+        <li><a href="regering-vlaams.html">Vlaamse regering</a></li>
+        <li><a href="regering-waals.html">Waalse regering</a></li>
+        <li><a href="regering-brussel.html">Brusselse regering</a></li>
       </ul>
     </li>
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-nl="Vertegenwoordigers" data-fr="Représentants">Vertegenwoordigers ▾</a>
+      <a href="#" data-nl="Vertegenwoordigers ▾" data-fr="Représentants ▾">Vertegenwoordigers ▾</a>
       <ul class="dropdown-menu">
-        <li><a href="vertegenwoordigers-federaal.html" data-nl="Federaal parlement" data-fr="Parlement fédéral">Federaal parlement</a></li>
-        <li><a href="vertegenwoordigers-vlaams.html" data-nl="Vlaams parlement" data-fr="Parlement flamand">Vlaams parlement</a></li>
-        <li><a href="vertegenwoordigers-waals.html" data-nl="Waals parlement" data-fr="Parlement wallon">Waals parlement</a></li>
-        <li><a href="vertegenwoordigers-brussel.html" data-nl="Brussels parlement" data-fr="Parlement bruxellois">Brussels parlement</a></li>
-        <li><a href="vertegenwoordigers-europees.html" data-nl="Europees parlement" data-fr="Parlement européen">Europees parlement</a></li>
+        <li><a href="vertegenwoordigers-federaal.html">Federaal parlement</a></li>
+        <li><a href="vertegenwoordigers-vlaams.html">Vlaams parlement</a></li>
+        <li><a href="vertegenwoordigers-waals.html">Waals parlement</a></li>
+        <li><a href="vertegenwoordigers-brussel.html">Brussels parlement</a></li>
+        <li><a href="vertegenwoordigers-europees.html">Europees parlement</a></li>
       </ul>
     </li>
-    <li><a href="methodologie.html" class="active" data-nl="Methodologie" data-fr="Méthodologie">Methodologie</a></li>
-    <li><a href="over-ons.html" data-nl="Over ons" data-fr="À propos">Over ons</a></li>
+    <li><a href="methodologie.html">Methodologie</a></li>
+    <li><a href="over-ons.html">Over ons</a></li>
   </ul>
   <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('nl')">NL</button>
-    <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    <button class="lang-btn active" onclick="setLang('nl',event)">NL</button>
+    <button class="lang-btn" onclick="setLang('fr',event)">FR</button>
   </div>
 </nav>
 
-<div class="hero" id="peilingen">
-  <div class="hero-eyebrow" data-nl="Laatste peiling — maart 2026" data-fr="Dernier sondage — mars 2026">Laatste peiling — maart 2026</div>
-  <h1 data-nl="Stemintentie federaal" data-fr="Intention de vote fédérale">Stemintentie federaal</h1>
-  <p data-nl="Hoe stemmen Belgen vandaag? Resultaten per gewest en provincie — het meest gedetailleerde beeld van België." data-fr="Comment votent les Belges aujourd'hui ? Résultats par région et province — le tableau le plus détaillé de la Belgique.">Hoe stemmen Belgen vandaag? Resultaten per gewest en provincie — het meest gedetailleerde beeld van België.</p>
-  <div class="badge-row">
-    <span class="badge badge-blue" data-nl="Federaal" data-fr="Fédéral">Federaal</span>
-    <span class="badge badge-green" data-nl="Vlaanderen" data-fr="Flandre">Vlaanderen</span>
-    <span class="badge badge-amber" data-nl="Wallonië" data-fr="Wallonie">Wallonië</span>
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow" data-nl="Opinieonderzoek · België · 2024–2026" data-fr="Recherche d'opinion · Belgique · 2024–2026">Opinieonderzoek · België · 2024–2026</div>
+    <h1 data-nl="Hoe stemmen<br>de <em>Belgen</em> vandaag?" data-fr="Comment votent<br>les <em>Belges</em> aujourd'hui?">Hoe stemmen<br>de <em>Belgen</em> vandaag?</h1>
+    <p class="hero-desc" data-nl="Onafhankelijk en transparant. We volgen de zetelprojectie voor de Kamer van Volksvertegenwoordigers op basis van alle beschikbare peilingen." data-fr="Indépendant et transparent. Nous suivons la projection de sièges pour la Chambre des représentants sur la base de tous les sondages disponibles.">
+      Onafhankelijk en transparant. We volgen de zetelprojectie voor de Kamer van Volksvertegenwoordigers op basis van alle beschikbare peilingen.
+    </p>
+    <div class="hero-meta">
+      <div class="meta-item"><span class="meta-val" id="metaPeilingen">—</span><span class="meta-lbl">Peilingen</span></div>
+      <div class="meta-divider"></div>
+      <div class="meta-item"><span class="meta-val">150</span><span class="meta-lbl">Zetels Kamer</span></div>
+      <div class="meta-divider"></div>
+      <div class="meta-item"><span class="meta-val">76</span><span class="meta-lbl">Zetels meerderheid</span></div>
+      <div class="meta-divider"></div>
+      <div class="meta-item"><span class="meta-val" id="metaLaatste">—</span><span class="meta-lbl">Laatste peiling</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="snapshot-label">Laatste zetelprojectie — Kamer (150)</div>
+    <div id="snapshotRows"></div>
+    <div class="snapshot-date" id="snapshotDate"></div>
   </div>
 </div>
 
-<div class="main-grid" id="kaart">
-  <div class="panel panel-left">
-    <div class="panel-label" data-nl="Interactieve kaart per provincie" data-fr="Carte interactive par province">Interactieve kaart per provincie</div>
-    <div class="map-container">
-      <div id="belgium-map"></div>
+<div class="chart-section">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Kamer van Volksvertegenwoordigers — 150 zetels</div>
+      <div class="section-title" data-nl="Zetelprojectie over de tijd" data-fr="Projection de sièges dans le temps">Zetelprojectie over de tijd</div>
     </div>
-
-    <div class="map-legend">
-      <div class="legend-item"><div class="legend-dot" style="background:#F5A623"></div> N-VA</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#FFD700; border: 1px solid #ccc;"></div> Vlaams Belang</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#E8172B"></div> Vooruit</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#F07D00"></div> cd&v</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#5FAD41"></div> Groen</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#94D8FC"></div> Anders</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#005E9E"></div> MR</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#C8001E"></div> PS</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#4CAF50"></div> Ecolo</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#8B0000"></div> PTB/PVDA</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#00A693"></div> Les Engagés</div>
-    </div>
+    <div class="chart-controls" id="chartControls"></div>
   </div>
+  <div class="chart-wrapper"><canvas id="trendChart"></canvas></div>
+  <p class="majority-note">De stippellijn geeft de absolute meerderheid aan (76 zetels). Ruiten (◆) zijn officiële verkiezingsuitslagen; cirkels zijn peilingen. Klik op een partij in de legenda om ze te tonen/verbergen.</p>
+  <div class="party-legend" id="partyLegend"></div>
+</div>
 
-  <div class="panel">
-    <div class="panel-label" data-nl="Resultaten" data-fr="Résultats">Resultaten</div>
-    <div class="region-tabs">
-      <button class="region-tab active" onclick="showRegion('belgie', this)" data-nl="België" data-fr="Belgique">België</button>
-      <button class="region-tab" onclick="showRegion('vlaanderen', this)" data-nl="Vlaanderen" data-fr="Flandre">Vlaanderen</button>
-      <button class="region-tab" onclick="showRegion('wallonie', this)" data-nl="Wallonië" data-fr="Wallonie">Wallonië</button>
-      <button class="region-tab" onclick="showRegion('brussel', this)" data-nl="Brussel" data-fr="Bruxelles">Brussel</button>
+<div class="data-table-section">
+  <span class="data-table-toggle" onclick="toggleTable(this)">▶ Toon ruwe data per peiling</span>
+  <div class="data-table-wrap" id="dataTable" style="display:none"></div>
+</div>
+
+<div class="peiling-cta">
+  <div class="cta-inner">
+    <div>
+      <div class="cta-tag">Binnenkort</div>
+      <div class="cta-title" data-nl="Eigen peiling 1830 — uitgebreide analyse" data-fr="Sondage propre 1830 — analyse approfondie">Eigen peiling 1830 — uitgebreide analyse</div>
+      <p class="cta-desc" data-nl="We lanceren binnenkort onze eerste eigen peiling met een interactieve provinciekaart, uitsplitsing per leeftijd, opleiding en taalgroep, en een volledig transparante methodologie." data-fr="Nous lançons bientôt notre premier sondage avec une carte interactive, ventilation par âge, éducation et groupe linguistique, et une méthodologie entièrement transparente.">
+        We lanceren binnenkort onze eerste eigen peiling met een interactieve provinciekaart, uitsplitsing per leeftijd, opleiding en taalgroep, en een volledig transparante methodologie.
+      </p>
     </div>
-
-    <!-- BELGIË -->
-    <div id="results-belgie" class="poll-card">
-      <div class="poll-question" data-nl="Stemintentie — België (n=3.200)" data-fr="Intention de vote — Belgique (n=3.200)">Stemintentie — België (n=3.200)</div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">N-VA</span><span class="bar-pct">21%</span></div><div class="bar-track"><div class="bar-fill" style="width:21%;background:#F5A623"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Vlaams Belang</span><span class="bar-pct">19%</span></div><div class="bar-track"><div class="bar-fill" style="width:19%;background:#FFD700"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">PS</span><span class="bar-pct">12%</span></div><div class="bar-track"><div class="bar-fill" style="width:12%;background:#C8001E"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">MR</span><span class="bar-pct">11%</span></div><div class="bar-track"><div class="bar-fill" style="width:11%;background:#005E9E"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Vooruit</span><span class="bar-pct">10%</span></div><div class="bar-track"><div class="bar-fill" style="width:10%;background:#E8172B"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">cd&v</span><span class="bar-pct">8%</span></div><div class="bar-track"><div class="bar-fill" style="width:8%;background:#F07D00"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Anders</span><span class="bar-pct">6%</span></div><div class="bar-track"><div class="bar-fill" style="width:6%;background:#94D8FC"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">PTB/PVDA</span><span class="bar-pct">7%</span></div><div class="bar-track"><div class="bar-fill" style="width:7%;background:#8B0000"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Les Engagés</span><span class="bar-pct">6%</span></div><div class="bar-track"><div class="bar-fill" style="width:6%;background:#00A693"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Groen</span><span class="bar-pct">4%</span></div><div class="bar-track"><div class="bar-fill" style="width:4%;background:#5FAD41"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Ecolo</span><span class="bar-pct">4%</span></div><div class="bar-track"><div class="bar-fill" style="width:4%;background:#4CAF50"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Anderen</span><span class="bar-pct">8%</span></div><div class="bar-track"><div class="bar-fill" style="width:8%;background:#888780"></div></div></div>
-      <div class="stats-row">
-        <div class="stat-box"><div class="stat-val">3.200</div><div class="stat-lbl" data-nl="Respondenten" data-fr="Répondants">Respondenten</div></div>
-        <div class="stat-box"><div class="stat-val">11</div><div class="stat-lbl" data-nl="Provincies" data-fr="Provinces">Provincies</div></div>
-        <div class="stat-box"><div class="stat-val">±1,7%</div><div class="stat-lbl" data-nl="Foutmarge" data-fr="Marge d'erreur">Foutmarge</div></div>
-      </div>
-    </div>
-
-    <!-- VLAANDEREN -->
-    <div id="results-vlaanderen" class="poll-card" style="display:none">
-      <div class="poll-question" data-nl="Stemintentie — Vlaanderen (n=1.600)" data-fr="Intention de vote — Flandre (n=1.600)">Stemintentie — Vlaanderen (n=1.600)</div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Vlaams Belang</span><span class="bar-pct">28%</span></div><div class="bar-track"><div class="bar-fill" style="width:28%;background:#FFD700"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">N-VA</span><span class="bar-pct">26%</span></div><div class="bar-track"><div class="bar-fill" style="width:26%;background:#F5A623"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Vooruit</span><span class="bar-pct">14%</span></div><div class="bar-track"><div class="bar-fill" style="width:14%;background:#E8172B"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">cd&v</span><span class="bar-pct">12%</span></div><div class="bar-track"><div class="bar-fill" style="width:12%;background:#F07D00"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Anders</span><span class="bar-pct">9%</span></div><div class="bar-track"><div class="bar-fill" style="width:9%;background:#94D8FC"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Groen</span><span class="bar-pct">8%</span></div><div class="bar-track"><div class="bar-fill" style="width:8%;background:#5FAD41"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">PTB/PVDA</span><span class="bar-pct">7%</span></div><div class="bar-track"><div class="bar-fill" style="width:7%;background:#8B0000"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Anderen</span><span class="bar-pct">5%</span></div><div class="bar-track"><div class="bar-fill" style="width:5%;background:#888780"></div></div></div>
-      <div class="stats-row">
-        <div class="stat-box"><div class="stat-val">1.600</div><div class="stat-lbl" data-nl="Respondenten" data-fr="Répondants">Respondenten</div></div>
-        <div class="stat-box"><div class="stat-val">5</div><div class="stat-lbl" data-nl="Provincies" data-fr="Provinces">Provincies</div></div>
-        <div class="stat-box"><div class="stat-val">±2,4%</div><div class="stat-lbl" data-nl="Foutmarge" data-fr="Marge d'erreur">Foutmarge</div></div>
-      </div>
-    </div>
-
-    <!-- WALLONIË -->
-    <div id="results-wallonie" class="poll-card" style="display:none">
-      <div class="poll-question" data-nl="Stemintentie — Wallonië (n=1.200)" data-fr="Intention de vote — Wallonie (n=1.200)">Stemintentie — Wallonië (n=1.200)</div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">PS</span><span class="bar-pct">30%</span></div><div class="bar-track"><div class="bar-fill" style="width:30%;background:#C8001E"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">MR</span><span class="bar-pct">26%</span></div><div class="bar-track"><div class="bar-fill" style="width:26%;background:#005E9E"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Les Engagés</span><span class="bar-pct">14%</span></div><div class="bar-track"><div class="bar-fill" style="width:14%;background:#00A693"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">PTB</span><span class="bar-pct">12%</span></div><div class="bar-track"><div class="bar-fill" style="width:12%;background:#8B0000"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Ecolo</span><span class="bar-pct">10%</span></div><div class="bar-track"><div class="bar-fill" style="width:10%;background:#4CAF50"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Anderen</span><span class="bar-pct">8%</span></div><div class="bar-track"><div class="bar-fill" style="width:8%;background:#888780"></div></div></div>
-      <div class="stats-row">
-        <div class="stat-box"><div class="stat-val">1.200</div><div class="stat-lbl" data-nl="Respondenten" data-fr="Répondants">Respondenten</div></div>
-        <div class="stat-box"><div class="stat-val">5</div><div class="stat-lbl" data-nl="Provincies" data-fr="Provinces">Provincies</div></div>
-        <div class="stat-box"><div class="stat-val">±2,8%</div><div class="stat-lbl" data-nl="Foutmarge" data-fr="Marge d'erreur">Foutmarge</div></div>
-      </div>
-    </div>
-
-    <!-- BRUSSEL -->
-    <div id="results-brussel" class="poll-card" style="display:none">
-      <div class="poll-question" data-nl="Stemintentie — Brussel (n=400)" data-fr="Intention de vote — Bruxelles (n=400)">Stemintentie — Brussel (n=400)</div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">PS</span><span class="bar-pct">22%</span></div><div class="bar-track"><div class="bar-fill" style="width:22%;background:#C8001E"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">MR</span><span class="bar-pct">18%</span></div><div class="bar-track"><div class="bar-fill" style="width:18%;background:#005E9E"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">PTB/PVDA</span><span class="bar-pct">16%</span></div><div class="bar-track"><div class="bar-fill" style="width:16%;background:#8B0000"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Ecolo</span><span class="bar-pct">12%</span></div><div class="bar-track"><div class="bar-fill" style="width:12%;background:#4CAF50"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Vooruit</span><span class="bar-pct">8%</span></div><div class="bar-track"><div class="bar-fill" style="width:8%;background:#E8172B"></div></div></div>
-      <div class="bar-row"><div class="bar-meta"><span class="bar-name">Anderen</span><span class="bar-pct">24%</span></div><div class="bar-track"><div class="bar-fill" style="width:24%;background:#888780"></div></div></div>
-      <div class="stats-row">
-        <div class="stat-box"><div class="stat-val">400</div><div class="stat-lbl" data-nl="Respondenten" data-fr="Répondants">Respondenten</div></div>
-        <div class="stat-box"><div class="stat-val">1</div><div class="stat-lbl" data-nl="Gewest" data-fr="Région">Gewest</div></div>
-        <div class="stat-box"><div class="stat-val">±4,9%</div><div class="stat-lbl" data-nl="Foutmarge" data-fr="Marge d'erreur">Foutmarge</div></div>
-      </div>
+    <div>
+      <div class="cta-badge">In voorbereiding</div>
+      <div class="cta-soon">Q2 2026</div>
     </div>
   </div>
 </div>
 
-<!-- ARCHIVE -->
-<div class="archive-section" id="archief">
-  <div class="section-title" data-nl="Archief peilingen" data-fr="Archives des sondages">Archief peilingen</div>
+<div class="archive-section">
+  <div class="section-header">
+    <div>
+      <div class="section-eyebrow">Alle peilingen</div>
+      <div class="section-title">Archief</div>
+    </div>
+  </div>
   <div class="archive-grid">
     <div class="archive-card">
-      <div class="archive-date">Maart 2026</div>
-      <div class="archive-title" data-nl="Stemintentie federaal" data-fr="Intention de vote fédérale">Stemintentie federaal</div>
-      <div class="archive-desc" data-nl="n=3.200 — alle provincies" data-fr="n=3.200 — toutes les provinces">n=3.200 — alle provincies</div>
+      <div class="archive-month">Maart 2026</div>
+      <div class="archive-title">DPG-peiling — zetelprojectie Kamer</div>
+      <div class="archive-desc">N-VA en Vlaams Belang winnen zetels. MR verliest fors t.o.v. verkiezingsuitslag 2024.</div>
+      <div class="archive-chips"><span class="chip chip-blue">Federaal</span><span class="chip chip-green">n=3.200</span></div>
     </div>
     <div class="archive-card">
-      <div class="archive-date">Februari 2026</div>
-      <div class="archive-title" data-nl="Tevredenheid federale regering" data-fr="Satisfaction du gouvernement fédéral">Tevredenheid federale regering</div>
-      <div class="archive-desc" data-nl="n=2.800 — federaal" data-fr="n=2.800 — fédéral">n=2.800 — federaal</div>
+      <div class="archive-month">Maart 2025</div>
+      <div class="archive-title">Grand Baromètre — zetelprojectie Kamer</div>
+      <div class="archive-desc">Vlaams Belang herstelt t.o.v. november '24. PTB/PVDA sterkste oppositiepartij.</div>
+      <div class="archive-chips"><span class="chip chip-blue">Federaal</span><span class="chip chip-green">n=3.500</span></div>
     </div>
     <div class="archive-card">
-      <div class="archive-date">Januari 2026</div>
-      <div class="archive-title" data-nl="Migratie: standpunten per provincie" data-fr="Migration: opinions par province">Migratie: standpunten per provincie</div>
-      <div class="archive-desc" data-nl="n=3.100 — alle provincies" data-fr="n=3.100 — toutes les provinces">n=3.100 — alle provincies</div>
+      <div class="archive-month">November 2024</div>
+      <div class="archive-title">Grand Baromètre + HLN — zetelprojectie</div>
+      <div class="archive-desc">N-VA stevig op kop in Vlaanderen. Arizona-coalitie verliest zetels t.o.v. juni '24.</div>
+      <div class="archive-chips"><span class="chip chip-blue">Federaal</span><span class="chip chip-green">n=4.000</span><span class="chip chip-amber">Gecombineerd</span></div>
     </div>
   </div>
 </div>
-
 
 <footer>
   <div>1830 — <span data-nl="Onafhankelijk opinieonderzoek" data-fr="Recherche d'opinion indépendante">Onafhankelijk opinieonderzoek</span></div>
   <div class="footer-links">
-    <a href="methodologie.html" data-nl="Methodologie" data-fr="Méthodologie">Methodologie</a>
-    <a href="#" data-nl="Contact" data-fr="Contact">Contact</a>
-    <a href="#" data-nl="Privacy" data-fr="Confidentialité">Privacy</a>
+    <a href="methodologie.html">Methodologie</a>
+    <a href="#">Contact</a>
+    <a href="#">Privacy</a>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <script>
-  function setLang(lang) {
-    document.querySelectorAll('.lang-btn').forEach(function(btn) { btn.classList.remove('active'); });
-    event.target.classList.add('active');
-    document.querySelectorAll('[data-' + lang + ']').forEach(function(el) {
-      el.textContent = el.getAttribute('data-' + lang);
-    });
+  let pollData = null, chart = null, hiddenParties = new Set(), activeFilter = 'all';
+
+  function setLang(lang, e) {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    document.querySelectorAll('[data-'+lang+']').forEach(el => el.innerHTML = el.getAttribute('data-'+lang));
   }
 
-  function showRegion(region, btn) {
-    ['belgie','vlaanderen','wallonie','brussel'].forEach(function(r) {
-      var el = document.getElementById('results-' + r);
-      if (el) el.style.display = 'none';
+  fetch('peilingen.json')
+    .then(r => r.json())
+    .then(data => { pollData = data; init(); })
+    .catch(() => {
+      document.getElementById('trendChart').parentElement.innerHTML =
+        '<p style="padding:24px;color:#c00">⚠ peilingen.json niet gevonden. Zorg dat het bestand in dezelfde map staat als index.html.</p>';
     });
-    var target = document.getElementById('results-' + region);
-    if (target) target.style.display = 'block';
-    document.querySelectorAll('.region-tab').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
+
+  function init() {
+    const { peilingen, partijen } = pollData;
+    const laatste = peilingen[peilingen.length - 1];
+
+    document.getElementById('metaPeilingen').textContent = peilingen.length;
+    document.getElementById('metaLaatste').textContent = laatste.label;
+
+    // Snapshot
+    const sorted = Object.entries(laatste.zetels).sort((a,b)=>b[1]-a[1]);
+    const maxS = sorted[0][1];
+    const snap = document.getElementById('snapshotRows');
+    sorted.slice(0,7).forEach(([name, seats], i) => {
+      const c = partijen[name]?.kleur || '#999';
+      snap.innerHTML += `<div class="snapshot-row">
+        <span class="snapshot-rank">${i+1}</span>
+        <div class="snapshot-dot" style="background:${c}"></div>
+        <span class="snapshot-name">${name}</span>
+        <div class="snapshot-bar-wrap"><div class="snapshot-bar" style="width:${Math.round(seats/maxS*100)}%;background:${c}"></div></div>
+        <span class="snapshot-seats">${seats} z.</span>
+      </div>`;
+    });
+    document.getElementById('snapshotDate').textContent =
+      `${laatste.bron} · ${laatste.label}${laatste.n ? ' · n='+laatste.n.toLocaleString('nl') : ''}`;
+
+    // Filter buttons
+    const ctrl = document.getElementById('chartControls');
+    [['all','Alle partijen'],['vl','Vlaanderen'],['wa','Wallonië']].forEach(([key,label]) => {
+      const btn = document.createElement('button');
+      btn.className = 'ctrl-btn' + (key==='all'?' active':'');
+      btn.textContent = label;
+      btn.onclick = () => {
+        document.querySelectorAll('.ctrl-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = key; hiddenParties.clear();
+        renderChart(); renderLegend();
+      };
+      ctrl.appendChild(btn);
+    });
+
+    renderChart(); renderLegend(); renderTable();
   }
 
-  var tooltip = document.getElementById('tooltip');
-  document.querySelectorAll('.province').forEach(function(prov) {
-    prov.addEventListener('mousemove', function(e) {
-      tooltip.style.display = 'block';
-      tooltip.style.left = (e.clientX + 14) + 'px';
-      tooltip.style.top = (e.clientY - 32) + 'px';
-      var lines = '<strong>' + prov.dataset.name + '</strong><br>' + prov.dataset.results;
-      tooltip.innerHTML = lines;
-    });
-    prov.addEventListener('mouseleave', function() {
-      tooltip.style.display = 'none';
-    });
-  });
-</script>
+  function visibleParties() {
+    return Object.entries(pollData.partijen)
+      .filter(([,info]) => activeFilter==='all' || info.groep===activeFilter || info.groep==='both')
+      .map(([name]) => name);
+  }
 
+  function renderChart() {
+    const { peilingen, partijen } = pollData;
+    const labels = peilingen.map(p=>p.label);
+    const datasets = visibleParties().map(name => ({
+      label: name,
+      data: peilingen.map(p=>p.zetels[name]??null),
+      borderColor: partijen[name].kleur,
+      backgroundColor: partijen[name].kleur+'15',
+      borderWidth: 2.5,
+      pointRadius: peilingen.map(p=>p.type==='verkiezingsuitslag'?7:4),
+      pointStyle: peilingen.map(p=>p.type==='verkiezingsuitslag'?'rectRot':'circle'),
+      pointHoverRadius: 8,
+      tension: 0.3, fill: false,
+      hidden: hiddenParties.has(name),
+      spanGaps: true,
+    }));
 
-<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
-<script>
-var partyData = {
-  "Bruxelles":      { party: "PS",             color: "#C8001E", pct: 22, results: "PS: 22% | MR: 18% | PTB/PVDA: 16% | Ecolo: 12% | Vooruit: 8% | Anderen: 24%" },
-  "Antwerpen":      { party: "Vlaams Belang",  color: "#FFD700", pct: 30, results: "VB: 30% | N-VA: 24% | Vooruit: 13% | cd&v: 11% | Anders: 9% | Groen: 7% | PTB: 6%" },
-  "Limburg":        { party: "N-VA",           color: "#F5A623", pct: 22, results: "N-VA: 22% | VB: 20% | cd&v: 16% | Vooruit: 14% | Anders: 10% | Groen: 8% | PTB: 5% | Anderen: 5%" },
-  "Oost-Vlaanderen":{ party: "N-VA",           color: "#F5A623", pct: 26, results: "N-VA: 26% | VB: 22% | Vooruit: 16% | cd&v: 14% | Groen: 9% | Anders: 8% | PTB: 5%" },
-  "Vlaams Brabant": { party: "N-VA",           color: "#F5A623", pct: 21, results: "N-VA: 21% | VB: 18% | Vooruit: 15% | cd&v: 14% | Anders: 12% | Groen: 10% | PTB: 6% | Anderen: 4%" },
-  "West-Vlaanderen":{ party: "Vlaams Belang",  color: "#FFD700", pct: 28, results: "VB: 28% | N-VA: 18% | Vooruit: 14% | cd&v: 12% | Anders: 9% | Groen: 8% | PTB: 6% | Anderen: 5%" },
-  "Brabant Wallon": { party: "MR",             color: "#005E9E", pct: 28, results: "MR: 28% | PS: 20% | Les Engagés: 18% | Ecolo: 14% | PTB: 10% | Anderen: 10%" },
-  "Hainaut":        { party: "PS",             color: "#C8001E", pct: 32, results: "PS: 32% | MR: 22% | PTB: 16% | Les Engagés: 12% | Ecolo: 10% | Anderen: 8%" },
-  "Liège":          { party: "PS",             color: "#C8001E", pct: 28, results: "PS: 28% | MR: 20% | PTB: 18% | Les Engagés: 14% | Ecolo: 12% | Anderen: 8%" },
-  "Luxembourg":     { party: "MR",             color: "#005E9E", pct: 23, results: "MR: 23% | PS: 20% | Les Engagés: 18% | Ecolo: 14% | PTB: 12% | Anderen: 13%" },
-  "Namur":          { party: "MR",             color: "#005E9E", pct: 25, results: "MR: 25% | PS: 22% | Les Engagés: 16% | PTB: 14% | Ecolo: 12% | Anderen: 11%" },
-};
+    const majorityPlugin = {
+      id:'ml', afterDraw(c) {
+        const {ctx,chartArea:{left,right},scales:{y}} = c;
+        const yp = y.getPixelForValue(76);
+        ctx.save(); ctx.beginPath(); ctx.setLineDash([6,4]);
+        ctx.strokeStyle='rgba(0,0,0,0.18)'; ctx.lineWidth=1.5;
+        ctx.moveTo(left,yp); ctx.lineTo(right,yp); ctx.stroke();
+        ctx.setLineDash([]); ctx.font='10px DM Sans,sans-serif';
+        ctx.fillStyle='rgba(0,0,0,0.3)'; ctx.fillText('76 — meerderheid',left+6,yp-5);
+        ctx.restore();
+      }
+    };
+    const electionPlugin = {
+      id:'ep', afterDraw(c) {
+        const {ctx,chartArea:{top,bottom},scales:{x}} = c;
+        pollData.peilingen.forEach((p,i)=>{
+          if(p.type!=='verkiezingsuitslag') return;
+          const xp = x.getPixelForValue(i);
+          ctx.save(); ctx.beginPath(); ctx.setLineDash([3,3]);
+          ctx.strokeStyle='rgba(0,0,0,0.12)'; ctx.lineWidth=1;
+          ctx.moveTo(xp,top); ctx.lineTo(xp,bottom); ctx.stroke(); ctx.setLineDash([]);
+          ctx.font='9px DM Sans,sans-serif'; ctx.fillStyle='rgba(0,0,0,0.25)';
+          ctx.textAlign='center'; ctx.fillText('Uitslag',xp,top+10); ctx.restore();
+        });
+      }
+    };
 
-var displayNames = {
-  "Bruxelles": "Brussel",
-  "Antwerpen": "Antwerpen",
-  "Limburg": "Limburg",
-  "Oost-Vlaanderen": "Oost-Vlaanderen",
-  "Vlaams Brabant": "Vlaams-Brabant",
-  "West-Vlaanderen": "West-Vlaanderen",
-  "Brabant Wallon": "Brabant Wallon",
-  "Hainaut": "Henegouwen",
-  "Liège": "Luik",
-  "Luxembourg": "Luxemburg",
-  "Namur": "Namen",
-};
-
-var container = document.getElementById('belgium-map');
-var width = container.offsetWidth || 480;
-var height = Math.round(width * 0.72);
-
-var svg = d3.select('#belgium-map')
-  .append('svg')
-  .attr('width', '100%')
-  .attr('viewBox', '0 0 ' + width + ' ' + height)
-  .attr('preserveAspectRatio', 'xMidYMid meet');
-
-var tooltip = document.getElementById('tooltip');
-
-fetch('Provincies.json')
-  .then(function(r) { return r.json(); })
-  .then(function(topo) {
-    var geojson = topojson.feature(topo, topo.objects.layer);
-
-    var projection = d3.geoMercator()
-      .fitSize([width, height], geojson);
-
-    var path = d3.geoPath().projection(projection);
-
-    svg.selectAll('path')
-      .data(geojson.features)
-      .enter()
-      .append('path')
-      .attr('d', path)
-      .attr('fill', function(d) {
-        var name = d.properties.NAME_2;
-        return partyData[name] ? partyData[name].color : '#ccc';
-      })
-      .attr('stroke', 'white')
-      .attr('stroke-width', 1)
-      .style('cursor', 'pointer')
-      .style('transition', 'opacity 0.15s')
-      .on('mousemove', function(event, d) {
-        var name = d.properties.NAME_2;
-        var display = displayNames[name] || name;
-        var info = partyData[name];
-        tooltip.style.display = 'block';
-        tooltip.style.left = (event.clientX + 14) + 'px';
-        tooltip.style.top = (event.clientY - 40) + 'px';
-        if (info) {
-          tooltip.innerHTML = '<strong>' + display + '</strong><br>' + info.results;
-        } else {
-          tooltip.innerHTML = '<strong>' + display + '</strong>';
+    if(chart) chart.destroy();
+    chart = new Chart(document.getElementById('trendChart').getContext('2d'), {
+      type:'line', data:{labels,datasets},
+      plugins:[majorityPlugin,electionPlugin],
+      options:{
+        responsive:true, maintainAspectRatio:false,
+        interaction:{mode:'index',intersect:false},
+        plugins:{
+          legend:{display:false},
+          tooltip:{enabled:false,external(context){
+            const tt = document.getElementById('chartTooltip');
+            if(context.tooltip.opacity===0){tt.style.display='none';return;}
+            const items = (context.tooltip.dataPoints||[])
+              .filter(i=>!hiddenParties.has(i.dataset.label)&&i.parsed.y!==null)
+              .sort((a,b)=>b.parsed.y-a.parsed.y);
+            const rect = context.chart.canvas.getBoundingClientRect();
+            tt.style.display='block';
+            tt.style.left=(rect.left+context.tooltip.caretX+14)+'px';
+            tt.style.top=(rect.top+window.scrollY+context.tooltip.caretY-20)+'px';
+            tt.style.position='absolute';
+            const idx = context.tooltip.dataPoints[0]?.dataIndex;
+            const peil = pollData.peilingen[idx];
+            const tl = peil?.type==='verkiezingsuitslag'?' (officiële uitslag)':'';
+            tt.innerHTML=`<div class="chart-tooltip-title">${context.tooltip.title[0]}${tl}</div>`+
+              items.map(item=>`<div class="chart-tooltip-row">
+                <div class="chart-tooltip-dot" style="background:${item.dataset.borderColor}"></div>
+                <span>${item.dataset.label}</span>
+                <span class="chart-tooltip-val">${item.parsed.y} z.</span>
+              </div>`).join('');
+          }}
+        },
+        scales:{
+          x:{grid:{display:false},border:{display:false},ticks:{font:{family:'DM Sans',size:11},color:'#a0a09c',maxRotation:0}},
+          y:{min:0,max:35,grid:{color:'rgba(0,0,0,0.04)'},border:{display:false},
+            ticks:{font:{family:'DM Sans',size:11},color:'#a0a09c',stepSize:5,callback:v=>v+' z.'}}
         }
-        d3.select(this).style('opacity', 0.75);
-      })
-      .on('mouseleave', function() {
-        tooltip.style.display = 'none';
-        d3.select(this).style('opacity', 1);
-      });
+      }
+    });
+  }
 
-    // Add province name labels
-    svg.selectAll('text')
-      .data(geojson.features)
-      .enter()
-      .append('text')
-      .attr('transform', function(d) {
-        var c = path.centroid(d);
-        return 'translate(' + c + ')';
-      })
-      .attr('text-anchor', 'middle')
-      .attr('dy', '0.35em')
-      .style('pointer-events', 'none')
-      .style('font-family', 'sans-serif')
-      .style('font-weight', '600')
-      .style('font-size', function(d) {
-        var name = d.properties.NAME_2;
-        return name === 'Bruxelles' ? '7px' : '9px';
-      })
-      .style('fill', function(d) {
-        var name = d.properties.NAME_2;
-        return (name === 'West-Vlaanderen' || name === 'Antwerpen') ? '#333' : 'white';
-      })
-      .text(function(d) {
-        var name = d.properties.NAME_2;
-        var short = {
-          'West-Vlaanderen': 'W-Vlaanderen',
-          'Oost-Vlaanderen': 'O-Vlaanderen',
-          'Vlaams Brabant': 'Vl-Brabant',
-          'Brabant Wallon': 'Brab. Wallon',
-          'Bruxelles': 'BXL',
-          'Hainaut': 'Henegouwen',
-          'Liège': 'Luik',
-          'Luxembourg': 'Luxemburg',
-          'Namur': 'Namen',
-        };
-        return short[name] || name;
-      });
-  })
-  .catch(function(err) {
-    console.error('Error loading map:', err);
-    document.getElementById('belgium-map').innerHTML = '<p style="color:red;padding:20px;">Kaart kon niet geladen worden.</p>';
-  });
+  function renderLegend() {
+    const {partijen} = pollData;
+    const el = document.getElementById('partyLegend');
+    el.innerHTML='';
+    visibleParties().forEach(name=>{
+      const c = partijen[name].kleur;
+      const item = document.createElement('div');
+      item.className='legend-item'+(hiddenParties.has(name)?' faded':'');
+      item.innerHTML=`<div class="legend-line" style="background:${c}"></div><span class="legend-name">${name}</span>`;
+      item.onclick=()=>{
+        if(hiddenParties.has(name)) hiddenParties.delete(name);
+        else hiddenParties.add(name);
+        item.classList.toggle('faded');
+        const ds=chart.data.datasets.find(d=>d.label===name);
+        if(ds){ds.hidden=hiddenParties.has(name);chart.update();}
+      };
+      el.appendChild(item);
+    });
+  }
+
+  function renderTable() {
+    const {peilingen,partijen} = pollData;
+    const names = Object.keys(partijen);
+    let html='<table><thead><tr><th>Partij</th>';
+    peilingen.forEach(p=>html+=`<th>${p.label}</th>`);
+    html+='</tr></thead><tbody>';
+    names.forEach(name=>{
+      html+=`<tr><td><span class="cell-dot" style="background:${partijen[name].kleur}"></span>${name}</td>`;
+      peilingen.forEach(p=>html+=`<td>${p.zetels[name]!==undefined?p.zetels[name]:'—'}</td>`);
+      html+='</tr>';
+    });
+    html+='<tr class="meta-row"><td>Type</td>';
+    peilingen.forEach(p=>html+=`<td>${p.type==='verkiezingsuitslag'?'Uitslag':'Peiling'}</td>`);
+    html+='</tr><tr class="meta-row"><td>Bron</td>';
+    peilingen.forEach(p=>html+=`<td>${p.bron}</td>`);
+    html+='</tr></tbody></table>';
+    document.getElementById('dataTable').innerHTML=html;
+  }
+
+  function toggleTable(el) {
+    const wrap=document.getElementById('dataTable');
+    const open=wrap.style.display!=='none';
+    wrap.style.display=open?'none':'block';
+    el.textContent=(open?'▶ Toon':'▼ Verberg')+' ruwe data per peiling';
+  }
 </script>
-
 </body>
 </html>

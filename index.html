@@ -1,32 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <script src="polls-data.json"></script>
-    <script>
-        // Function to load seat trends from polls-data.json
-        async function loadSeatTrends() {
-            const response = await fetch('polls-data.json');
-            const data = await response.json();
-            // Code to draw the trend chart
-            // This is a placeholder for your chart drawing logic
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body onload="loadSeatTrends()">
-    <nav>
-        <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <!-- Removed Kaart link -->
-        </ul>
-    </nav>
-    <h1>Seats Trend Chart</h1>
-    <div id="seat-trend-chart"></div>
-    <div id="interactive-map">
-        <!-- Your interactive map code -->
+<body>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+    <!-- Removed Kaart link -->
+  </nav>
+
+  <header>
+    <h1>Welcome to 1830 Belgium</h1>
+    <p>Your go-to place for insights and data.</p>
+  </header>
+
+  <section id="trend-chart">
+    <h2>Trend Chart of Seats Over Time</h2>
+    <canvas id="seatsChart"></canvas>
+    <script>
+      fetch('polls-data.json')
+        .then(response => response.json())
+        .then(data => {
+          const ctx = document.getElementById('seatsChart').getContext('2d');
+          const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'Seats',
+                data: data.seats,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                fill: false
+              }]
+            },
+            options: {
+              responsive: true,
+              scales: {
+                x: {
+                  title: {
+                    display: true,
+                    text: 'Time'
+                  }
+                },
+                y: {
+                  title: {
+                    display: true,
+                    text: 'Seats'
+                  }
+                }
+              }
+            }
+          });
+        });
+    </script>
+  </section>
+
+  <section id="map">
+    <h2>Interactive Map</h2>
+    <div id="mapContainer">
+      <!-- Code for interactive map goes here -->
     </div>
+  </section>
+
+  <section id="region-tabs">
+    <h2>Region Poll Results</h2>
+    <div id="tabs">
+      <!-- Code for region tabs goes here -->
+    </div>
+  </section>
+
+  <section id="archive">
+    <h2>Archives</h2>
+    <!-- Archive content goes here -->
+  </section>
+
+  <footer>
+    <p>&copy; 2026 1830 Belgium</p>
+  </footer>
 </body>
 </html>

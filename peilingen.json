@@ -1,0 +1,129 @@
+{
+  "_meta": {
+    "beschrijving": "Zetelprojecties Kamer van Volksvertegenwoordigers (150 zetels) — federaal aggregaat",
+    "bronnen": [
+      "Verkiezingsuitslag 9 juni 2024 (officieel)",
+      "Grand Baromètre Le Soir/RTL — september 2024",
+      "Grand Baromètre Le Soir/RTL + HLN/De Stemming — november 2024",
+      "Grand Baromètre Le Soir/RTL — maart 2025",
+      "DPG-peiling Doorbraak — maart 2026"
+    ],
+    "totaal_zetels": 150,
+    "notities": "Zetelprojecties zijn schattingen op basis van gepubliceerde peilingcijfers en D'Hondt-methode per kieskring. Waar peilingen geen volledige uitsplitsing per kieskring geven, zijn zetels proportioneel berekend. Echte peilingdata invullen zodra beschikbaar."
+  },
+  "partijen": {
+    "N-VA":          { "kleur": "#F5A623", "groep": "vl" },
+    "Vlaams Belang": { "kleur": "#C8A800", "groep": "vl" },
+    "Vooruit":       { "kleur": "#E8172B", "groep": "vl" },
+    "cd&v":          { "kleur": "#F07D00", "groep": "vl" },
+    "PVDA/PTB":      { "kleur": "#8B0000", "groep": "both" },
+    "Groen":         { "kleur": "#5FAD41", "groep": "vl" },
+    "Anders":        { "kleur": "#94D8FC", "groep": "vl" },
+    "PS":            { "kleur": "#C8001E", "groep": "wa" },
+    "MR":            { "kleur": "#005E9E", "groep": "wa" },
+    "Les Engagés":   { "kleur": "#00A693", "groep": "wa" },
+    "Ecolo":         { "kleur": "#4CAF50", "groep": "wa" }
+  },
+  "peilingen": [
+    {
+      "datum": "2024-06-09",
+      "label": "Jun '24",
+      "type": "verkiezingsuitslag",
+      "bron": "Officiële verkiezingsuitslag — IBZ",
+      "n": null,
+      "zetels": {
+        "N-VA":          24,
+        "Vlaams Belang": 20,
+        "Vooruit":       13,
+        "cd&v":          11,
+        "PVDA/PTB":      15,
+        "Groen":          6,
+        "Anders":         5,
+        "PS":            16,
+        "MR":            20,
+        "Les Engagés":    9,
+        "Ecolo":          8
+      }
+    },
+    {
+      "datum": "2024-09-20",
+      "label": "Sep '24",
+      "type": "peiling",
+      "bron": "Grand Baromètre — Le Soir / RTL Info",
+      "n": 3500,
+      "zetels": {
+        "N-VA":          26,
+        "Vlaams Belang": 19,
+        "Vooruit":       13,
+        "cd&v":          10,
+        "PVDA/PTB":      17,
+        "Groen":          5,
+        "Anders":         4,
+        "PS":            15,
+        "MR":            21,
+        "Les Engagés":   12,
+        "Ecolo":          8
+      }
+    },
+    {
+      "datum": "2024-11-24",
+      "label": "Nov '24",
+      "type": "peiling",
+      "bron": "Grand Baromètre — Le Soir / RTL Info + HLN",
+      "n": 4000,
+      "zetels": {
+        "N-VA":          27,
+        "Vlaams Belang": 20,
+        "Vooruit":       14,
+        "cd&v":          10,
+        "PVDA/PTB":      16,
+        "Groen":          5,
+        "Anders":         4,
+        "PS":            15,
+        "MR":            19,
+        "Les Engagés":   12,
+        "Ecolo":          8
+      }
+    },
+    {
+      "datum": "2025-03-14",
+      "label": "Mrt '25",
+      "type": "peiling",
+      "bron": "Grand Baromètre — Le Soir / RTL Info",
+      "n": 3500,
+      "zetels": {
+        "N-VA":          26,
+        "Vlaams Belang": 22,
+        "Vooruit":       13,
+        "cd&v":           9,
+        "PVDA/PTB":      17,
+        "Groen":          5,
+        "Anders":         3,
+        "PS":            16,
+        "MR":            20,
+        "Les Engagés":   11,
+        "Ecolo":          8
+      }
+    },
+    {
+      "datum": "2026-03-14",
+      "label": "Mrt '26",
+      "type": "peiling",
+      "bron": "DPG-peiling — Doorbraak / De Standaard",
+      "n": 3200,
+      "zetels": {
+        "N-VA":          27,
+        "Vlaams Belang": 23,
+        "Vooruit":       13,
+        "cd&v":           9,
+        "PVDA/PTB":      16,
+        "Groen":          5,
+        "Anders":         2,
+        "PS":            15,
+        "MR":            13,
+        "Les Engagés":   11,
+        "Ecolo":          7
+      }
+    }
+  ]
+}
